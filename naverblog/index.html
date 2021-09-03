@@ -67,11 +67,42 @@
             </section>
         </header>
 
-        
+        <section class="blog_menu_container">
+            <ul class="blog_menu_wrap">
+                <li class="blog_menu_items">
+                    <div id="blog_menu_item">
+                        카테고리
+                        <span id="drop_menu_text">▼</span>
+                    </div>
+
+                    <ul class="sub_menu_wrap">
+                        <li><a href="#" class="sub_menu_item menu_active2">전체보기</a></li>
+                        <li><a href="#" class="sub_menu_item">일상</a></li>
+                        <li><a href="#" class="sub_menu_item">루푸스</a></li>
+                        <li><a href="#" class="sub_menu_item">생각</a></li>
+                    </ul>
+                </li>
+
+                <li class="blog_menu_items">
+                    <div id="blog_menu_item">
+                        카테고리
+                        <span id="drop_menu_text">▼</span>
+                    </div>
+                    
+                    <ul class="sub_menu_wrap">
+                        <li><a href="#" class="sub_menu_item">전체보기</a></li>
+                        <li><a href="#" class="sub_menu_item">일상</a></li>
+                        <li><a href="#" class="sub_menu_item menu_active2 menu_new">루푸스</a></li>
+                        <li><a href="#" class="sub_menu_item">생각</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
     </div>
 
     <script>
         let btnProfile = document.querySelector("#myprofile");
+        let dropMenu = document.querySelectorAll("#blog_menu_item");
 
         const myprofile_click = function(event) {
             let profile_wrap = document.querySelector(".profile_wrap");
@@ -79,7 +110,14 @@
             btnProfile.innerHTML = (profile_wrap.classList.contains("on")) ? "▲" : "▼";
         }
 
-        btnProfile.addEventListener("click", myprofile_click)
+        const blog_menu_item_click = function(event) {
+            let sub_menu_wrap_object = this.parentNode.childNodes[3];
+            sub_menu_wrap_object.classList.toggle("on");
+            this.childNodes[1].innerHTML = (sub_menu_wrap_object.classList.contains("on")) ? "▲" : "▼";
+        }
+
+        btnProfile.addEventListener("click", myprofile_click);
+        dropMenu.forEach(item => item.addEventListener("click", blog_menu_item_click));
     </script>
 </body>
 </html>

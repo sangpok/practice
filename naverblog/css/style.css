@@ -75,13 +75,7 @@ a:hover {
     width: 316px;
     height: 155px;
     box-shadow: 0 0 6px 1px #ccc;
-}
 
-.on {
-    display: block;
-}
-
-.profile_wrap {
     font-size: 14px;
     color: rgb(140, 140, 140);
     background-color: white;
@@ -142,6 +136,7 @@ a:hover {
     margin-left: 5px;
     position: relative;
     top: -1px;
+    cursor: pointer;
 }
 
 .email {
@@ -254,6 +249,12 @@ a:hover {
     color: black;
 }
 
+.menu_active2 {
+    font-weight: bolder;
+    text-decoration: underline;
+    color: black;
+}
+
 .menu_wrap > .menu_new::after {
     content: 'N';
     border: none;
@@ -267,4 +268,88 @@ a:hover {
     color: white;
     font-weight: lighter;
     text-decoration: none;
+}
+
+.blog_menu_container {
+    font-size: 12px;
+}
+
+.sub_menu_wrap {
+    display: none;
+}
+
+.sub_menu_wrap a{
+    color: #333;
+}
+
+.sub_menu_container {
+    display: flex;
+    flex-direction: row;
+    justify-items: flex-start;
+    width: 100%;
+}
+
+.blog_menu_container > ul, li {
+    list-style: none;
+}
+
+.blog_menu_wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+#blog_menu_item {
+    display: block;
+    padding: 10px;
+    font-weight: bolder;
+    color: black;
+    cursor: pointer;
+}
+
+#blog_menu_item:hover {
+    text-decoration: none;
+}
+
+.sub_menu_wrap > li {
+    display: block;
+    padding: 7px 5px 0px 10px;
+}
+
+.blog_menu_items {
+    width: 171px;
+}
+
+.sub_menu_wrap > li > a::before {
+    content: '';
+    display: inline-block;
+    position: relative;
+    top: 2px;
+    margin-right: 4px;
+    background-image: url('../images/post.gif');
+    width: 10px;
+    height: 12px;
+}
+
+.sub_menu_wrap > li > a.menu_new::after {
+    content: 'N';
+    border: none;
+    background-color: coral;
+    font-size: 1px;
+    padding: 1px 2px;
+    margin-left: 2px;
+    border-radius: 2px;
+    width: 10px;
+    height: 9px;
+    color: white;
+    font-weight: lighter;
+    text-decoration: none;
+}
+
+#drop_menu_text {
+    float: right;
+}
+
+.on {
+    display: block;
 }
