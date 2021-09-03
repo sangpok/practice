@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naver blog Example</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <section class="container">
+        <header class="header_wrap">
+            <ul class="sitemap">
+                <li><a href="#" class="sitemap_item">내 블로그</a></li>
+                <li><a href="#" class="sitemap_item">이웃블로그</a></li>
+                <li><a href="#" class="sitemap_item">블로그 홈</a></li>
+                <li>
+                    <a href="#" class="sitemap_item">상폭이</a>
+                    <button id="myprofile">▼</button>
+                </li>
+            </ul>
+
+            <section class="profile_wrap">
+                <section class="profileimage_wrap">
+                    <img src="images/profile.png" class="profileImage">
+                    <img src="images/modified.png" class="profileImage_modified">
+                </section>
+
+                <section class="profileInfo">
+                    <div class="nick_wrap">
+                        <p class="nickname"><strong>상폭이</strong>님</p>
+                        <button id="logout">로그아웃</button>
+                    </div>
+
+                    <p class="email">y_y5760y_y@naver.com</p>
+
+                    <ul class="profile_items">
+                        <li><a href="" class="profile_item">내정보</a></li>
+                        <li><a href="" class="profile_item">보안설정</a></li>
+                        <li><a href="" class="profile_item">내인증서</a></li>
+                    </ul>
+
+                    <a href="#" class="naverpay"><strong>39,460원</strong></a>
+                </section>
+
+                <footer class="bottombtns">
+                    <a href="#" class="bottombtns_item">내 블로그</a>
+                    <a href="#" class="bottombtns_item">가입한 카페</a>
+                    <a href="#" class="bottombtns_item">Pay</a>
+                </footer>
+            </section>
+
+            <section class="blogTitleText">
+                <h1 class="titleText">03;00</h1>
+            </section>
+
+            <section class="menu_container">
+                <section class="menu_wrap">
+                    <a href="#" class="menu_active menu_new">블로그</a>
+                    <a href="#" class="">블로그</a>
+                    <a href="#" class="">블로그</a>
+                </section>
+                <section class="menu_wrap">
+                    <a href="#" class="">안부</a>
+                </section>
+            </section>
+        </header>
+
+        
+    </div>
+
+    <script>
+        let btnProfile = document.querySelector("#myprofile");
+
+        const myprofile_click = function(event) {
+            let profile_wrap = document.querySelector(".profile_wrap");
+            profile_wrap.classList.toggle("on");
+            btnProfile.innerHTML = (profile_wrap.classList.contains("on")) ? "▲" : "▼";
+        }
+
+        btnProfile.addEventListener("click", myprofile_click)
+    </script>
+</body>
+</html>

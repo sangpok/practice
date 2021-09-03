@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+ul, li {
+    list-style: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    display: block;
+    width: 1200px;
+    padding: 0;
+    margin: 0 auto;
+}
+
+header {
+    padding: 0;
+    width: 100%;
+    height: 100px;
+}
+
+.header_wrap {
+    padding: 0;
+    float: left;
+    width: 100%;
+    height: 100px;
+}
+
+.header_logo { 
+    float: left;
+    margin: 25px 0px 0px 30px;
+}
+
+.gnb_menu_wrap {
+    float: right;
+    margin-top: 34px;
+}
+
+.header_wrap .header_logo a { 
+    font-family: 'Gugi', cursive;
+}
+
+.gnb_menu {
+    float: right;
+    margin-right: 20px;
+}
+
+.gnb_menu_list {
+    position: relative;
+    float: left;
+}
+
+.gnb_menu_item {
+    display: block;
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    font-size: larger;
+    font-weight: bolder;
+    line-height: 50px;
+    /* background-color: white; */
+}
+
+.gnb_menu_item:hover {
+    background-color: rgba(255,255,255,0.6);
+}
+
+.gnb_menu > .gnb_menu_list:hover > .gnb_dropMenu_list {
+    display: block;
+    z-index: 10;
+}
+
+.gnb_menu > .gnb_menu_list:not(:last-child) > .gnb_menu_item {
+    border-right: 1pt solid lightgray;
+}
+
+.gnb_menu > .gnb_menu_list:not(:last-child) > .gnb_dropMenu_list {
+    border-right: 1pt solid #ccc;
+}
+
+.gnb_dropMenu_list {
+    position: absolute;
+    width: 100%;
+    padding: 0;
+    text-align: center;
+    background-color: white;
+    display: none;
+}
+
+.gnb_dropMenu_item {
+    display: block;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+}
+
+.gnb_dropMenu_item:hover {
+    background: #ccc;
+    font-weight: bolder;
+}
+
+/* 슬라이드 쇼 */
+
+.slideShow {
+    clear: both;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+
+.slides {
+    position: absolute;
+    width: 100%;
+}
+
+.slides > button {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 50px;
+    background-color: transparent;
+    border: none;
+}
+
+.slides > button:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+}
+
+#prev {
+    left: 0;
+}
+
+#next {
+    right: 0;
+}
+
+/* contents */
+
+.content_wrap {
+    display: flex;
+    width: 100%;
+    height: 200px;
+}
+
+.content_wrap > div {
+    flex: 1;
+}
+
+.content_wrap > .tabMenu > input[type="radio"] {
+    display: none;
+}
+
+.content_wrap > .tabMenu > label {
+    display: inline-block;
+    margin: 0 0;
+    padding: 15px 25px;
+    font-weight: 600;
+    text-align: center;
+    color: #aaa;
+    border: 1px solid transparent;
+}
+
+.content_wrap > .tabMenu > label:hover {
+    color: #222;
+    cursor: pointer;
+}
+
+.content_wrap > .tabMenu > input:checked + label {
+    color: #b00;
+    border: 1px solid #ddd;
+    background-color: #eee;
+}
+
+.tabContent {
+    display: none;
+    border-top: 1px solid #ddd;
+}
+
+#notice > ul {
+    padding: 0 0 0 20px;
+}
+
+#tab1:checked ~ #notice,
+#tab2:checked ~ #gallery {
+    display: block;
+}
+
+.banner {
+    background-color: whitesmoke;
+    height: 100%;
+}
+
+.shortcut {
+    background-color: yellow;
+    height: 100%;
+}

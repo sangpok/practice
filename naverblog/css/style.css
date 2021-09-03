@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Serif+KR&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    width: 966px;
+    margin: 0 auto;
+}
+
+.header_wrap {
+    position: relative;
+    width: 100%;
+}
+
+.sitemap {
+    float: right;
+    list-style: none;
+    text-align: right;
+    margin: 10px 10px
+}
+
+.sitemap > li {
+    float: left;
+    height: auto;
+    text-align: center;
+}
+
+.sitemap > li:not(:last-child)::after {
+    display: inline-block;
+    content: '';
+    position: relative;
+    background-color: lightgray;
+    width: 1px;
+    height: 14px;
+    margin: 0 8px;
+    top: 2px;
+}
+
+.sitemap_item {
+    font-size: small;
+    text-align: center;
+    color: rgb(136, 136, 136);
+}
+
+#myprofile {
+    background: none;
+    background-color: rgb(247, 247, 247);
+    border: 1px solid rgb(233, 233, 233);
+    color: rgb(140, 140, 140);
+    font-size: 1px;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    outline: none;
+}
+
+.profile_wrap {
+    display: none;
+    position: absolute;
+    left: 762px;
+    top: 40px;
+    width: 316px;
+    height: 155px;
+    box-shadow: 0 0 6px 1px #ccc;
+}
+
+.on {
+    display: block;
+}
+
+.profile_wrap {
+    font-size: 14px;
+    color: rgb(140, 140, 140);
+    background-color: white;
+    z-index: 9999;
+}
+
+.profileimage_wrap {
+    float: left;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 15px 10px 15px 15px;
+}
+
+.profileImage {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.profileImage_modified {
+    position: absolute;
+    width: 28px;
+    left: 0;
+    bottom: 0;
+}
+
+.profileInfo {
+    float: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 170px;
+    height: 80px;
+    margin: 15px 15px 15px 0px;
+}
+
+.profileInfo > p > strong {
+    color: #444;
+}
+
+.nickname {
+    float: left;
+}
+
+.nickname > strong {
+    color: #444;
+}
+
+#logout {
+    float: left;
+    background-color: white;
+    border: 1px solid rgb(233, 233, 233);
+    color: #444;
+    font-size: 11px;
+    padding: 3px;
+    width: 53px;
+    height: 20px;
+    margin-left: 5px;
+    position: relative;
+    top: -1px;
+}
+
+.email {
+    clear: both;
+}
+
+.profile_items {
+    list-style: none;
+}
+
+.profile_item {
+    font-size: 12px;
+    color: #444;
+    text-decoration: underline;
+}
+
+.profile_items > li {
+    float: left;
+}
+
+.profile_items > li:not(:last-child)::after {
+    display: inline-block;
+    content: '';
+    position: relative;
+    background-color: lightgray;
+    width: 1px;
+    height: 14px;
+    margin: 0 8px;
+    top: 2px;
+}
+
+.naverpay {
+    clear: both;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.bottombtns {
+    clear: both;
+    list-style: none;
+    width: 100%;
+    height: 39px;
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+    background-color: #f8f8f8;
+}
+
+.bottombtns_item {
+    float: left;
+    font-size: 12px;
+    width: 105px;
+    height: 100%;
+    flex: 1;
+    text-align: center;
+    line-height: 39px;
+    border-top: 1px solid #ebebeb;
+    display: block;
+    color: #444;
+    font-weight: bolder;
+}
+
+.bottombtns > .bottombtns_item:not(:last-child) {
+    border-right: 1px solid #ebebeb
+}
+
+.blogTitleText {
+    clear: both;
+    display: block;
+    width: 100%;
+    height: 370px;
+    padding: 23px;
+    border: 1px solid #444;
+    position: relative;
+}
+
+.titleText {
+    position: relative;
+    width: 100%;
+    top: 50%;
+    text-align: right;
+    transform: translate(0, -50%);
+    font-family: 'Noto Serif KR', serif;
+    font-weight:normal;
+    font-size: 30px;
+}
+
+.menu_container {
+    width: 100%;
+    height: 38px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #999;
+}
+
+.menu_wrap {
+    padding: 0 10px;
+}
+
+.menu_wrap > a:not(:last-child) {
+    margin-right: 10px;
+}
+
+.menu_active {
+    font-weight: bolder;
+    color: black;
+}
+
+.menu_wrap > .menu_new::after {
+    content: 'N';
+    border: none;
+    background-color: coral;
+    font-size: 1px;
+    padding: 1px 2px;
+    margin-left: 2px;
+    border-radius: 2px;
+    width: 10px;
+    height: 9px;
+    color: white;
+    font-weight: lighter;
+    text-decoration: none;
+}
