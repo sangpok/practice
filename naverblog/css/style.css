@@ -353,3 +353,78 @@ a:hover {
 .on {
     display: block;
 }
+
+/* 목록 */
+
+.post_list_wrap {
+    width: 100%;
+    display: block;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 13px;
+    color: #444;
+    padding: 10px;
+}
+
+.post_list_wrap a {
+    color: #444;
+}
+
+.post_list_box {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 10px 0px;
+}
+
+.category_name {
+    font-weight: bolder;
+    margin-right: 4px;
+}
+
+.category_name:hover {
+    text-decoration: none;
+}
+
+.post_list_table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0px;
+}
+
+.post_list_table > tbody > tr {
+    border-bottom: 1px solid #ccc;
+}
+
+.post_list_table td, th {
+    padding: 10px 0px;
+}
+
+.post_list_table td {
+    font-size: 12px;
+}
+
+.post_list_table th {
+    color: #ccc;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.table_header {
+    border-bottom: 1px solid #444;
+}
+
+.post_list_table tr > td:last-child {
+    text-align: right;
+}
+
+select {
+    border:1px solid #ccc;
+    padding: 10px;
+    outline: none;
+    cursor: pointer;
+}
+
+select > option {
+    border: none;
+    padding: 10px;
+}
