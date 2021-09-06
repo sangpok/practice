@@ -350,10 +350,6 @@ a:hover {
     float: right;
 }
 
-.on {
-    display: block;
-}
-
 /* 목록 */
 
 .post_list_wrap {
@@ -385,46 +381,198 @@ a:hover {
     text-decoration: none;
 }
 
-.post_list_table {
+.post_table_wrap {
+    display: none;
+    width: 100%;
+}
+
+.post_table_wrap > table {
+    color: #444;
+    font-size: 12px;
     border-collapse: collapse;
     width: 100%;
-    margin: 20px 0px;
 }
 
-.post_list_table > tbody > tr {
-    border-bottom: 1px solid #ccc;
+.post_table_wrap > table > tbody td {
+    padding: 10px 0px;
+    border-bottom: 1px solid #eee;
 }
 
-.post_list_table td, th {
+.post_table_wrap > table > thead > tr {
+    border-bottom: 1px solid #bbb;
+}
+
+.post_table_wrap > table > thead > tr > th {
+    color: #bbb;
+    font-weight: normal;
     padding: 10px 0px;
 }
 
-.post_list_table td {
-    font-size: 12px;
+.post_header_title {
+    display: block;
+    text-align: left;
 }
 
-.post_list_table th {
-    color: #ccc;
-    font-size: 12px;
-    font-weight: normal;
-}
-
-.table_header {
-    border-bottom: 1px solid #444;
-}
-
-.post_list_table tr > td:last-child {
+.post_header_date {
+    display: block;
     text-align: right;
 }
 
-select {
-    border:1px solid #ccc;
-    padding: 10px;
-    outline: none;
+.post_date {
+    display: block;
+    text-align: right;
+    color: #bbb;
+}
+
+.post_active {
+    font-weight: bolder;
+}
+
+.post_active > td > .post_date {
+    font-weight: normal;
+    color: #444;
+}
+
+
+.neighbor_open {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: normal;
+    border: 1px solid #bbb;
+    border-radius: 50px;
+    padding: 2px 5px;
+}
+
+.show_option_wrap {
+    margin-top: 10px;
+    float: right;
+    position: relative;
+}
+
+#selected_option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 97px;
+    height: 28px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
     cursor: pointer;
 }
 
-select > option {
-    border: none;
+.dropdown_arrow_todown {
+    display: block;
+    width: 7px;
+    height: 7px;
+    border-top: 1px solid #bbb;
+    border-left: 1px solid #bbb;
+    transform: rotate(225deg) translateY(3px);
+    transition: all .1s;
+}
+
+.arrow_toup {
+    transform: rotate(45deg) translateX(3px);
+}
+
+.show_option_list {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    width: 97px;
+    border: 1px solid #ccc;
+    border-top: none;
+    padding: 5px 0;
+}
+
+.show_option_list a {
+    display: block;
+    width: 100%;
+    height: 30px;
     padding: 10px;
+}
+
+.pageNavi {
+    display: flex;
+    justify-content: center;
+}
+
+.pageNavi > a {
+    font-size: 12px;
+    padding: 6px 8px;
+    margin: 5px 1px;
+    border: 1px solid transparent;
+    text-decoration: none;
+}
+
+.pageNavi > a:hover {
+    border: 1px solid #bbb;
+}
+
+.pageNavi > .Item_selected {
+    border: 1px solid #bbb;
+    font-weight: bolder;
+    cursor: default;
+}
+
+.on {
+    display: block;
+}
+
+/* blog_post_wrap */
+
+.blog_post_wrap {
+    color: #333;
+    width: 100%;
+    padding: 20px;
+}
+
+.post_header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+}
+
+.post_header > div {
+    margin: 17px 0px;
+}
+
+.post_category_wrap > span {
+    font-size: 16px;
+    color: #bbb;
+}
+
+.post_title_wrap > h1 {
+    font-size: 32px;
+}
+
+.post_info_wrap {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.post_info_wrap > .post_info {
+    display: flex;
+    align-items: center;
+}
+
+.post_info_wrap > .post_info > * {
+    margin-right: 10px;
+}
+
+.post_info_wrap > .post_info > span:last-child {
+    color: #bbb;
+}
+
+.post_info_wrap > .post_info > .post_author {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.post_main {
+    padding: 50px 0px;
 }

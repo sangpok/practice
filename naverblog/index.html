@@ -105,59 +105,158 @@
                 <a href="#" class="open_list">목록열기</a>
             </div>
 
-            <table class="post_list_table">
-                <caption></caption>
-                <colgroup>
-                    <col class="title">
-                    <col class="date">
-                </colgroup>
+            <div class="post_table_wrap">
+                <table>
+                    <caption></caption>
+                    <colgroup>
+                        <col width=90%>
+                        <col width=10%>
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th><span class="post_header_title">글 제목</span></th>
+                            <th><span class="post_header_date">작성일</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="post_active">
+                            <td>
+                                <a href="#">이것은 최근 게시글입니다</a>
+                                <sapn>(6)</sapn>
+                                <span class="neighbor_open">서로이웃공개</span>
+                            </td>
+                            <td><sapn class="post_date">2021. 9. 6.</sapn></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="#">3번째 게시글입니다</a>
+                                <sapn>(3)</sapn>
+                            </td>
+                            <td><sapn class="post_date">2021. 8. 24.</sapn></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="#">2번째 게시글입니다</a>
+                                <sapn>(26)</sapn>
+                                <span class="neighbor_open">서로이웃공개</span>
+                            </td>
+                            <td><sapn class="post_date">2021. 8. 5.</sapn></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="#">1번째 게시글입니다</a>
+                                <sapn>(16)</sapn>
+                                <span class="neighbor_open">서로이웃공개</span>
+                            </td>
+                            <td><sapn class="post_date">2021. 7. 27.</sapn></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2">
+                                <div class="show_option_wrap">
+                                    <div id="selected_option">
+                                        <span class="selected_option_text">5줄 보기</span>
+                                        <span class="dropdown_arrow_todown"></span>
+                                    </div>
+                                    <div class="show_option_list">
+                                        <a href="#">5줄 보기</a>
+                                        <a href="#">10줄 보기</a>
+                                        <a href="#">15줄 보기</a>
+                                        <a href="#">20줄 보기</a>
+                                        <a href="#">25줄 보기</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
 
-                <thead class="table_header">    
-                    <tr>
-                        <th style="text-align: left;">글 제목</th>
-                        <th style="text-align: right;">작성일</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr>
-                        <td>루푸스 4. 나는 매번 외래 때마다 기대한다 (2)</td>
-                        <td>2021. 9. 2.</td>
-                    </tr>
-                    <tr>
-                        <td>루푸스 3. 약을 줄이고 단백뇨를 얻었다. 그리고 비급여는 진짜 비싸다. (10)</td>
-                        <td>2021. 8. 3.</td>
-                    </tr>
-                    <tr>
-                        <td>루푸스 2. 세상 다 산 것처럼 구는 게 내 특기지만서도. (7)</td>
-                        <td>2021. 7. 8.</td>
-                    </tr>
-                    <tr>
-                        <td>루푸스 1. 여러분, 나는 건강하게 늙을 것이야 (9)</td>
-                        <td>2021. 6. 8.</td>
-                    </tr>
-                </tbody>
-
-                <tfoot>
-                    <tr>
-                        <td rowspan="2">
-                            <select>
-                                <option value="opt1">5줄 보기</option>
-                                <option value="opt2">10줄 보기</option>
-                                <option value="opt3">15줄 보기</option>
-                                <option value="opt4">20줄 보기</option>
-                                <option value="opt5">25줄 보기</option>
-                            </select>
-                        </td>
-                    </tr>
-                </tfoot>
-            </table>
+                <!-- 1. flex로 바로 객체를 정렬하는 게 나은지
+                    2. 아니면 ul li로 가로 리스트 만드는 게 나은지?
+                -->
+                <!-- 1. flex -->
+                <div class="pageNavi">
+                    <a href="#" class="pageItem Item_selected">1</a>
+                    <a href="#" class="pageItem">2</a>
+                    <a href="#" class="pageItem">3</a>
+                    <a href="#" class="pageItem">4</a>
+                    <a href="#" class="pageItem">5</a>
+                </div>
+            </div>
         </section>
+
+        <article class="blog_post_wrap">
+            <header class="post_header">
+                <div class="post_category_wrap"><span>일상</span></div>
+                <div class="post_title_wrap"><h1>김수영 - 다시 만난 세계(원곡 소녀시대)</h1></div>
+                <div class="post_info_wrap">
+                    <div class="post_info">
+                        <img src="images/post_writer.png" class="post_author">
+                        <span>상폭이</span>
+                        <span>2021. 6. 26. 22:08</span>
+                    </div>
+                    <div class="post_menu">
+                        <span>URL 복사</span>
+                        <span>통계</span>
+                        <span>:</span>
+                    </div>
+                </div>
+            </header>
+
+            <main class="post_main">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/ko-fPPJScqQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, laborum impedit repellat architecto modi illum culpa ipsa aliquam dignissimos dicta hic. Modi necessitatibus asperiores quisquam impedit? Commodi vitae nihil nesciunt!</p>
+                <p>Excepturi nihil enim sed nesciunt doloribus optio atque. Obcaecati quisquam voluptates mollitia tenetur porro consectetur, ducimus iste molestiae ab consequuntur tempore ipsum quis, nesciunt, veritatis quod excepturi maiores. Non, dolor.</p>
+                <p>Perferendis magni architecto qui quaerat expedita cum hic rerum, at maxime reiciendis assumenda quisquam quod iure? Ut ullam suscipit provident, quis beatae inventore. Fuga at numquam placeat esse accusamus consequuntur.</p>
+                <p>Incidunt velit minus eligendi facilis, minima eos, quasi aliquid, magnam debitis molestiae commodi laboriosam ea nulla cupiditate consequuntur repellat. Ullam atque explicabo officiis non ipsam velit dignissimos perspiciatis qui est.</p>
+                <p>Voluptatum sit quod quasi ullam! Adipisci, laudantium quas! Obcaecati eveniet iusto, excepturi quod laudantium explicabo fugit numquam voluptatum ducimus, itaque iste, doloribus totam fugiat quasi. Ex, amet dolores? Similique, quidem.</p>
+                <p>Exercitationem impedit facere, velit aliquid asperiores a architecto eos, libero neque delectus excepturi ipsa iste tempore voluptatum error repellat suscipit laborum, commodi quae possimus! Dolore provident doloribus animi consequatur quaerat.</p>
+                <p>Quibusdam placeat a, corrupti quo blanditiis suscipit eaque harum! Dolor incidunt tempore temporibus pariatur alias? Repellat facere quod doloremque, iure eum nostrum eaque laborum aperiam neque fuga laboriosam quae exercitationem?</p>
+                <p>Ipsam laudantium ipsa molestias laborum, quia illum quae praesentium nisi a? Magni porro ratione iure temporibus! Aspernatur, quo provident ducimus, neque itaque ipsa corporis rem ea in nostrum alias voluptate.</p>
+                <p>Culpa suscipit id accusantium, vitae minima qui quo sed veritatis et nesciunt provident voluptates vero itaque laudantium, molestias eaque! Est quae vitae quas nesciunt voluptate fugit fugiat alias eaque cum.</p>
+                <p>Eligendi in possimus alias nostrum veritatis optio asperiores a consequuntur saepe, facere modi doloremque ad at cumque labore quos incidunt, quidem similique? Voluptate commodi inventore officiis quis reprehenderit blanditiis tempore?</p>
+                <p>Ipsa exercitationem esse veniam, reprehenderit ipsum asperiores officiis rem fugiat ratione cum sunt eius. Debitis, minus asperiores consequatur maxime similique qui alias porro unde error. Explicabo doloremque unde sequi tempora.</p>
+                <p>Beatae velit consectetur totam ea laboriosam. Adipisci eligendi voluptatum ullam repellendus odit et a molestias mollitia iure at quod explicabo ratione unde repudiandae quas in velit reprehenderit, quae tempore. Nihil!</p>
+                <p>Perspiciatis minima architecto exercitationem minus aspernatur aliquam in enim quidem delectus voluptatum voluptatibus ex error qui consequuntur, quam doloremque at nihil temporibus laboriosam, nobis assumenda necessitatibus rem ea. Maiores, iure.</p>
+                <p>Ullam architecto beatae, optio ipsa eos officia laborum? Molestias ipsum, exercitationem, accusantium, odit ipsam aspernatur optio facere veniam odio laboriosam repellat labore neque expedita libero est unde repudiandae eum numquam.</p>
+                <p>Est consequuntur velit, numquam similique repudiandae exercitationem cumque accusantium dolorum blanditiis voluptatem dolore molestiae reprehenderit ipsum aspernatur voluptatibus, eos laudantium quasi in sequi repellendus earum temporibus quisquam dolores. Illum, sunt!</p>
+                <p>Excepturi dolor quaerat vitae eum, architecto ut dolores et aliquam sit eos cum doloribus sed odit cupiditate veniam facilis quidem. Quos itaque blanditiis, ut commodi nulla maiores odio incidunt magni?</p>
+                <p>Vero et eius, rerum eveniet mollitia itaque, quae dolorem quam nesciunt quisquam, numquam modi vitae laudantium ipsa molestiae quas repellat libero aperiam cum minus praesentium voluptatibus enim? A, aspernatur voluptates!</p>
+                <p>In doloremque, ullam error voluptas a tenetur sunt impedit magni minus, nesciunt iure vero voluptate quas nobis et eligendi! Nisi nulla cum ab repellat, provident dignissimos! Voluptas quidem assumenda doloremque.</p>
+                <p>Veritatis mollitia odit fugit cupiditate incidunt illum ad debitis quos repellendus id delectus deserunt dolore omnis excepturi odio, recusandae qui fugiat porro nostrum? Hic placeat dolorum similique quidem recusandae ducimus.</p>
+                <p>Animi reprehenderit ut, officiis labore odio voluptas quam dolore saepe cupiditate, laborum rem. Tempora distinctio blanditiis corrupti quidem, assumenda cupiditate delectus autem impedit velit beatae eligendi tenetur praesentium, eveniet totam.</p>
+                <p>Accusantium, ipsam recusandae asperiores aliquid quidem doloribus nisi tenetur voluptas consectetur sit velit explicabo odit distinctio a fugiat, delectus est corporis nobis quos, in quibusdam. Qui recusandae eius sint expedita!</p>
+                <p>Aliquid beatae quia modi explicabo libero officiis, eaque facilis hic earum excepturi, iusto illo repudiandae obcaecati, tempore rem commodi at molestiae asperiores quo voluptate perferendis laborum nulla quos. Aliquid, deleniti?</p>
+                <p>Suscipit fugiat, vero voluptatum adipisci atque nam voluptates quisquam autem voluptate repellendus repellat tempore quaerat repudiandae asperiores? Placeat, unde cum. Tenetur eius dolore optio at, ex saepe odio sed impedit.</p>
+                <p>Earum iure, consectetur voluptate, vitae cum suscipit a, itaque quod necessitatibus pariatur cumque. Nostrum est, quis aliquam accusantium iste aperiam, architecto fugit minus consequatur distinctio magni officiis voluptate rerum sed?</p>
+                <p>Tempora, id dolorum. Id amet vel nam neque maiores sequi odit ipsa iusto ut quia quae et, nemo corrupti molestiae voluptatem animi tempora repellat. Corrupti porro rem voluptates quidem fugiat.</p>
+                <p>Blanditiis ratione commodi exercitationem consequatur inventore perferendis nam illo maxime, modi unde illum, ex porro nisi laudantium id aliquid. Saepe quas praesentium fugiat consequuntur soluta aliquid quibusdam quaerat facilis! Nihil.</p>
+                <p>Sequi excepturi, eligendi, ipsam laudantium consequatur corporis dolores earum autem atque, beatae optio culpa illo quo possimus libero quaerat fuga similique accusantium esse quia porro! Odit commodi eaque sequi voluptatum.</p>
+                <p>Voluptate maiores asperiores inventore praesentium cumque sit. Similique officiis cumque a velit ullam voluptates veritatis iusto nesciunt dolorum, deleniti accusantium distinctio quisquam necessitatibus illo amet repellendus, ratione ea omnis dignissimos.</p>
+                <p>Dignissimos, maxime cupiditate! Aspernatur neque voluptate possimus minima, adipisci pariatur corporis repudiandae hic repellat veniam, necessitatibus facilis distinctio odit voluptas! Quidem ab ex amet facere, fugit illum tempore repellat rem.</p>
+                <p>Officiis dignissimos itaque odit repudiandae sunt quia, nihil voluptates ratione error nemo tempora quae dolores fuga magni iusto, cum rerum explicabo! Eius delectus doloribus est error facilis vero fugiat eaque?</p>
+                <p>Sed assumenda delectus sapiente incidunt vero perspiciatis nihil cum molestiae harum similique non ex dicta, quae architecto saepe ipsam, numquam libero perferendis nostrum voluptates aperiam tempore. Iste tempora ipsa rem!</p>
+                <p>Qui, non. Quo aliquam architecto qui ab sint sequi assumenda consequuntur inventore animi, eligendi maiores, nostrum rerum at aspernatur amet perferendis nemo reiciendis in corrupti iusto dolorem dolor? In, quod?</p>
+                <p>Cupiditate et officiis maiores provident dolor asperiores! Facere tempore quas veniam minima minus consequuntur distinctio laboriosam fuga, eos veritatis ex iste accusantium iusto ab reiciendis earum ad autem quia! Labore.</p>
+                <p>Pariatur, delectus at non quaerat animi consequuntur tenetur debitis dicta sunt repellendus quas tempora in consectetur? Tenetur totam quidem voluptatibus hic quis modi repellendus quasi accusantium, assumenda maxime. Ab, tenetur?</p>
+                <p>Accusamus, deserunt dicta ducimus, facilis qui exercitationem, esse error inventore aliquam eveniet dolorem commodi. Voluptas laudantium distinctio corrupti, facilis quaerat alias modi nihil, tempore iure similique quos beatae totam incidunt.</p>
+                <p>Molestiae voluptates, ipsam ad sequi inventore vero perferendis consequatur quis mollitia expedita sint reiciendis esse id culpa vel soluta aliquam optio rem ex! Velit praesentium ipsum itaque reprehenderit natus? Iste.</p>
+                <p>Fugiat error necessitatibus recusandae ea optio amet cum minus fuga pariatur distinctio porro officia, nam harum quis voluptatum iste aut et dolores nesciunt nisi laudantium tenetur cupiditate. Deleniti, omnis natus?</p>
+                <p>Sit maiores voluptates assumenda aliquid voluptate quis nisi quo officiis veniam. Consequatur, repudiandae, fugit velit nesciunt deleniti exercitationem earum quae consequuntur dolorum illum veniam, veritatis cupiditate consectetur enim. Adipisci, dignissimos.</p>
+                <p>Sit cumque odio iusto impedit quibusdam sequi dolores velit animi quod, quia culpa ut quasi nemo neque corporis error atque pariatur quisquam? Harum magnam natus cupiditate voluptatibus quos ad sed?</p>
+                <p>Nulla ullam eveniet explicabo nisi. Odio odit magni ipsa aspernatur, sapiente cupiditate et veniam vel deserunt harum, similique quibusdam? Autem quas deleniti sint sequi cum magni tenetur, voluptas exercitationem natus?</p>
+            </main>
+        </article>
     </div>
 
     <script>
         let btnProfile = document.querySelector("#myprofile");
         let dropMenu = document.querySelectorAll("#blog_menu_item");
+        let selected_option_btn = document.querySelector("#selected_option");
+        let show_option_list_items = document.querySelectorAll(".show_option_list > a");
+        let show_post_list_btn = document.querySelector(".open_list");
+        let category_name = document.querySelector(".category_name");
 
         const myprofile_click = function(event) {
             let profile_wrap = document.querySelector(".profile_wrap");
@@ -171,8 +270,36 @@
             this.childNodes[1].innerHTML = (sub_menu_wrap_object.classList.contains("on")) ? "▲" : "▼";
         }
 
+        const selected_option_click = function(event) {
+            let show_option_list = document.querySelector(".show_option_list");
+            show_option_list.classList.toggle("on");
+
+            let arrow_icon = document.querySelector(".dropdown_arrow_todown");
+            arrow_icon.classList.toggle("arrow_toup");
+        }
+
+        /* 라디오로 처리를 해줘야 하나? 
+            아니면 폼에서 값을 넘겨주면 거기에서 처리를 해줘야 하나?
+        */
+        const show_option_item_click = function(event) {
+            let option_text = this.innerHTML;
+            let selected_option_text_object = document.querySelector(".selected_option_text")
+            selected_option_text_object.innerHTML = option_text;
+            selected_option_btn.click();
+        }
+
+        const show_post_list_click = function(event) {
+            let post_table = document.querySelector(".post_table_wrap");
+            post_table.classList.toggle("on");
+            show_post_list_btn.innerHTML = (post_table.classList.contains("on")) ? "목록닫기" : "목록열기";
+        }
+
         btnProfile.addEventListener("click", myprofile_click);
         dropMenu.forEach(item => item.addEventListener("click", blog_menu_item_click));
+        selected_option_btn.addEventListener("click", selected_option_click);
+        show_option_list_items.forEach(item => item.addEventListener("click", show_option_item_click));
+        show_post_list_btn.addEventListener("click", show_post_list_click);
+        category_name.addEventListener("click", show_post_list_click);
     </script>
 </body>
 </html>
