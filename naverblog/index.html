@@ -204,8 +204,30 @@
                 </div>
             </header>
 
+            <div class="gnb_top_bar">
+                <div class="blog_info">
+                    <img src="images/naver_logo.jpg" alt="NAVER">
+                    <img src="images/naver_blog_logo.jpg" alt="BLOG">
+                    <span>|</span>
+                    <span class="blog_title">03;00</span>
+                </div>
+                <div class="blog_tools">
+                    <div class="post_search_box">
+                        <input type="text" name="" id="" placeholder="이 블로그에서 검색"><a href="#"></a>
+                    </div>
+                    
+                    <div class="showAsideBtn">
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="gnb_bottom_bar">
+
+            </div>
+
             <main class="post_main">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/ko-fPPJScqQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/ko-fPPJScqQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, laborum impedit repellat architecto modi illum culpa ipsa aliquam dignissimos dicta hic. Modi necessitatibus asperiores quisquam impedit? Commodi vitae nihil nesciunt!</p>
                 <p>Excepturi nihil enim sed nesciunt doloribus optio atque. Obcaecati quisquam voluptates mollitia tenetur porro consectetur, ducimus iste molestiae ab consequuntur tempore ipsum quis, nesciunt, veritatis quod excepturi maiores. Non, dolor.</p>
                 <p>Perferendis magni architecto qui quaerat expedita cum hic rerum, at maxime reiciendis assumenda quisquam quod iure? Ut ullam suscipit provident, quis beatae inventore. Fuga at numquam placeat esse accusamus consequuntur.</p>
@@ -247,6 +269,10 @@
                 <p>Sit cumque odio iusto impedit quibusdam sequi dolores velit animi quod, quia culpa ut quasi nemo neque corporis error atque pariatur quisquam? Harum magnam natus cupiditate voluptatibus quos ad sed?</p>
                 <p>Nulla ullam eveniet explicabo nisi. Odio odit magni ipsa aspernatur, sapiente cupiditate et veniam vel deserunt harum, similique quibusdam? Autem quas deleniti sint sequi cum magni tenetur, voluptas exercitationem natus?</p>
             </main>
+
+            <footer>
+
+            </footer>
         </article>
     </div>
 
@@ -300,6 +326,39 @@
         show_option_list_items.forEach(item => item.addEventListener("click", show_option_item_click));
         show_post_list_btn.addEventListener("click", show_post_list_click);
         category_name.addEventListener("click", show_post_list_click);
+
+
+        /* 스크롤할 때 나타나는 위 아래 바 */
+        let gnbTopBar = document.querySelector(".gnb_top_bar");
+        let gnbBottomBar = document.querySelector(".gnb_bottom_bar");
+        let post_main = document.querySelector(".post_main");
+
+        let bodyRect = document.body.getBoundingClientRect();
+        let post_main_rect = post_main.getBoundingClientRect();
+        let post_main_offset = post_main_rect.top - bodyRect.top;
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > post_main_offset || document.documentElement.scrollTop > post_main_offset) {
+                gnbTopBar.classList.add("top_on");
+                gnbBottomBar.classList.add("bottom_on");
+            } else {
+                gnbTopBar.classList.remove("top_on");
+                gnbBottomBar.classList.remove("bottom_on");
+            }
+        }
+
+        // var bodyRect = document.body.getBoundingClientRect(),
+        // elemRect = post_main.getBoundingClientRect(),
+        // offset   = elemRect.top - bodyRect.top;
+
+
+        // window.onscroll = function() {
+        //     // if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        //     //     document.getElementById("myP").className = "test";
+        //     // } else {
+        //     //     document.getElementById("myP").className = "";
+        //     // }
+        // }
     </script>
 </body>
 </html>
