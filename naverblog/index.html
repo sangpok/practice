@@ -101,8 +101,8 @@
 
         <section class="post_list_wrap">
             <div class="post_list_box">
-                <p><a href="#" class="category_name">루푸스</a>4개의 글</p>
-                <a href="#" class="open_list">목록열기</a>
+                <p><a href="#" onclick="return false;" class="category_name">루푸스</a>4개의 글</p>
+                <a href="#" onclick="return false;" class="open_list">목록열기</a>
             </div>
 
             <div class="post_table_wrap">
@@ -213,14 +213,43 @@
                 </div>
                 <div class="blog_tools">
                     <div class="post_search_box">
-                        <input type="text" name="" id="" placeholder="이 블로그에서 검색"><a href="#"></a>
+                        <input type="text" name="" id="" placeholder="이 블로그에서 검색"><a href="#" onclick="return false;"></a>
                     </div>
                     
                     <div class="showAsideBtn">
-                        
+                        <a href="#" onclick="return false;" class="show_category_menu">
+                            <!-- 네이버 같은 경우엔 이럴 때 i를 쓰던데 그냥 안 쓰는 태그 골라다가 그래픽 처리 하는 건가? -->
+                            <div class="line_wrap">
+                                <span class="category_line"></span>
+                                <span class="category_line"></span>
+                                <span class="category_line"></span>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
+
+            <aside class="category_menu">
+                <section class="blog_owner_profile">
+                    <a href="#" onclick="return false;">
+                        <img src="images/post_writer.png" alt="">
+                    </a>
+                    <a href="#" onclick="return false;">
+                        <div class="owener_info">
+                            <span class="blog_nick_name">상폭이</span>
+                            <span>일상 생각</span>
+                            <span>14명의 이웃</span>
+                        </div>
+                    </a>
+                    <a href="#" onclick="return false;">
+                        <p>서로이웃</p>
+                    </a>
+                </section>
+
+                <section class="category_list">
+
+                </section>
+            </aside>
 
             <div class="gnb_bottom_bar">
 
@@ -283,6 +312,7 @@
         let show_option_list_items = document.querySelectorAll(".show_option_list > a");
         let show_post_list_btn = document.querySelector(".open_list");
         let category_name = document.querySelector(".category_name");
+        let show_category_menu = document.querySelector(".show_category_menu");
 
         const myprofile_click = function(event) {
             let profile_wrap = document.querySelector(".profile_wrap");
@@ -320,12 +350,20 @@
             show_post_list_btn.innerHTML = (post_table.classList.contains("on")) ? "목록닫기" : "목록열기";
         }
 
+        const show_category_menu_click = function(event) {
+            this.classList.toggle("is_active");
+
+            let category_menu = document.querySelector(".category_menu");
+            category_menu.classList.toggle("category_menu_show");
+        }
+
         btnProfile.addEventListener("click", myprofile_click);
         dropMenu.forEach(item => item.addEventListener("click", blog_menu_item_click));
         selected_option_btn.addEventListener("click", selected_option_click);
         show_option_list_items.forEach(item => item.addEventListener("click", show_option_item_click));
         show_post_list_btn.addEventListener("click", show_post_list_click);
         category_name.addEventListener("click", show_post_list_click);
+        show_category_menu.addEventListener("click", show_category_menu_click);
 
 
         /* 스크롤할 때 나타나는 위 아래 바 */
@@ -333,17 +371,27 @@
         let gnbBottomBar = document.querySelector(".gnb_bottom_bar");
         let post_main = document.querySelector(".post_main");
 
-        let bodyRect = document.body.getBoundingClientRect();
-        let post_main_rect = post_main.getBoundingClientRect();
-        let post_main_offset = post_main_rect.top - bodyRect.top;
 
         window.onscroll = function() {
+            let bodyRect = document.body.getBoundingClientRect();
+            let post_main_rect = post_main.getBoundingClientRect();
+            let post_main_offset = post_main_rect.top - bodyRect.top;
+
             if (document.body.scrollTop > post_main_offset || document.documentElement.scrollTop > post_main_offset) {
                 gnbTopBar.classList.add("top_on");
                 gnbBottomBar.classList.add("bottom_on");
+
+
             } else {
                 gnbTopBar.classList.remove("top_on");
                 gnbBottomBar.classList.remove("bottom_on");
+
+                let category_menu = document.querySelector(".category_menu");
+                if (category_menu.classList.contains("category_menu_show"))
+                    category_menu.classList.remove("category_menu_show");
+
+                if (show_category_menu.classList.contains("is_active"))
+                    show_category_menu.classList.remove("is_active");
             }
         }
 
