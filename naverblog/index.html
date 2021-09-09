@@ -247,12 +247,52 @@
                 </section>
 
                 <section class="category_list">
-
+                    <ul>
+                        <li class="category_list_item">
+                            <a href="#" onclick="return false;">
+                                <div class="text_area">
+                                    <div class="text_area_name"><span class="bolder">전체글</span></div>
+                                    <div class="text_area_count"><span class="bolder">33</span></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="category_list_item">
+                            <a href="#" onclick="return false;">
+                                <div class="text_area">
+                                    <div class="text_area_name"><span class="bolder curr_selected">일상</span></div>
+                                    <div class="text_area_count"><span class="bolder curr_selected">25</span></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="category_list_item">
+                            <a href="#" onclick="return false;">
+                                <div class="text_area">
+                                    <div class="text_area_name"><span>루푸스</span></div>
+                                    <div class="text_area_count"><span>4</span></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="category_list_item">
+                            <a href="#" onclick="return false;">
+                                <div class="text_area">
+                                    <div class="text_area_name"><span>생각</span></div>
+                                    <div class="text_area_count"><span>4</span></div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
                 </section>
             </aside>
 
             <div class="gnb_bottom_bar">
+                <div class="left_menu">
+                    <img src="images/heart.jpg" alt=""><span>공감 5</span>
+                    <img src="images/speech_bubble.jpg" alt=""><span>댓글 6</span>
+                </div>
 
+                <div class="right_menu">
+                    <img src="images/share.jpg" alt="">
+                </div>
             </div>
 
             <main class="post_main">
@@ -297,6 +337,63 @@
                 <p>Sit maiores voluptates assumenda aliquid voluptate quis nisi quo officiis veniam. Consequatur, repudiandae, fugit velit nesciunt deleniti exercitationem earum quae consequuntur dolorum illum veniam, veritatis cupiditate consectetur enim. Adipisci, dignissimos.</p>
                 <p>Sit cumque odio iusto impedit quibusdam sequi dolores velit animi quod, quia culpa ut quasi nemo neque corporis error atque pariatur quisquam? Harum magnam natus cupiditate voluptatibus quos ad sed?</p>
                 <p>Nulla ullam eveniet explicabo nisi. Odio odit magni ipsa aspernatur, sapiente cupiditate et veniam vel deserunt harum, similique quibusdam? Autem quas deleniti sint sequi cum magni tenetur, voluptas exercitationem natus?</p>
+
+                <div class="poster_footer_content">
+                    <div class="copyright_wrap">
+                        <a href="#" onclick="return false;">
+                            <img src="images/copyright.jpg" alt="">
+                        </a>
+
+                        <div class="copyright_comment">
+                            <span>저작자 명시 - 필수 영리적 사용 불가 - 내용 변경 불가</span>
+                            <i class="arr"></i>
+                        </div>
+                    </div>
+
+                    <div id="comment_container">
+                        <div id="comment_btn_wrap">
+                            <div class="left_wrap">
+                                <div class="basicbtn btnselected" id="push_heart">
+                                    <img src="images/heart.jpg" height="14px" alt="">
+                                    <span>공감 5</span>
+                                    <i class="delimit"></i>
+                                    <span class="dropdown_arrow_todown"></span>
+                                </div>
+                                <div class="basicbtn" id="comment_open">
+                                    <img src="images/speech_bubble.jpg" height="14px"  alt="">
+                                    <span>댓글 6</span>
+                                    <i class="delimit"></i>
+                                    <span class="dropdown_arrow_todown"></span>
+                                </div>
+                            </div>
+
+                            <div class="right_wrap">
+                                <ul>
+                                    <li class="share_menu">
+                                        <a href="#" onclick="return false;">
+                                            <img src="images/keep.jpg" alt="">
+                                        </a>
+                                    </li>
+                                    <li class="share_menu">
+                                        <a href="#" onclick="return false;">
+                                            <img src="images/memo.jpg" alt="">
+                                        </a>
+                                    </li>
+                                    <li class="share_menu">
+                                        <a href="#" onclick="return false;">
+                                            <img class="basicbtn" src="images/share.jpg" alt="">
+                                        </a>
+                                    </li>
+                                    <li class="share_menu">
+                                        <a href="#" onclick="return false;">
+                                            <div class="basicbtn"><span>인쇄</span></div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </main>
 
             <footer>
@@ -364,23 +461,29 @@
         show_post_list_btn.addEventListener("click", show_post_list_click);
         category_name.addEventListener("click", show_post_list_click);
         show_category_menu.addEventListener("click", show_category_menu_click);
+        show_category_menu.addEventListener("focusout", show_category_menu_click);
 
 
         /* 스크롤할 때 나타나는 위 아래 바 */
         let gnbTopBar = document.querySelector(".gnb_top_bar");
         let gnbBottomBar = document.querySelector(".gnb_bottom_bar");
         let post_main = document.querySelector(".post_main");
+        let comment_section = document.querySelector("#comment_container");
 
+        let bodyRect = document.body.getBoundingClientRect();
+            let post_main_rect = post_main.getBoundingClientRect();
+            let comment_section_rect = comment_section.getBoundingClientRect();
+            let post_main_offset = post_main_rect.top - bodyRect.top;
+            let comment_section_offset = comment_section_rect.top - bodyRect.top;
 
         window.onscroll = function() {
-            let bodyRect = document.body.getBoundingClientRect();
-            let post_main_rect = post_main.getBoundingClientRect();
-            let post_main_offset = post_main_rect.top - bodyRect.top;
-
-            if (document.body.scrollTop > post_main_offset || document.documentElement.scrollTop > post_main_offset) {
-                gnbTopBar.classList.add("top_on");
-                gnbBottomBar.classList.add("bottom_on");
-
+            if (bodyRect.scrollTop > post_main_offset || document.documentElement.scrollTop > post_main_offset) {
+                if (bodyRect.scrollTop + bodyRect.clientHeight - comment_section.clientHeight > comment_section_offset || document.documentElement.scrollTop + document.documentElement.clientHeight - comment_section.clientHeight > comment_section_offset) {
+                    gnbBottomBar.classList.remove("bottom_on");
+                } else {
+                    gnbTopBar.classList.add("top_on");
+                    gnbBottomBar.classList.add("bottom_on");
+                }
 
             } else {
                 gnbTopBar.classList.remove("top_on");
