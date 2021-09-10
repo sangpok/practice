@@ -392,6 +392,69 @@
                                 </ul>
                             </div>
                         </div>
+
+                        <section id="heart_list">
+                            <p>이 글에 공감한 블로거</p>
+
+                            <div id="heart_list_wrap">
+                                <ul>
+                                    <li class="heart_list_item">
+                                        <div>
+                                            <a href="#" onclick="return false;">
+                                                <!-- <img src="images/profileImage1.png" alt=""> -->
+                                            </a>
+                                        </div>
+
+                                        <div>
+                                            <strong>꿀이</strong>
+                                            <span>반가오</span>
+                                        </div>
+
+                                        <div>
+                                            <div><span class="basicbtn">이웃추가</span></div>
+                                        </div>
+                                    </li>
+
+                                    <li class="heart_list_item">
+                                        <div>
+                                            <a href="#" onclick="return false;">
+                                                <!-- <img src="images/profileImage1.png" alt=""> -->
+                                            </a>
+                                        </div>
+
+                                        <div>
+                                            <strong>꿀이</strong>
+                                            <span>반가오</span>
+                                        </div>
+
+                                        <div>
+                                            <div><span class="basicbtn">이웃추가</span></div>
+                                        </div>
+                                    </li>
+                                    
+                                    <li class="heart_list_item">
+                                        <div>
+                                            <a href="#" onclick="return false;">
+                                                <!-- <img src="" alt=""> -->
+                                            </a>
+                                        </div>
+
+                                        <div>
+                                            <strong>꿀이</strong>
+                                            <span>반가오</span>
+                                        </div>
+
+                                        <div>
+                                            <div><span class="basicbtn">이웃추가</span></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <section id="comment_list">
+
+                        </section>
                     </div>
                 </div>
             </main>
@@ -470,6 +533,7 @@
         let post_main = document.querySelector(".post_main");
         let comment_section = document.querySelector("#comment_container");
 
+
         let bodyRect = document.body.getBoundingClientRect();
             let post_main_rect = post_main.getBoundingClientRect();
             let comment_section_rect = comment_section.getBoundingClientRect();
@@ -477,6 +541,8 @@
             let comment_section_offset = comment_section_rect.top - bodyRect.top;
 
         window.onscroll = function() {
+            console.log(`${bodyRect.scrollTop} + ${bodyRect.clientHeight} - ${comment_section.clientHeight}`);
+
             if (bodyRect.scrollTop > post_main_offset || document.documentElement.scrollTop > post_main_offset) {
                 if (bodyRect.scrollTop + bodyRect.clientHeight - comment_section.clientHeight > comment_section_offset || document.documentElement.scrollTop + document.documentElement.clientHeight - comment_section.clientHeight > comment_section_offset) {
                     gnbBottomBar.classList.remove("bottom_on");

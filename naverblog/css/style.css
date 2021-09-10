@@ -954,7 +954,8 @@ a:hover {
 }
 
 .post_main > .poster_footer_content > .copyright_wrap {
-    display: block;
+    float: right;
+    overflow: hidden;
 }
 
 .post_main > .poster_footer_content > .copyright_wrap > a {
@@ -1027,6 +1028,23 @@ a:hover {
 
 .post_main > .poster_footer_content > #comment_container > #comment_btn_wrap > .right_wrap > ul > li:not(:last-of-type)  {
     margin-right: 4px;
+}
+
+/* heart_list */
+
+#heart_list {
+    font-size: 13px;
+    margin-top: 10px;
+    padding: 20px 20px;
+    border: 1px solid #dadada;
+}
+
+#heart_list > #heart_list_wrap > ul > li > div > a{
+    display: block;
+    background-image: url('../images/img_profile_default.gif');
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
 }
 
 .on {
