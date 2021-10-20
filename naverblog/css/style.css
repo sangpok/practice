@@ -1037,11 +1037,26 @@ a:hover {
     margin-top: 10px;
     padding: 20px 20px;
     border: 1px solid #dadada;
+    display: block;
+    overflow: hidden;
 }
 
-#heart_list > #heart_list_wrap > ul > li > div > a{
+#heart_list > #heart_list_wrap > ul > li {
+    float: left;
+    width: 270px;
+    height: 30px;
+}
+
+#heart_list > #heart_list_wrap > ul > li > div {
+    float: left;
+}
+
+#heart_list > #heart_list_wrap > ul > li > div > strong {
     display: block;
-    background-image: url('../images/img_profile_default.gif');
+}
+
+#heart_list > #heart_list_wrap > ul > li > div > a > img {
+    float: left;
     width: 30px;
     height: 30px;
     border-radius: 50%;

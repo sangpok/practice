@@ -1,0 +1,130 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 14px;
+    color: #030303;
+}
+
+body {
+    background-color: rgb(249, 249, 249);
+}
+
+a { text-decoration: none; }
+a:visited { color: #030303; }
+
+i { font-size: 17px; }
+
+#ContainerHolder {
+    position: fixed;
+    width: 100%;
+    height: auto;
+}
+
+.topContainer {
+    position: relative;
+    padding: 0 5px;
+    width: 100%;
+    height: 56px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.topContainer:nth-of-type(1) {
+    display: flex;
+    justify-content: space-between;
+}
+
+.topContainer:nth-of-type(2) {
+    display: flex;
+}
+
+.elegroup {
+    display: flex;
+    align-items: center;
+}
+
+.btn-base {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: none;
+    cursor: pointer;
+}
+
+.btncircle {
+    border-radius: 40px;
+    border: 1px solid #fff;
+    background-color: #fff;
+    width: 40px;
+    height: 40px;
+    transition: background-color .3s cubic-bezier(0.215, 0.610, 0.355, 1), border .7s ease-in-out;
+}
+
+.btncircle:active {
+    background-color: #e5e5e5;
+    border: 2px solid #e5e5e5;
+    transition: background-color 0s cubic-bezier(0.215, 0.610, 0.355, 1), border 0s ease-in-out;
+}
+
+.btnblue {
+    border-radius: 2px;
+    border: 1px solid #065fd4;
+    background-color: #fff;
+    width: 100px;
+    height: 40px;
+}
+
+.btnblue > i, .btnblue > span {
+    color: #065fd4;
+}
+
+.btnblue > i {
+    font-size: 23px;
+    margin-right: 10px;
+}
+
+#logodiv {
+    width: 85px;
+    height: 20px;
+    margin-left: 20px;
+    background-image: url('../images/logo.jpg');
+}
+
+#prvbtnContainer {
+    background: linear-gradient(95deg, white 70%, transparent);
+    position: absolute;
+    float: left;
+    width: 106px;
+    height: 100%;
+}
+
+#nextbtnContainer {
+    position: absolute;
+    float: left;
+    width: 106px;
+}
+
+#cateContainer {
+    overflow: hidden;
+}
+
+#cateContainer > button {
+    display: inline;
+}
+
+.btnbubble {
+    margin: 12px 12px 12px 0px;
+    padding: 5px 12px;
+    background-color: #f2f2f2;
+    border: 1px solid #d9d9d9;
+    border-radius: 50px;
+    transition: background-color .3s cubic-bezier(0.215, 0.610, 0.355, 1);
+}
+
+.btnbubble:hover {
+    background-color: #e5e5e5;
+    border-color: #cecece;
+}
