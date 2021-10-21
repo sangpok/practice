@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="css/style.css">
 
-    <script src="https://kit.fontawesome.com/4fb093fd56.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/4fb093fd56.js" crossorigin="anonymous" defer></script>
 </head>
 <body>
     <div id="ContainerHolder">
@@ -48,16 +48,8 @@
         </div>
 
         <div class="topContainer">
-            <div id="prvbtnContainer">
-                <button id="prvbtn" class="btn-base btncircle"></button>
-            </div>
-
-            <div id="nextbtnContainer">
-                <button id="nextbtn" class="btn-base btncircle"></button>
-            </div>
-
             <div id="cateContainer">
-                <button class="btn-base btnbubble"><span>전체</span></button>
+                <button class="btn-base btnbubble btnselected"><span>전체</span></button>
                 <button class="btn-base btnbubble"><span>축구</span></button>
                 <button class="btn-base btnbubble"><span>실시간</span></button>
                 <button class="btn-base btnbubble"><span>요리 프로그램</span></button>
@@ -68,7 +60,202 @@
                 <button class="btn-base btnbubble"><span>음악</span></button>
                 <button class="btn-base btnbubble"><span>최근에 업로드된 동영상</span></button>
             </div>
+
+            <div id="prvbtnContainer">
+                <button id="prvbtn" class="btn-base btncircle">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+            
+            <div id="nextbtnContainer">
+                <button id="nextbtn" class="btn-base btncircle">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
         </div>
+    </div>
+
+    <div id="contents">
+        <section class="content-section">
+            <div class="content-item">
+                <div class="thumbnail">
+                    <a href="#" onclick="return false;">
+                        <img src="images/contents/1.webp">
+                        <div class="timebox"><span>0:12</span></div>
+                    </a>
+                </div>
+                <div class="detail">
+                    <a href="#" onclick="return false;">
+                        <img src="images/contents/1.webp">
+                    </a>
+                    <div class="text-detail">
+                        <p class="video-title">다행히 넷플릭스는 아는 송지효</p>
+                        <a href="#" onclick="return false;"><p class="channel-name">아무거나</p></a>
+                        <span>조회수 </span><span class="view-unit">63만</span><span>회 · </span><span class="period-unit">2주</span><span> 전</span>
+
+                        <button class="btn-base btncircle">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="content-item">
+                <div class="thumbnail">
+                    <a href="#" onclick="return false;">
+                        <img src="images/contents/2.webp">
+                        <div class="timebox"><span>2:30:44</span></div>
+                    </a>
+                </div>
+                <div class="detail">
+                    <a href="#" onclick="return false;">
+                        <img src="images/contents/2.webp">
+                    </a>
+                    <div class="text-detail">
+                        <p class="video-title">🍂 가을 냄새가 물씬 풍기는 가을 감성 노래 모음 | PLAYLIST</p>
+                        <a href="#" onclick="return false;"><p class="channel-name">찐막 JJINMAK</p></a>
+                        <span>조회수 </span><span class="view-unit">522만</span><span>회 · </span><span class="period-unit">1년</span><span> 전</span>
+
+                        <button class="btn-base btncircle">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="content-item">
+                <div class="thumbnail">
+                    <a href="#" onclick="return false;">
+                        <img src="images/contents/3.webp">
+                        <div class="timebox"><span>2:24</span></div>
+                    </a>
+                </div>
+                <div class="detail">
+                    <a href="#" onclick="return false;">
+                        <img src="images/contents/3.webp">
+                    </a>
+                    <div class="text-detail">
+                        <p class="video-title">[ENG] [SMTM10/2회] '(으쓱)마이노 뿌듯-' 모든 프로듀서들을 홀렸다! 비오 @2차 예선 | Mnet 211008 방송</p>
+                        <a href="#" onclick="return false;"><p class="channel-name">Mnet TV</p></a>
+                        <span>조회수 </span><span class="view-unit">390만</span><span>회 · </span><span class="period-unit">1주</span><span> 전</span>
+
+                        <button class="btn-base btncircle">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="content-item">
+                <div class="thumbnail">
+                    <a href="#" onclick="return false;">
+                        <img src="images/contents/4.webp">
+                        <div class="timebox"><span>2:23</span></div>
+                    </a>
+                </div>
+                <div class="detail">
+                    <a href="#" onclick="return false;">
+                        <img src="images/contents/4.webp">
+                    </a>
+                    <div class="text-detail">
+                        <p class="video-title">오징어게임 이정재 촬영 현장 방문한 정우성</p>
+                        <a href="#" onclick="return false;"><p class="channel-name">수퍼비갤러리</p></a>
+                        <span>조회수 </span><span class="view-unit">389만</span><span>회 · </span><span class="period-unit">3주</span><span> 전</span>
+                    </div>
+                    <button class="btn-base btncircle">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="content-item">
+                <div class="thumbnail">
+                    <a href="#" onclick="return false;">
+                        <img src="images/contents/5.webp">
+                        <div class="timebox"><span>0:26</span></div>
+                    </a>
+                </div>
+                <div class="detail">
+                    <a href="#" onclick="return false;">
+                        <img src="images/contents/5.webp">
+                    </a>
+                    <div class="text-detail">
+                        <p class="video-title">신호등 4키 높여서 부르는 이무진 ㄷㄷ [랜덤문답]</p>
+                        <a href="#" onclick="return false;"><p class="channel-name">CLIP</p></a>
+                        <span>조회수 </span><span class="view-unit">214만</span><span>회 · </span><span class="period-unit">2달</span><span> 전</span>
+
+                        <button class="btn-base btncircle">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="content-item">
+                <div class="thumbnail">
+                    <a href="#" onclick="return false;">
+                        <img src="images/contents/6.webp">
+                        <div class="timebox"><span>0:29</span></div>
+                    </a>
+                </div>
+                <div class="detail">
+                    <a href="#" onclick="return false;">
+                        <img src="images/contents/6.webp">
+                    </a>
+                    <div class="text-detail">
+                        <p class="video-title">아직 카메라 원샷이 부끄러운 카리나</p>
+                        <a href="#" onclick="return false;"><p class="channel-name">카리나 귀여워</p></a>
+                        <span>조회수 </span><span class="view-unit">166만</span><span>회 · </span><span class="period-unit">1주</span><span> 전</span>
+
+                        <button class="btn-base btncircle">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="content-item">
+                <div class="thumbnail">
+                    <a href="#" onclick="return false;">
+                        <img src="images/contents/7.webp">
+                        <div class="timebox"><span>0:04</span></div>
+                    </a>
+                </div>
+                <div class="detail">
+                    <a href="#" onclick="return false;">
+                        <img src="images/contents/7.webp">
+                    </a>
+                    <div class="text-detail">
+                        <p class="video-title">윈터 윈터ㄹ 윈터ㄹ</p>
+                        <a href="#" onclick="return false;"><p class="channel-name">카리나 귀여워</p></a>
+                        <span>조회수 </span><span class="view-unit">106만</span><span>회 · </span><span class="period-unit">1주</span><span> 전</span>
+
+                        <button class="btn-base btncircle">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="content-item">
+                <div class="thumbnail">
+                    <a href="#" onclick="return false;">
+                        <img src="images/contents/8.webp">
+                        <div class="timebox"><span>23:08</span></div>
+                    </a>
+                </div>
+                <div class="detail">
+                    <a href="#" onclick="return false;">
+                        <img src="images/contents/8.webp">
+                    </a>
+                    <div class="text-detail">
+                        <p class="video-title">[IU TV] 기상청이 그랬어 오늘 '딸기 달' 뜬다고🍓🌝🍓</p>
+                        <a href="#" onclick="return false;"><p class="channel-name">이지금 [IU Official]</p></a>
+                        <span>조회수 </span><span class="view-unit">83만</span><span>회 · </span><span class="period-unit">2일</span><span> 전</span>
+
+                        <button class="btn-base btncircle">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 </body>
 </html>
