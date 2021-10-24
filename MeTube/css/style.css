@@ -1,3 +1,43 @@
+/* ----------------------------- 전역변수 선언 ----------------------------- */
+
+:root {
+    --grid-item-per-row: 1;
+}
+
+/* ----------------------------- 반응형 ----------------------------- */
+
+@media screen and (min-width: 510px) {
+    :root{
+        --grid-item-per-row: 2;
+    }
+}
+
+@media screen and (min-width: 792px) {
+    :root{
+        --grid-item-per-row: 2;
+    }
+}
+
+@media screen and (min-width: 872px) {
+    :root{
+        --grid-item-per-row: 3;
+    }
+}
+
+@media screen and (min-width: 1127px) {
+    :root{
+        --grid-item-per-row: 4;
+    }
+}
+
+@media screen and (min-width: 2000px) {
+    :root{
+        --grid-item-per-row: 5;
+    }
+}
+
+/* ----------------------------- ----------------------------- */
+
 * {
     margin: 0px;
     padding: 0px;
@@ -10,18 +50,11 @@
 
 body {
     background-color: rgb(249, 249, 249); 
-    /* background-color:#065fd4 */
+    overflow-x: hidden;
 }
 
-/* scrollbar: 스크롤바 넓이 */
-body::-webkit-scrollbar {
-    width: 16px;
-}
-/* scrollbar-track: 스크롤바 배경 영역 */
-body::-webkit-scrollbar-track {
-    background-color: transparent;
-}
-/* scrollbar-thumb: 스크롤바 메인(움직이는 표시 부분) 영역 */
+body::-webkit-scrollbar { width: 16px; } 
+body::-webkit-scrollbar-track { background-color: transparent; }
 body::-webkit-scrollbar-thumb {
     background: #606060;
     border: 4px solid transparent;
@@ -38,13 +71,14 @@ i { font-size: 17px; }
 
 #ContainerHolder {
     position: sticky;
+    top: 0;
     width: 100%;
-    height: auto;
+    z-index: 9999;
 }
 
 .topContainer {
     position: relative;
-    padding: 0 5px;
+    padding: 0 8px;
     width: 100%;
     height: 56px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -57,8 +91,9 @@ i { font-size: 17px; }
 }
 
 .topContainer:nth-of-type(2) {
-    display: flex;
-    justify-content: center;
+    position: relative;
+    /* display: flex;
+    justify-content: center; */
     padding: 0px;
 }
 
@@ -78,17 +113,17 @@ i { font-size: 17px; }
 }
 
 .btncircle {
-    border-radius: 40px;
-    border: 1px solid transparent;
-    background-color: transparent;
     width: 40px;
     height: 40px;
+    border-radius: 40px;
+    border: 0px solid transparent;
+    background-color: transparent;
     transition: background-color .3s cubic-bezier(0.215, 0.610, 0.355, 1), border .7s ease-in-out;
 }
 
 .btncircle:active {
-    background-color: #e5e5e5;
     border: 2px solid #e5e5e5;
+    background-color: #e5e5e5;
     transition: background-color 0s cubic-bezier(0.215, 0.610, 0.355, 1), border 0s ease-in-out;
 }
 
@@ -102,14 +137,15 @@ i { font-size: 17px; }
 }
 
 .btnblue {
+    width: 100px;
+    height: 40px;
     border-radius: 2px;
     border: 1px solid #065fd4;
     background-color: #fff;
-    width: 100px;
-    height: 40px;
 }
 
-.btnblue > i, .btnblue > span {
+.btnblue > i,
+.btnblue > span {
     color: #065fd4;
 }
 
@@ -127,32 +163,32 @@ i { font-size: 17px; }
 
 /* ----------------------------- Category Nav ----------------------------- */
 
-#prvbtnContainer {
-    position: absolute;
+.btnContainer {
     display: flex;
-    justify-content: left;
     align-items: center;
+    position: absolute;
+    top: 0;
+    width: 112px;
+    height: 100%;
+}
+
+.btnContainer:nth-of-type(2) {
+    left: 0;
+    justify-content: left;
     padding-left: 8px;
     background: linear-gradient(90deg, white 50%, transparent);
-    width: 106px;
-    height: 100%;
     visibility: hidden;
 }
 
-#nextbtnContainer {
-    position: absolute;
+.btnContainer:nth-of-type(3) {
     right: 0;
-    display: flex;
     justify-content: right;
-    align-items: center;
     padding-right: 8px;
-    width: 106px;
-    height: 100%;
     background: linear-gradient(-90deg, white 50%, transparent);
 }
 
 #cateContainer {
-    overflow: hidden;
+    overflow: visible;
     white-space: nowrap;
     transition: transform .15s cubic-bezier(0.05, 0, 0, 1);
 }
@@ -185,11 +221,7 @@ i { font-size: 17px; }
     border-color: #cecece;
 }
 
-.btnselected {
-    background-color: black;
-    color: white;
-}
-
+.btnselected { background-color: black; }
 .btnselected > i,
 .btnselected > span {
     color: white;
@@ -198,34 +230,47 @@ i { font-size: 17px; }
 /* ----------------------------- Contents Section ----------------------------- */
 
 #contents {
-    margin: 24px 12px;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    margin: 24px 16px;
 }
 
 .content-section {
-    display: flex;
-    justify-content: center;
-    flex-flow: row wrap;
-    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(var(--grid-item-per-row), 1fr);
+    /* grid-template-columns: repeat(var(--grid-item-per-row), calc(100% / --grid-item-per-row)); */
+    /* column-gap: 2%;
+    row-gap: 1em; */
+    width: fit-content;
 }
 
 .content-item {
-    min-width: 240px;
-    max-width: 320px;
-    margin: 0px 4px 40px 4px;
-    flex: 1 1 40%;
-    border: 1px solid transparent;
-    border-radius: 5px;
-    background-color: transparent;
-    transition: background-color .3s cubic-bezier(0.215, 0.610, 0.355, 1), border .5s cubic-bezier(0.645, 0.045, 0.355, 1);
-    cursor: pointer;
+    position: relative;
+    width: fit-content;
 }
 
-.content-item:active {
+.overlayholder {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 0px 8px 40px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    transition: background-color .3s cubic-bezier(0.215, 0.610, 0.355, 1), border .5s cubic-bezier(0.645, 0.045, 0.355, 1);
+    cursor: pointer;
+    min-width: 240px;
+    max-width: 320px;
+}
+
+.overlayholder:active {
     background-color: #e5e5e5;
     border: 1px solid #e5e5e5;
+    border-radius: 5px;
     transition: background-color 0s cubic-bezier(0.215, 0.610, 0.355, 1), border 0s ease-in-out;
+}
+
+.content-item:hover button {
+    visibility: visible;
 }
 
 .thumbnail {
@@ -272,6 +317,7 @@ i { font-size: 17px; }
 .text-detail {
     position: relative;
     padding-right: 24px;
+    width: 100%;
 }
 
 .video-title {
@@ -300,8 +346,133 @@ i { font-size: 17px; }
     color: #030303;
 }
 
-.text-detail > button {
+.content-item > button {
     position: absolute;
-    top: -7px;
-    right: -10px;
+    visibility: hidden;
+    top: 53%;
+    right: 0;
 }
+
+/* #contents {
+    margin: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.content-section {
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    width: fit-content;
+}
+
+.content-item {
+    position: relative;
+    flex: 1 1 40%;
+}
+
+.overlayholder {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 0px 8px 40px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    transition: background-color .3s cubic-bezier(0.215, 0.610, 0.355, 1), border .5s cubic-bezier(0.645, 0.045, 0.355, 1);
+    cursor: pointer;
+    min-width: 240px;
+    max-width: 320px;
+}
+
+.overlayholder:active {
+    background-color: #e5e5e5;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    transition: background-color 0s cubic-bezier(0.215, 0.610, 0.355, 1), border 0s ease-in-out;
+}
+
+.content-item:hover button {
+    visibility: visible;
+}
+
+.thumbnail {
+    position: relative;
+}
+
+.thumbnail > a > img {
+    width: 100%;
+}
+
+.timebox {
+    position: absolute;
+    right: 4px;
+    bottom: 7px;
+    border-radius: 2px;
+    padding: 1px 4px;
+    background-color: rgba(0, 0, 0, 0.9);
+    width: fit-content;
+}
+
+.timebox > span {
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.detail {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px;
+}
+
+.detail > a {
+    width: 36px;
+    margin-right: 12px;
+}
+
+.detail > a > img {
+    width: 36px;
+    height: 36px;
+    border-radius: 36px;
+}
+
+.text-detail {
+    position: relative;
+    padding-right: 24px;
+    width: 100%;
+}
+
+.video-title {
+    background-color: transparent;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.channel-name {
+    text-overflow: ellipsis;
+    line-clamp: 1;
+}
+
+.text-detail p,
+.text-detail span {
+    color: rgb(96, 96, 96);
+}
+
+.text-detail > p {
+    margin-bottom: 10px;
+    color: #030303;
+}
+
+.content-item > button {
+    position: absolute;
+    visibility: hidden;
+    bottom: 95px;
+    right: 0;
+} */
