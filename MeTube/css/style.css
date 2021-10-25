@@ -273,6 +273,11 @@ i { font-size: 17px; }
     visibility: visible;
 }
 
+.option-btn-container {
+    position: relative;
+    z-index: 9999;
+}
+
 .thumbnail {
     position: relative;
 }
@@ -320,6 +325,13 @@ i { font-size: 17px; }
     width: 100%;
 }
 
+.text-detail > button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 9999;
+}
+
 .video-title {
     background-color: transparent;
     overflow: hidden;
@@ -345,13 +357,13 @@ i { font-size: 17px; }
     margin-bottom: 10px;
     color: #030303;
 }
-
+/* 
 .content-item > button {
     position: absolute;
     visibility: hidden;
     top: 53%;
     right: 0;
-}
+} */
 
 /* #contents {
     margin: 24px 16px;
