@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/style.css">
 
     <script src="https://kit.fontawesome.com/4fb093fd56.js" crossorigin="anonymous" defer></script>
+    <script src="contentlist.json" defer></script>
 </head>
 <body>
     <div id="ContainerHolder">
@@ -24,21 +25,52 @@
             </div>
 
             <div class="elegroup">
-                <button id="search_btn" class="btn-base btncircle">
+                <button id="search_btn" class="btn-base btncircle" data-tooltip-text="검색">
                     <i class="fas fa-search"></i>
                 </button>
                 
-                <button id="mic_btn" class="btn-base btncircle">
+                <button id="mic_btn" class="btn-base btncircle" data-tooltip-text="음성으로 검색">
                     <i class="fas fa-microphone"></i>
                 </button>
 
-                <button id="app_btn" class="btn-base btncircle">
-                    <i class="fas fa-th"></i>
-                </button>
+                <div class="singlebtnConatiner">
+                    <button id="app_btn" class="btn-base btncircle" data-tooltip-text="Youtube 앱">
+                        <i class="fas fa-th"></i>
+                    </button>
 
-                <button id="option_btn" class="btn-base btncircle">
-                    <i class="fas fa-ellipsis-v"></i>
-                </button>
+                    <div class="list-box-container">
+                        <ul>
+                            <li><i class="fas fa-tv"></i><span>YouTube TV</span></li>
+                            <i class="bar"></i>
+                            <li><i class="fas fa-play-circle"></i><span>YouTube Music</span></li>
+                            <li><i></i><span>YouTube Kids</span></li>
+                            <i class="bar"></i>
+                            <li><i class="fab fa-youtube"></i><span>크리에이터 아카데미</span></li>
+                            <li><i></i><span>YouTube for Artists</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="singlebtnConatiner">
+                    <button id="option_btn" class="btn-base btncircle" data-tooltip-text="설정">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </button>
+
+                    <div class="list-box-container">
+                        <ul>
+                            <li><i class="fas fa-moon"></i><span>디자인: 기기 테마</span><i class="fas fa-chevron-right"></i></li>
+                            <li><i class="fas fa-font"></i><span>언어: 한국어</span><i class="fas fa-chevron-right"></i></li>
+                            <li><i class="fas fa-globe"></i><span>위치: 한국</span><i class="fas fa-chevron-right"></i></li>
+                            <li><i class="fas fa-cog"></i><span>설정</span></li>
+                            <li><i class="fas fa-user-shield"></i><span>YouTube의 내 데이터</span></li>
+                            <li><i class="fas fa-question-circle"></i><span>고객센터</span></li>
+                            <li><i class="fas fa-comment-dots"></i><span>의견 보내기</span></li>
+                            <li><i class="fas fa-keyboard"></i><span>단축키</span></li>
+                            <i class="bar"></i>
+                            <li><span>제한 모드: 사용안함</span></li>
+                        </ul>
+                    </div>
+                </div>
 
                 <button id="loginbtn" class="btn-base btnblue">
                     <i class="far fa-user-circle"></i>
@@ -62,13 +94,13 @@
             </div>
 
             <div class="btnContainer">
-                <button id="prvbtn" class="btn-base btncircle">
+                <button id="prvbtn" class="btn-base btncircle" data-tooltip-text="이전">
                     <i class="fas fa-chevron-left"></i>
                 </button>
             </div>
             
             <div class="btnContainer">
-                <button id="nextbtn" class="btn-base btncircle">
+                <button id="nextbtn" class="btn-base btncircle" data-tooltip-text="다음">
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
@@ -77,6 +109,9 @@
 
     <div id="contents">
         <section class="content-section">
+
+        </section>
+        <!-- <section class="content-section">
             <div class="content-item">
                 <div class="overlayholder">
                     <div class="thumbnail">
@@ -93,15 +128,12 @@
                             <p class="video-title">다행히 넷플릭스는 아는 송지효</p>
                             <a href="#" onclick="return false;"><p class="channel-name">아무거나</p></a>
                             <span>조회수 </span><span class="view-unit">63만</span><span>회 · </span><span class="period-unit">2주</span><span> 전</span>
-
-                            <div class="option-btn-container">
-                                <button class="btn-base btncircle">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                </button>
-                            </div>
                         </div>
                     </div>
                 </div>
+                <button class="btn-base btncircle">
+                    <i class="fas fa-ellipsis-v"></i>
+                </button>
             </div>
 
             <div class="content-item">
@@ -175,7 +207,7 @@
                     <i class="fas fa-ellipsis-v"></i>
                 </button>
             </div>
-        </section>
+        </section> -->
 <!--
         <section class="content-section">
             <div class="content-item">
@@ -270,8 +302,9 @@
                 <button class="btn-base btncircle">
                     <i class="fas fa-ellipsis-v"></i>
                 </button>
-            </div> -->
-        </section>
+            </div>
+        </section> -->
     </div>
+    <script src="js/event.js" defer></script>
 </body>
 </html>

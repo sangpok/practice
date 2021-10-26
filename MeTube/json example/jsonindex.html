@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="contentlist.json" type="text/javascript"></script>
+</head>
+<body>
+    <script>
+        const getContentList = function() {
+            let mydata = JSON.parse(JSON.stringify(data));
+            
+            let contentMax = Object.keys(mydata.content_list).length;
+
+            for (let i = 0; i < contentMax; i++) {
+                let defaultItemCode = `
+                    <div class="content-item">
+                        <div class="overlayholder">
+                            <div class="thumbnail">
+                                <a href="#" onclick="return false;">
+                                    <img src="images/contents/${mydata.content_list[i].info.img_src}">
+                                    <div class="timebox"><span>${mydata.content_list[i].info.running_time}</span></div>
+                                </a>
+                            </div>
+                            <div class="detail">
+                                <a href="#" onclick="return false;">
+                                    <img src="images/contents/${mydata.content_list[i].info.img_src}">
+                                </a>
+                                <div class="text-detail">
+                                    <p class="video-title">${mydata.content_list[i].title}</p>
+                                    <a href="#" onclick="return false;"><p class="channel-name">${mydata.content_list[i].channel.name}</p></a>
+                                    <span>조회수 </span><span class="view-unit">${mydata.content_list[i].info.view}</span><span>회 · </span><span class="period-unit">2주</span><span> 전</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn-base btncircle">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                    </div>`;
+
+                console.log(defaultItemCode);
+            }
+        }
+
+        // <div class="content-item">
+        //         <div class="overlayholder">
+        //             <div class="thumbnail">
+        //                 <a href="#" onclick="return false;">
+        //                     <img src="images/contents/1.webp">
+        //                     <div class="timebox"><span>0:12</span></div>
+        //                 </a>
+        //             </div>
+        //             <div class="detail">
+        //                 <a href="#" onclick="return false;">
+        //                     <img src="images/contents/1.webp">
+        //                 </a>
+        //                 <div class="text-detail">
+        //                     <p class="video-title">다행히 넷플릭스는 아는 송지효</p>
+        //                     <a href="#" onclick="return false;"><p class="channel-name">아무거나</p></a>
+        //                     <span>조회수 </span><span class="view-unit">63만</span><span>회 · </span><span class="period-unit">2주</span><span> 전</span>
+        //                 </div>
+        //             </div>
+        //         </div>
+        //         <button class="btn-base btncircle">
+        //             <i class="fas fa-ellipsis-v"></i>
+        //         </button>
+        //     </div>
+        // <div>
+
+        getContentList();
+    </script>
+</body>
+</html>
