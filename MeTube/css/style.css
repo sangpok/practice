@@ -3,6 +3,7 @@
 :root {
     --grid-item-per-row: 1;
     --thumbnail-cur-height: 240px;
+    --content-item-height: 0;
 }
 
 /* ----------------------------- 반응형 ----------------------------- */
@@ -150,16 +151,30 @@ i { font-size: 17px; }
     cursor: pointer;
 }
 
+.btn-base > i {
+    z-index: 800;
+}
+
 .btncircle {
+    position: relative;
     width: 40px;
     height: 40px;
-    border-radius: 40px;
+    background-color: transparent;
+}
+
+.btncircle::before {
+    content: '';
+    display: block;
+    width: 38px;
+    height: 38px;
+    position: absolute;
+    border-radius: 38px;
     border: 1px solid transparent;
     background-color: transparent;
     transition: background-color .3s cubic-bezier(0.215, 0.610, 0.355, 1), border .7s ease-in-out;
 }
 
-.btncircle:active {
+.btncircle:active::before {
     border: 1px solid #e5e5e5;
     background-color: #e5e5e5;
     transition: background-color 0s cubic-bezier(0.215, 0.610, 0.355, 1), border 0s ease-in-out;
@@ -219,7 +234,6 @@ i { font-size: 17px; }
 #app_btn + .list-box-container { width: 227px; display: none; }
 #option_btn + .list-box-container { width: 300px; display: none; }
 
-
 .list-box-container > ul > li {
     display: flex;
     align-items: center;
@@ -227,7 +241,6 @@ i { font-size: 17px; }
     list-style: none;
     width: 100%;
     height: 40px;
-
     cursor: pointer;
 }
 
@@ -348,18 +361,29 @@ i { font-size: 17px; }
     flex-direction: column;
     position: relative;
     margin: 0px 8px 40px;
-    background-color: transparent;
-    border: 1px solid transparent;
-    transition: background-color .3s cubic-bezier(0.215, 0.610, 0.355, 1), border .5s cubic-bezier(0.645, 0.045, 0.355, 1);
     cursor: pointer;
     min-width: 240px;
     max-width: 320px;
 }
 
-.overlayholder:active {
+.overlayholder::before {
+    content: '';
+    position: absolute;
+    display: block;
+    top: -1.5%;
+    left: -1.5%;
+    width: 102%;
+    height: calc(var(--content-item-height) - 30px);
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    transition: background-color .3s cubic-bezier(0.215, 0.610, 0.355, 1), border .5s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.overlayholder:active::before {
     background-color: #e5e5e5;
     border: 1px solid #e5e5e5;
-    border-radius: 5px;
+    border-radius: 3px;
     transition: background-color 0s cubic-bezier(0.215, 0.610, 0.355, 1), border 0s ease-in-out;
 }
 
@@ -395,6 +419,7 @@ i { font-size: 17px; }
     display: flex;
     justify-content: flex-start;
     margin-top: 10px;
+    z-index: 9998;
 }
 
 .detail > a {
@@ -414,11 +439,11 @@ i { font-size: 17px; }
     width: 100%;
 }
 
-.text-detail > button {
+.content-item > button {
     position: absolute;
     top: 0;
     right: 0;
-    z-index: 9999;
+    z-index: 9998;
 }
 
 .video-title {
@@ -452,4 +477,18 @@ i { font-size: 17px; }
     visibility: hidden;
     top: var(--thumbnail-cur-height);
     right: 0;
+}
+
+/* ----------------------------- Aside Section ----------------------------- */
+
+#sideMenu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 256px;
+    height: 100%;
+    background-color: #fff;
+    z-index: 9999;
 }

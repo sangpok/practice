@@ -1,15 +1,15 @@
 let root = document.documentElement;
 
 let contentList;
-let contentMax = 4;
-let contentLoadedNum = 4;
+let contentMax = 8;
+let contentLoadedNum = 0;
 
 const getContentList = function() {
     let contentList = JSON.parse(JSON.stringify(data));
-    let contentMax = Object.keys(contentList.content_list).length;
+    let tmpcontentMax = Object.keys(contentList.content_list).length;
 
-    for (let i = 0; i < contentMax; i++) {
-        // 시간 구하기
+    for (let i = contentLoadedNum; i < contentLoadedNum + 4; i++) {
+        // 러닝타임 구하기
         let timeData = contentList.content_list[i].info.running_time;
         
         let hours = Math.floor(timeData / 3600);
@@ -29,14 +29,61 @@ const getContentList = function() {
         let times3 = Math.floor((viewData - (times8 * (10 ** 8) + times4 * (10 ** 4))) / (10 ** 3));
         let lastView = viewData - (times8 * (10 ** 8)) - (times4 * (10 ** 4)) - (times3 * (10 ** 3));
 
-        viewData = lastView;
+        if (times8 > 0) {
+            if (times8 > 9) {
+                viewData = times8.toString() + "억";
+            } else {
+                if (times4 > 0) {
+                    viewData = times8.toString() + "." + times4.toString()+ "억";
+                } else {
+                    viewData = times8.toString() + "억";
+                }
+            }
+        } else if (times4 > 0) {
+            if (times4 > 9) {
+                viewData = times4.toString() + "만"
+            } else {
+                if (times3 > 0) {
+                    viewData = times4.toString() + "." + times3.toString() + "만"
+                } else {
+                    viewData = times4.toString() + "만"
+                }
+            }
+        } else if (times3 > 0) {
+            if (lastView > 99) {
+                viewData = times3.toString() + "." + (Math.floor(lastView / 100)).toString() + "천"
+            } else {
+                viewData = times3.toString() + "천"
+            }
+        } else {
+            viewData = lastView;
+        }
 
-        if (times3 > 0) viewData = times3.toString() + "." + (Math.floor(lastView / 100)).toString() + "천"
-        if (times4 > 0) viewData = times4.toString() + "." + (Math.floor(times3 / 1000)).toString() + "만"
-        if (times8 > 0) viewData = times8.toString() + "." + (Math.floor(times4 / (10 ** 7))).toString()+ "억"
+        // console.log(`${times8}억 / ${times4}만 / ${times3}천 / ${lastView}회 ===== ${viewData}`);
 
+        // 기간 구하기
+        let upload_date = new Date(contentList.content_list[i].info.upload_date);
+        let today_date = new Date();
+        let between_date = today_date - upload_date;
 
-        console.log(`${times8}억 / ${times4}만 / ${times3}천 / ${lastView}회 ===== ${viewData}`);
+        let diffMS = between_date;
+        let diffS = Math.ceil(diffMS / 1000 < 1 ? 0 : diffMS / 1000);
+        let diffM = Math.ceil(diffS / 60 < 1 ? 0 : diffS / 60);
+        let diffH = Math.ceil(diffM / 60 < 1 ? 0 : diffM / 60);
+        let diffD = Math.ceil(diffH / 24 < 1 ? 0 : diffH / 24);
+        let diffW = Math.ceil(diffD / 7 < 1 ? 0 : diffD / 7);
+        let diffMonth = Math.ceil(diffW / 4 < 1 ? 0 : diffW / 4);
+        let diffY = Math.ceil(diffMonth / 12 < 1 ? 0 : diffMonth / 12);
+
+        between_date = diffS + "초";
+        if (diffM > 0) between_date = diffM + "분";
+        if (diffH > 0) between_date = diffH + "시간";
+        if (diffD > 0) between_date = diffD + "일";
+        if (diffW > 0) between_date = diffW + "주";
+        if (diffMonth > 0) between_date = diffMonth + "개월";
+        if (diffY > 0) between_date = diffY + "년";
+
+        // console.log(`${diffY}년-${diffMonth}개월-${diffW}주-${diffD}일-${diffH}시간-${diffM}분-${diffS}초 ==== ${between_date}`)
 
         let defaultItemCode = `
             <div class="content-item">
@@ -49,12 +96,12 @@ const getContentList = function() {
                     </div>
                     <div class="detail">
                         <a href="#" onclick="return false;">
-                            <img src="images/contents/${contentList.content_list[i].info.img_src}">
+                            <img src="images/profile/${contentList.content_list[i].channel.profile_img_src}">
                         </a>
                         <div class="text-detail">
                             <p class="video-title">${contentList.content_list[i].title}</p>
                             <a href="#" onclick="return false;"><p class="channel-name">${contentList.content_list[i].channel.name}</p></a>
-                            <span>조회수 </span><span class="view-unit">${contentList.content_list[i].info.view}</span><span>회 · </span><span class="period-unit">2주</span><span> 전</span>
+                            <span>조회수 </span><span class="view-unit">${viewData}</span><span>회 · </span><span class="period-unit">${between_date}</span><span> 전</span>
                         </div>
                     </div>
                 </div>
@@ -66,16 +113,42 @@ const getContentList = function() {
         let content_section = document.querySelector(".content-section")
         content_section.innerHTML += defaultItemCode;
     }
+
+    contentLoadedNum = contentLoadedNum + 4;
 }
 
 getContentList();
 
+// Infinite Scroll
+(() => {
+    let $contentItem = document.querySelector(".content-item:last-child");
+
+    const io = new IntersectionObserver((entry, observer) => {
+        const ioTarget = entry[0].target;
+
+        if (entry[0].isIntersecting) {
+            io.unobserve($contentItem);
+
+            getContentList();
+            $contentItem = document.querySelector(".content-item:last-child");
+
+            io.observe($contentItem);
+        }
+    }, {
+        threshold: 0.5
+    });
+
+    io.observe($contentItem);
+})();
+
 window.addEventListener("resize", e => {
     root.style.setProperty('--thumbnail-cur-height', document.querySelector(".thumbnail").clientHeight + "px");
+    root.style.setProperty('--content-item-height', document.querySelector(".content-item").clientHeight + "px");
 });
 
 window.addEventListener("load", e => {
     root.style.setProperty('--thumbnail-cur-height', document.querySelector(".thumbnail").clientHeight + "px");
+    root.style.setProperty('--content-item-height', document.querySelector(".content-item").clientHeight + "px");
 });
 
 // 마음에 안 들지만,,, 일단 이렇게

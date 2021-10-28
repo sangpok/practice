@@ -13,7 +13,7 @@ data = {
                 "id": "UA0001",
                 "name": "아무거나",
                 "bedge": "none",
-                "profile-img_src": ""
+                "profile_img_src": "UA0001.jpg"
             }
         }, 
         {
@@ -29,7 +29,7 @@ data = {
                 "id": "UA0002",
                 "name": "찐막 JJINMAK",
                 "bedge": "Auth",
-                "profile-img_src": ""
+                "profile_img_src": "UA0002.jpg"
             }
         }, 
         {
@@ -37,7 +37,7 @@ data = {
             "title": "[ENG] [SMTM10/2회] '(으쓱)마이노 뿌듯-' 모든 프로듀서들을 홀렸다! 비오 @2차 예선 | Mnet 211008 방송",
             "info": {
                 "running_time": 143,
-                "view": 3893889,
+                "view": 5229879,
                 "upload_date": "2021-10-09T12:00:00",
                 "img_src": "3.webp"
             },
@@ -45,7 +45,7 @@ data = {
                 "id": "UA0003",
                 "name": "Mnet TV",
                 "bedge": "Auth",
-                "profile-img_src": ""
+                "profile_img_src": "UA0003.jpg"
             }
         }, 
         {
@@ -53,15 +53,15 @@ data = {
             "title": "전국노래자랑에 나간 비오",
             "info": {
                 "running_time": 143,
-                "view": 3893889,
-                "upload_date": "2021-10-09T12:00:00",
+                "view": 2596019,
+                "upload_date": "2021-10-10T12:00:00",
                 "img_src": "4.webp"
             },
             "channel": {
                 "id": "UA0004",
                 "name": "수퍼비갤러리",
                 "bedge": "Auth",
-                "profile-img_src": ""
+                "profile_img_src": "UA0004.jpg"
             }
         }, 
         {
@@ -77,7 +77,7 @@ data = {
                 "id": "UA0005",
                 "name": "CLIP",
                 "bedge": "none",
-                "profile-img_src": ""
+                "profile_img_src": "UA0005.jpg"
             }
         }, 
         {
@@ -93,7 +93,7 @@ data = {
                 "id": "UA0006",
                 "name": "카리나 귀여워",
                 "bedge": "none",
-                "profile-img_src": ""
+                "profile_img_src": "UA0006.jpg"
             }
         }, 
         {
@@ -109,7 +109,7 @@ data = {
                 "id": "UA0006",
                 "name": "카리나 귀여워",
                 "bedge": "none",
-                "profile-img_src": ""
+                "profile_img_src": "UA0006.jpg"
             }
         }, 
         {
@@ -125,7 +125,7 @@ data = {
                 "id": "UA0007",
                 "name": "이지금 [IU Official]",
                 "bedge": "Music",
-                "profile-img_src": ""
+                "profile_img_src": "UA0007.jpg"
             }
         }, 
         {
@@ -141,7 +141,7 @@ data = {
                 "id": "UA0008",
                 "name": "837",
                 "bedge": "none",
-                "profile-img_src": ""
+                "profile_img_src": "UA0008.jpg"
             }
         }, 
         {
@@ -157,7 +157,7 @@ data = {
                 "id": "UA0009",
                 "name": "너덜트",
                 "bedge": "none",
-                "profile-img_src": ""
+                "profile_img_src": "UA0009.jpg"
             }
         }, 
         {
@@ -173,7 +173,7 @@ data = {
                 "id": "UA0010",
                 "name": "NICKY니키",
                 "bedge": "Auth",
-                "profile-img_src": ""
+                "profile_img_src": "UA0010.jpg"
             }
         }, 
         {
@@ -189,7 +189,7 @@ data = {
                 "id": "UA0007",
                 "name": "이지금 [IU Official]",
                 "bedge": "Auth",
-                "profile-img_src": ""
+                "profile_img_src": "UA0007.jpg"
             }
         }, 
         {
@@ -205,7 +205,7 @@ data = {
                 "id": "UA0011",
                 "name": "아는형님 Knowingbros",
                 "bedge": "none",
-                "profile-img_src": ""
+                "profile_img_src": "UA0011.jpg"
             }
         }, 
         {
@@ -221,7 +221,7 @@ data = {
                 "id": "UA0012",
                 "name": "이 남자의 cook",
                 "bedge": "none",
-                "profile-img_src": ""
+                "profile_img_src": "UA0012.jpg"
             }
         }, 
         {
@@ -237,7 +237,7 @@ data = {
                 "id": "UA0013",
                 "name": "빠퀴",
                 "bedge": "Auth",
-                "profile-img_src": ""
+                "profile_img_src": "UA0013.jpg"
             }
         }, 
         {
@@ -253,7 +253,7 @@ data = {
                 "id": "UA0014",
                 "name": "유 퀴즈 온 더 튜브",
                 "bedge": "none",
-                "profile-img_src": ""
+                "profile_img_src": "UA0014.jpg"
             }
         }, 
         {
@@ -269,7 +269,7 @@ data = {
                 "id": "UA0015",
                 "name": "MTV",
                 "bedge": "none",
-                "profile-img_src": ""
+                "profile_img_src": "UA0015.jpg"
             }
         }, 
         {
@@ -285,7 +285,7 @@ data = {
                 "id": "UA0016",
                 "name": "EBS 컬렉션 - 라이프스타일",
                 "bedge": "none",
-                "profile-img_src": ""
+                "profile_img_src": "UA0016.jpg"
             }
         }, 
         {
@@ -301,7 +301,7 @@ data = {
                 "id": "UA0017",
                 "name": "STUDIO CHOOM [스튜디오 춤]",
                 "bedge": "Auth",
-                "profile-img_src": ""
+                "profile_img_src": "UA0017.jpg"
             }
         }, 
         {
@@ -317,7 +317,7 @@ data = {
                 "id": "UA0018",
                 "name": "도장TV",
                 "bedge": "none",
-                "profile-img_src": ""
+                "profile_img_src": "UA0018.jpg"
             }
         }, 
         {
@@ -333,7 +333,7 @@ data = {
                 "id": "UA0019",
                 "name": "HYBE LABELS",
                 "bedge": "Auth",
-                "profile-img_src": ""
+                "profile_img_src": "UA0019.jpg"
             }
         }, 
         {
@@ -349,7 +349,7 @@ data = {
                 "id": "UA0020",
                 "name": "JTBC Entertainment",
                 "bedge": "Auth",
-                "profile-img_src": ""
+                "profile_img_src": "UA0020.jpg"
             }
         }
     ]
