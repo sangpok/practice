@@ -351,6 +351,134 @@ data = {
                 "bedge": "Auth",
                 "profile_img_src": "UA0020.jpg"
             }
+        }, 
+        {
+            "id": "0023",
+            "title": "자신을 너무 사랑하는 규현",
+            "info": {
+                "running_time": 13,
+                "view": 56145,
+                "upload_date": "2021-08-17T12:00:00",
+                "img_src": "23.webp"
+            },
+            "channel": {
+                "id": "UA0021",
+                "name": "국보급슈주",
+                "bedge": "none",
+                "profile_img_src": "UA0021.jpg"
+            }
+        }, 
+        {
+            "id": "0024",
+            "title": "제2의 쉬즈어베이비",
+            "info": {
+                "running_time": 242,
+                "view": 131497,
+                "upload_date": "2021-10-23T12:00:00",
+                "img_src": "24.webp"
+            },
+            "channel": {
+                "id": "UA0022",
+                "name": "비디터ᴠɪᴅɪᴛᴏʀ",
+                "bedge": "Auth",
+                "profile_img_src": "UA0022.jpg"
+            }
+        }, 
+        {
+            "id": "0025",
+            "title": "ASAP비트가 레전드인이유",
+            "info": {
+                "running_time": 186,
+                "view": 554832,
+                "upload_date": "2021-09-07T12:00:00",
+                "img_src": "25.webp"
+            },
+            "channel": {
+                "id": "UA0023",
+                "name": "iPianoDude",
+                "bedge": "Auth",
+                "profile_img_src": "UA0023.jpg"
+            }
+        }, 
+        {
+            "id": "0026",
+            "title": "은은하게 돌아있는 권진아",
+            "info": {
+                "running_time": 98,
+                "view": 76316,
+                "upload_date": "2021-06-10T12:00:00",
+                "img_src": "26.webp"
+            },
+            "channel": {
+                "id": "UA0024",
+                "name": "ALTO",
+                "bedge": "none",
+                "profile_img_src": "UA0024.jpg"
+            }
+        }, 
+        {
+            "id": "0027",
+            "title": "김연우와 TWICE의 cheer up 비교해봤습니다ㅋㅋ",
+            "info": {
+                "running_time": 78,
+                "view": 345853,
+                "upload_date": "2016-07-31T12:00:00",
+                "img_src": "27.webp"
+            },
+            "channel": {
+                "id": "UA0025",
+                "name": "Yw Kim",
+                "bedge": "none",
+                "profile_img_src": "UA0025.jpg"
+            }
+        }, 
+        {
+            "id": "0028",
+            "title": "그래도 하시겠습니까?",
+            "info": {
+                "running_time": 29,
+                "view": 903477,
+                "upload_date": "2021-06-14T12:00:00",
+                "img_src": "28.webp"
+            },
+            "channel": {
+                "id": "UA0026",
+                "name": "오레오러브",
+                "bedge": "none",
+                "profile_img_src": "UA0026.jpg"
+            }
+        }, 
+        {
+            "id": "0029",
+            "title": "유희열X전 출연진 - Santa Claus Is Coming To Town♬ [유희열의 스케치북/You Heeyeol's Sketchbook] 20191220",
+            "info": {
+                "running_time": 147,
+                "view": 2071682,
+                "upload_date": "2019-12-21T12:00:00",
+                "img_src": "29.webp"
+            },
+            "channel": {
+                "id": "UA0027",
+                "name": "KBS Kpop",
+                "bedge": "none",
+                "profile_img_src": "UA0027.jpg"
+            }
+        }, 
+        {
+            "id": "0030",
+            "title": "자취라이프를 위한 독립프로젝트 [여끄니 EP6] 당신도 혼자 살고 있나요 | ENG",
+            "info": {
+                "running_time": 423,
+                "view": 14594,
+                "upload_date": "2021-10-19T12:00:00",
+                "img_src": "30.webp"
+            },
+            "channel": {
+                "id": "UA0028",
+                "name": "바닐라씨 vanillasee",
+                "bedge": "none",
+                "profile_img_src": "UA0028.jpg"
+            }
         }
     ]
 }

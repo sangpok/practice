@@ -1,41 +1,21 @@
+/* ----------------------------- z-index 순서 ----------------------------- */
+/* .sideMenuTop: 9999
+#sideMenu: 9998
+#overlaySide: 9997
+.list-box-container: 9996
+[data-tooltip-text]::after: 9995
+topContainer: 9994
+.content-item > button: 9993
+.btn-base > i: 9992
+.detail: 9991 */
+
 /* ----------------------------- 전역변수 선언 ----------------------------- */
 
 :root {
+    --media-type: 1;
     --grid-item-per-row: 1;
     --thumbnail-cur-height: 240px;
     --content-item-height: 0;
-}
-
-/* ----------------------------- 반응형 ----------------------------- */
-
-@media screen and (min-width: 510px) {
-    :root{
-        --grid-item-per-row: 2;
-    }
-}
-
-@media screen and (min-width: 792px) {
-    :root{
-        --grid-item-per-row: 2;
-    }
-}
-
-@media screen and (min-width: 872px) {
-    :root{
-        --grid-item-per-row: 3;
-    }
-}
-
-@media screen and (min-width: 1127px) {
-    :root{
-        --grid-item-per-row: 4;
-    }
-}
-
-@media screen and (min-width: 2000px) {
-    :root{
-        --grid-item-per-row: 5;
-    }
 }
 
 /* ----------------------------- 공통 ----------------------------- */
@@ -53,6 +33,22 @@
 body {
     background-color: rgb(249, 249, 249); 
     overflow-x: hidden;
+}
+
+body.noscroll {
+    position: fixed;
+    overflow-y: scroll;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+body.noscroll::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0);
+    border: 4px solid transparent;
+    border-radius: 8px;
+    background-clip: content-box;
 }
 
 body::-webkit-scrollbar { width: 16px; } 
@@ -80,6 +76,7 @@ i { font-size: 17px; }
 
     position: absolute;
     top: 120%;
+    left: auto;
 
     padding: 5px;
     border-radius: 3px;
@@ -94,7 +91,7 @@ i { font-size: 17px; }
 
     transition: opacity .1s ease-in-out;
 
-    z-index: 9999;
+    z-index: 9995;
 }
 
 [data-tooltip-text]:hover::after {
@@ -102,17 +99,43 @@ i { font-size: 17px; }
     visibility: visible;
 }
 
-/* ----------------------------- Top Nav ----------------------------- */
-
-#ContainerHolder {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    z-index: 9999;
+[data-tooltip-channel-text] {
+    position: relative;
 }
 
+[data-tooltip-channel-text]::before {
+    content: attr(data-tooltip-channel-text);
+
+    position: absolute;
+    top: -150%;
+    left: auto;
+
+    padding: 5px;
+    border-radius: 3px;
+
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 12px;
+    white-space: nowrap;
+
+    visibility: hidden;
+    opacity: 0;
+
+    transition: opacity .1s ease-in-out;
+
+    z-index: 9995;
+}
+
+[data-tooltip-channel-text]:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* ----------------------------- Top Nav ----------------------------- */
+
 .topContainer {
-    position: relative;
+    position: sticky;
     padding: 0 8px;
     width: 100%;
     height: 56px;
@@ -121,12 +144,15 @@ i { font-size: 17px; }
 }
 
 .topContainer:nth-of-type(1) {
+    top: 0;
     display: flex;
     justify-content: space-between;
+    z-index: 9994;
 }
 
 .topContainer:nth-of-type(2) {
-    position: relative;
+    top: 56px;
+    z-index: 9993;
     /* display: flex;
     justify-content: center; */
     padding: 0px;
@@ -152,7 +178,7 @@ i { font-size: 17px; }
 }
 
 .btn-base > i {
-    z-index: 800;
+    z-index: 10;
 }
 
 .btncircle {
@@ -216,23 +242,19 @@ i { font-size: 17px; }
 
 /* >>>>>>>>>>>>>>> List-box <<<<<<<<<<<<<<< */
 .list-box-container {
-    position: absolute;
-
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-top: none;
     background-color: #fff;
 
+    width: 100%;
     padding: 8px 0px;
 
-    top: 100%;
-    right: 0;
-
-    z-index: 9999;
+    z-index: 9996;
 }
 
 .show { display: block !important;}
-#app_btn + .list-box-container { width: 227px; display: none; }
-#option_btn + .list-box-container { width: 300px; display: none; }
+#app_btn + .list-box-container { position: absolute; width: 227px; display: none; top: 100%; right: 0;}
+#option_btn + .list-box-container { position: absolute; width: 300px; display: none; top: 100%; right: 0;}
 
 .list-box-container > ul > li {
     display: flex;
@@ -297,6 +319,8 @@ i { font-size: 17px; }
 #cateContainer {
     overflow: visible;
     white-space: nowrap;
+    margin: 0 auto;
+    width: fit-content;
     transition: transform .15s cubic-bezier(0.05, 0, 0, 1);
 }
 
@@ -320,7 +344,7 @@ i { font-size: 17px; }
 }
 
 .btnbubble:last-of-type {
-    margin: 12px 24px 12px 12px;
+    margin: 12px 24px 12px 0px;
 }
 
 .btnbubble:not(.btnselected):hover {
@@ -339,7 +363,8 @@ i { font-size: 17px; }
 #contents {
     display: flex;
     justify-content: center;
-    margin: 24px 16px;
+    width: fit-content;
+    margin: 24px auto;
 }
 
 .content-section {
@@ -377,6 +402,7 @@ i { font-size: 17px; }
     background-color: transparent;
     border: 1px solid transparent;
     border-radius: 3px;
+    z-index: -1;
     transition: background-color .3s cubic-bezier(0.215, 0.610, 0.355, 1), border .5s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
@@ -419,7 +445,7 @@ i { font-size: 17px; }
     display: flex;
     justify-content: flex-start;
     margin-top: 10px;
-    z-index: 9998;
+    /* z-index: 9998; */
 }
 
 .detail > a {
@@ -443,7 +469,7 @@ i { font-size: 17px; }
     position: absolute;
     top: 0;
     right: 0;
-    z-index: 9998;
+    z-index: 9992;
 }
 
 .video-title {
@@ -459,7 +485,9 @@ i { font-size: 17px; }
 
 .channel-name {
     text-overflow: ellipsis;
-    line-clamp: 1;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    width: fit-content;
 }
 
 .text-detail p,
@@ -481,14 +509,263 @@ i { font-size: 17px; }
 
 /* ----------------------------- Aside Section ----------------------------- */
 
-#sideMenu {
-    display: flex;
-    flex-direction: column;
+#overlaySide {
+    display: block;
     position: fixed;
     top: 0;
     left: 0;
-    width: 256px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9997;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+}
+
+#overlaySide.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+#sideMenu {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -256px;
+    width: 240px;
     height: 100%;
     background-color: #fff;
-    z-index: 9999;
+    z-index: 9998;
+    transition: all .2s ease-in-out;
+}
+
+#sideMenu.show {
+    transform: translateX(256px);
+}
+
+.sideMenuTop {
+    display: flex;
+    align-items: center;
+    padding-left: 16px;
+    width: 100%;
+    height: 56px;
+    background-color: #fff;
+    top: 0;
+    z-index: 9998;
+}
+
+.menulistContainer {
+    display: block;
+    width: 100%;
+    height: calc(100% - 56px);
+    overflow-y: scroll;
+}
+
+.menulistContainer::-webkit-scrollbar { width: 16px; } 
+.menulistContainer::-webkit-scrollbar-track { background-color: transparent; }
+.menulistContainer::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0);
+    border: 4px solid transparent;
+    border-radius: 8px;
+    background-clip: content-box;
+}
+
+.menulistContainer:hover::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.5);
+    border: 4px solid transparent;
+    border-radius: 8px;
+    background-clip: content-box;
+}
+
+.menulistContainer > ul { padding: 12px 0px; border-bottom: 1px solid rgba(0, 0, 0, 0.1);}
+.menulistContainer > ul > p {
+    padding: 8px 24px;
+    font-weight: 500;
+    color: #606060;
+}
+
+.menulistContainer > ul > li {
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    list-style: none;
+    width: 100%;
+    height: 40px;
+    cursor: pointer;
+}
+
+.menulistContainer > ul > li.selected {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.menulistContainer > ul > i.bar {
+    display: block;
+    margin: 10px 0px;
+    height: 1px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.menulistContainer > ul > li:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.menulistContainer > ul > li > span {
+    width: 100%;
+}
+
+.menulistContainer > ul > li > i:first-of-type {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+}
+
+.linkdiv { padding: 16px 24px 0;  }
+.linkdiv:last-of-type { padding: 16px 24px;}
+.linkdiv a { font-size: 13px; color: rgba(0, 0, 0, 0.7); margin-right: 8px; }
+.linkdiv p { font-size: 12px; color: rgba(0, 0, 0, 0.7); margin-right: 8px; }
+
+/* ----------------------------- Aside Mini Section ----------------------------- */
+
+#sideMenuMini {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 72px;
+    height: 100%;
+    background-color: #fff;
+    visibility: hidden;
+}
+
+#sideMenuMini > ul {
+    margin: 4px 0px
+}
+
+#sideMenuMini > ul > li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 74px;
+    cursor: pointer;
+}
+
+#sideMenuMini > ul > li > i {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#sideMenuMini > ul > li > p {
+    font-size: 10px;
+}
+
+#sideMenuMini > ul > li:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* ----------------------------- 반응형 ----------------------------- */
+
+@media screen and (min-width: 510px) {
+    :root{
+        --media-type: 1;
+        --grid-item-per-row: 2;
+    }
+}
+
+@media screen and (min-width: 792px) {
+    :root{
+        --media-type: 2;
+        --grid-item-per-row: 2;
+    }
+
+    .elegroup:first-of-type button {
+        display: none;
+    }
+
+    .elegroup:first-of-type #logodiv {
+        margin-left: -8px;
+    }
+
+    #sideMenu {
+        transition: none;
+    }
+
+    #sideMenuMini {
+        visibility: visible;
+        position: fixed;
+        left: 0;
+    }
+
+    .testcontainer {
+        margin-left: 72px;
+    }
+
+    #contents {
+        padding: 0px 15px;
+    }
+}
+
+@media screen and (min-width: 872px) {
+    :root{
+        --media-type: 3;
+        --grid-item-per-row: 3;
+    }
+}
+
+@media screen and (min-width: 1127px) {
+    :root{
+        --media-type: 4;
+        --grid-item-per-row: 4;
+    }
+}
+
+@media screen and (min-width: 1313px) {
+    :root{
+        --media-type: 4;
+        --grid-item-per-row: 4;
+    }
+
+    #sideMenuMini {
+        visibility: hidden;
+    }
+
+    .elegroup:first-of-type {
+        visibility: hidden;
+    }
+
+    #logodiv {
+        margin-left: 16px;
+    }
+    
+    #overlaySide {
+        visibility: hidden;
+    }
+
+    #sideMenu {
+        position: fixed;
+        left: 0;
+        transition: all 0s ease-in-out;
+    }
+
+    .testcontainer {    
+        margin-left: 240px;
+    }
+
+    #contents {
+        padding: 0px 24px;
+    }
+}
+
+@media screen and (min-width: 2000px) {
+    :root{
+        --media-type: 5;
+        --grid-item-per-row: 5;
+    }
 }

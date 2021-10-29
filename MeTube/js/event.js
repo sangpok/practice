@@ -5,10 +5,16 @@ let contentMax = 8;
 let contentLoadedNum = 0;
 
 const getContentList = function() {
-    let contentList = JSON.parse(JSON.stringify(data));
-    let tmpcontentMax = Object.keys(contentList.content_list).length;
+    contentList = JSON.parse(JSON.stringify(data));
+    contentMax = Object.keys(contentList.content_list).length;
+}
+
+const loadContentList = function() {
+    if (contentLoadedNum >= contentMax) return;
 
     for (let i = contentLoadedNum; i < contentLoadedNum + 4; i++) {
+        if (i >= contentMax) break;
+
         // 러닝타임 구하기
         let timeData = contentList.content_list[i].info.running_time;
         
@@ -86,29 +92,40 @@ const getContentList = function() {
         // console.log(`${diffY}년-${diffMonth}개월-${diffW}주-${diffD}일-${diffH}시간-${diffM}분-${diffS}초 ==== ${between_date}`)
 
         let defaultItemCode = `
-            <div class="content-item">
-                <div class="overlayholder">
-                    <div class="thumbnail">
-                        <a href="#" onclick="return false;">
-                            <img src="images/contents/${contentList.content_list[i].info.img_src}">
-                            <div class="timebox"><span>${timeData}</span></div>
-                        </a>
-                    </div>
-                    <div class="detail">
-                        <a href="#" onclick="return false;">
-                            <img src="images/profile/${contentList.content_list[i].channel.profile_img_src}">
-                        </a>
-                        <div class="text-detail">
-                            <p class="video-title">${contentList.content_list[i].title}</p>
-                            <a href="#" onclick="return false;"><p class="channel-name">${contentList.content_list[i].channel.name}</p></a>
-                            <span>조회수 </span><span class="view-unit">${viewData}</span><span>회 · </span><span class="period-unit">${between_date}</span><span> 전</span>
-                        </div>
+        <div class="content-item">
+            <div class="overlayholder">
+                <div class="thumbnail">
+                    <a href="#" onclick="return false;">
+                        <img src="images/contents/${contentList.content_list[i].info.img_src}">
+                        <div class="timebox"><span>${timeData}</span></div>
+                    </a>
+    <!--
+                    <div class="thumbnailOverlay">
+                        <button id="wantlater">
+                            <i class="far fa-clock"></i>
+                        </button>
+                        <div class="comment"><span>나중에 볼 동영상</span></div>
+                        <button id="addplaylist">
+                            <i class="fas fa-list-ul"></i>
+                        </button>
+                        <div class="comment"><span>목록에 추가</span></div>
+                    </div>-->
+                </div> 
+                <div class="detail">
+                    <a href="#" onclick="return false;">
+                        <img src="images/profile/${contentList.content_list[i].channel.profile_img_src}">
+                    </a>
+                    <div class="text-detail">
+                        <p class="video-title">${contentList.content_list[i].title}</p>
+                        <a href="#" onclick="return false;"><p class="channel-name" data-tooltip-channel-text="${contentList.content_list[i].channel.name}">${contentList.content_list[i].channel.name}</p></a>
+                        <span>조회수 </span><span class="view-unit">${viewData}</span><span>회 · </span><span class="period-unit">${between_date}</span><span> 전</span>
                     </div>
                 </div>
-                <button class="btn-base btncircle">
-                    <i class="fas fa-ellipsis-v"></i>
-                </button>
-            </div>`;
+            </div>
+            <button class="btn-base btncircle">
+                <i class="fas fa-ellipsis-v"></i>
+            </button>
+        </div>`;
 
         let content_section = document.querySelector(".content-section")
         content_section.innerHTML += defaultItemCode;
@@ -118,6 +135,7 @@ const getContentList = function() {
 }
 
 getContentList();
+loadContentList();
 
 // Infinite Scroll
 (() => {
@@ -128,11 +146,13 @@ getContentList();
 
         if (entry[0].isIntersecting) {
             io.unobserve($contentItem);
+            
+            if (contentLoadedNum < contentMax) {
+                loadContentList();
+                $contentItem = document.querySelector(".content-item:last-child");
 
-            getContentList();
-            $contentItem = document.querySelector(".content-item:last-child");
-
-            io.observe($contentItem);
+                io.observe($contentItem);
+            }
         }
     }, {
         threshold: 0.5
@@ -162,14 +182,53 @@ cateBtns.forEach((userItem) => {
     });
 });
 
+// 으음... Click에 대한 default handler를 지정해놓는 게 더 편할까?
 let btnSetting = document.querySelector("#option_btn")
 btnSetting.addEventListener("click", e => {
-    let listbox_container = document.querySelector("#option_btn + .list-box-container")
+    let prvContainer = document.querySelector("#app_btn + .list-box-container");
+    prvContainer.classList.remove("show")
+
+    let listbox_container = document.querySelector("#option_btn + .list-box-container");
     listbox_container.classList.toggle("show");
 })
 
 let btnApp = document.querySelector("#app_btn")
 btnApp.addEventListener("click", e => {
-    let listbox_container = document.querySelector("#app_btn + .list-box-container")
+    let prvContainer = document.querySelector("#option_btn + .list-box-container");
+    prvContainer.classList.remove("show")
+
+    let listbox_container = document.querySelector("#app_btn + .list-box-container");
     listbox_container.classList.toggle("show");
+});
+
+const slide = function() {
+    let $media_type = getComputedStyle(root).getPropertyValue("--media-type");
+
+    if ($media_type >= 4) {
+        console.log("btn clicked when media type 4");
+    } else {
+        let $overlaySide = document.querySelector("#overlaySide");
+        $overlaySide.classList.toggle("show");
+
+        let $sideMenu = document.querySelector("#sideMenu");
+        $sideMenu.classList.toggle("show");
+
+        document.body.classList.toggle("noscroll");
+    }
+}
+
+let showSidebars = document.querySelectorAll(".showSidebar");
+showSidebars.forEach(item => item.addEventListener("click", slide));
+
+let $overlaySide = document.querySelector("#overlaySide");
+$overlaySide.addEventListener("click", slide);
+
+let menuItems = document.querySelectorAll(".menulistContainer > ul > li")
+menuItems.forEach((userItem) => {
+    userItem.addEventListener("click", function() {
+        menuItems.forEach(userItem2 => {
+            userItem2.classList.remove("selected");
+        });
+        this.classList.toggle("selected");
+    });
 });
