@@ -235,13 +235,13 @@ menuItems.forEach((userItem) => {
 });
 
 let $cateContainer = document.querySelector("#cateContainer");
+let $topContainer = document.querySelector(".topContainer:nth-of-type(2)");
 
 const controlcateBtn = function() {
-    let $topContainer = document.querySelector(".topContainer:nth-of-type(2)");
     let prvContainer = document.querySelector(".btnContainer:nth-of-type(2)");
     let nxtContainer = document.querySelector(".btnContainer:nth-of-type(3)");
 
-    if ($cateContainer.getBoundingClientRect().width - $topContainer.getBoundingClientRect().left < $topContainer.getBoundingClientRect().width) {
+    if ($cateContainer.getBoundingClientRect().width < $topContainer.getBoundingClientRect().width) {
         prvContainer.style.visibility = "hidden";
         nxtContainer.style.visibility = "hidden";
         $cateContainer.style.transform = "";
@@ -255,7 +255,9 @@ const controlcateBtn = function() {
 
     if ($cateContainer.getBoundingClientRect().left == $topContainer.getBoundingClientRect().left) {
         prvContainer.style.visibility = "hidden"
-    } else if ($cateContainer.getBoundingClientRect().right - $topContainer.getBoundingClientRect().left == root.getBoundingClientRect().width) {
+        nxtContainer.style.visibility = "visible"
+    } else if (($cateContainer.getBoundingClientRect().width - $topContainer.getBoundingClientRect().left) + $cateContainer.getBoundingClientRect().left == $topContainer.getBoundingClientRect().width) {
+        prvContainer.style.visibility = "visible"
         nxtContainer.style.visibility = "hidden"
     } else {
         if (prvContainer.style.visibility !== "visible") prvContainer.style.visibility = "visible"
@@ -311,8 +313,8 @@ cateNextBtn.addEventListener("click", e => {
     let moveNum =  Math.floor($cateContainerRect.width / (rootRect.width / 2)) + 1;
     let moveAmount = Math.floor($cateContainerRect.width / moveNum);
 
-    if ($cateContainerRect.right - moveAmount < rootRect.width) {
-        moveAmount = $cateContainerRect.right - rootRect.width;
+    if ($cateContainerRect.right - moveAmount < rootRect.width - $topContainer.getBoundingClientRect().left) {
+        moveAmount = $cateContainerRect.right - (rootRect.width - $topContainer.getBoundingClientRect().left);
     }
 
     $cateContainer.style.transform = 'translateX('+ ($cateContainerRect.left - moveAmount) + 'px)';
