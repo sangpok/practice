@@ -99,17 +99,17 @@ const loadContentList = function() {
                         <img src="images/contents/${contentList.content_list[i].info.img_src}">
                         <div class="timebox"><span>${timeData}</span></div>
                     </a>
-    <!--
+    
                     <div class="thumbnailOverlay">
                         <button id="wantlater">
                             <i class="far fa-clock"></i>
+                            <div class="comment"><span>나중에 볼 동영상</span></div>
                         </button>
-                        <div class="comment"><span>나중에 볼 동영상</span></div>
                         <button id="addplaylist">
                             <i class="fas fa-list-ul"></i>
+                            <div class="comment"><span>목록에 추가</span></div>
                         </button>
-                        <div class="comment"><span>목록에 추가</span></div>
-                    </div>-->
+                    </div>
                 </div> 
                 <div class="detail">
                     <a href="#" onclick="return false;">
@@ -164,6 +164,7 @@ loadContentList();
 window.addEventListener("resize", e => {
     root.style.setProperty('--thumbnail-cur-height', document.querySelector(".thumbnail").clientHeight + "px");
     root.style.setProperty('--content-item-height', document.querySelector(".content-item").clientHeight + "px");
+    controlcateBtn();
 });
 
 window.addEventListener("load", e => {
@@ -231,4 +232,91 @@ menuItems.forEach((userItem) => {
         });
         this.classList.toggle("selected");
     });
+});
+
+let $cateContainer = document.querySelector("#cateContainer");
+
+const controlcateBtn = function() {
+    let $topContainer = document.querySelector(".topContainer:nth-of-type(2)");
+    let prvContainer = document.querySelector(".btnContainer:nth-of-type(2)");
+    let nxtContainer = document.querySelector(".btnContainer:nth-of-type(3)");
+
+    if ($cateContainer.getBoundingClientRect().width - $topContainer.getBoundingClientRect().left < $topContainer.getBoundingClientRect().width) {
+        prvContainer.style.visibility = "hidden";
+        nxtContainer.style.visibility = "hidden";
+        $cateContainer.style.transform = "";
+        root.style.setProperty('--isblock', "");
+        return;
+    } else {
+        root.style.setProperty('--isblock', "absolute");
+    }
+    
+    console.log(`${$cateContainer.getBoundingClientRect().left} / ${$cateContainer.getBoundingClientRect().right} / ${root.getBoundingClientRect().width}`);
+
+    if ($cateContainer.getBoundingClientRect().left == $topContainer.getBoundingClientRect().left) {
+        prvContainer.style.visibility = "hidden"
+    } else if ($cateContainer.getBoundingClientRect().right - $topContainer.getBoundingClientRect().left == root.getBoundingClientRect().width) {
+        nxtContainer.style.visibility = "hidden"
+    } else {
+        if (prvContainer.style.visibility !== "visible") prvContainer.style.visibility = "visible"
+        if (nxtContainer.style.visibility !== "visible") nxtContainer.style.visibility = "visible"
+    }
+}
+
+const whichTransitionEvent = function() {
+    let t, el = document.createElement("fakeelement");
+
+    let transitions = {
+        "transition"      : "transitionend",
+        "OTransition"     : "oTransitionEnd",
+        "MozTransition"   : "transitionend",
+        "WebkitTransition": "webkitTransitionEnd"
+    }
+
+    for (t in transitions){
+        if (el.style[t] !== undefined){
+            return transitions[t];
+        }
+    }
+}
+
+let transitionEvent = whichTransitionEvent();
+
+function customFunction(event) {
+    this.removeEventListener(transitionEvent, customFunction);
+    controlcateBtn();
+}
+
+let catePrvBtn = document.querySelector("#prvbtn");
+catePrvBtn.addEventListener("click", e => {
+    let $cateContainerRect = $cateContainer.getBoundingClientRect();
+    let rootRect = root.getBoundingClientRect();
+    let moveNum =  Math.floor($cateContainerRect.width / (rootRect.width / 2)) + 1;
+    let moveAmount = Math.floor($cateContainerRect.width / moveNum);
+
+    if ($cateContainerRect.left + moveAmount > 0) {
+        moveAmount = -$cateContainerRect.left;
+    }
+
+    $cateContainer.style.transform = 'translateX('+ ($cateContainerRect.left + moveAmount) + 'px)';
+    // console.log(`${moveNum} / ${moveAmount}`);
+
+    $cateContainer.addEventListener(transitionEvent, customFunction);
+});
+
+let cateNextBtn = document.querySelector("#nextbtn");
+cateNextBtn.addEventListener("click", e => {
+    let $cateContainerRect = $cateContainer.getBoundingClientRect();
+    let rootRect = root.getBoundingClientRect();
+    let moveNum =  Math.floor($cateContainerRect.width / (rootRect.width / 2)) + 1;
+    let moveAmount = Math.floor($cateContainerRect.width / moveNum);
+
+    if ($cateContainerRect.right - moveAmount < rootRect.width) {
+        moveAmount = $cateContainerRect.right - rootRect.width;
+    }
+
+    $cateContainer.style.transform = 'translateX('+ ($cateContainerRect.left - moveAmount) + 'px)';
+    // console.log(`${moveNum} / ${moveAmount}`);
+
+    $cateContainer.addEventListener(transitionEvent, customFunction);
 });

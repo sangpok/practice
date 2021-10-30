@@ -16,6 +16,7 @@ topContainer: 9994
     --grid-item-per-row: 1;
     --thumbnail-cur-height: 240px;
     --content-item-height: 0;
+    --isblock: "absolute";
 }
 
 /* ----------------------------- 공통 ----------------------------- */
@@ -163,9 +164,7 @@ i { font-size: 17px; }
     align-items: center;
 }
 
-.singlebtnConatiner {
-    position: relative;
-}
+.singlebtnConatiner { position: relative; }
 
 /* >>>>>>>>>>>>>>> Buttons <<<<<<<<<<<<<<< */
 
@@ -174,12 +173,11 @@ i { font-size: 17px; }
     justify-content: center;
     align-items: center;
     border-style: none;
+    outline: none;
     cursor: pointer;
 }
 
-.btn-base > i {
-    z-index: 10;
-}
+.btn-base > i { z-index: 10; }
 
 .btncircle {
     position: relative;
@@ -206,14 +204,8 @@ i { font-size: 17px; }
     transition: background-color 0s cubic-bezier(0.215, 0.610, 0.355, 1), border 0s ease-in-out;
 }
 
-.topContainer:nth-of-type(2) .btncircle {
-    width: 32px;
-    height: 32px;
-}
-
-.topContainer:nth-of-type(2) .btncircle i {
-    font-size: 13px;
-}
+.topContainer:nth-of-type(2) .btncircle { width: 32px; height: 32px; }
+.topContainer:nth-of-type(2) .btncircle i { font-size: 13px; }
 
 .btnblue {
     width: 100px;
@@ -245,10 +237,8 @@ i { font-size: 17px; }
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-top: none;
     background-color: #fff;
-
     width: 100%;
     padding: 8px 0px;
-
     z-index: 9996;
 }
 
@@ -274,13 +264,8 @@ i { font-size: 17px; }
     background-color: rgba(0, 0, 0, 0.1);
 }
 
-.list-box-container > ul > li:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-}
-
-.list-box-container > ul > li > span {
-    width: 100%;
-}
+.list-box-container > ul > li:hover { background-color: rgba(0, 0, 0, 0.05); }
+.list-box-container > ul > li > span { width: 100%; }
 
 .list-box-container > ul > li > i:first-of-type {
     display: flex;
@@ -317,6 +302,7 @@ i { font-size: 17px; }
 }
 
 #cateContainer {
+    position: var(--isblock);
     overflow: visible;
     white-space: nowrap;
     margin: 0 auto;
@@ -326,9 +312,7 @@ i { font-size: 17px; }
 
 /* >>>>>>>>>>>>>>> Buttons <<<<<<<<<<<<<<< */
 
-#cateContainer > button {
-    display: inline;
-}
+#cateContainer > button { display: inline; }
 
 .btnbubble {
     margin: 12px 12px 12px 0px;
@@ -339,13 +323,8 @@ i { font-size: 17px; }
     transition: background-color .3s cubic-bezier(0.215, 0.610, 0.355, 1);
 }
 
-.btnbubble:first-of-type {
-    margin: 12px 12px 12px 24px;
-}
-
-.btnbubble:last-of-type {
-    margin: 12px 24px 12px 0px;
-}
+.btnbubble:first-of-type { margin: 12px 12px 12px 24px; }
+.btnbubble:last-of-type { margin: 12px 24px 12px 0px; }
 
 .btnbubble:not(.btnselected):hover {
     background-color: #e5e5e5;
@@ -413,17 +392,69 @@ i { font-size: 17px; }
     transition: background-color 0s cubic-bezier(0.215, 0.610, 0.355, 1), border 0s ease-in-out;
 }
 
-.content-item:hover button {
+.content-item:hover button,
+.content-item:hover .thumbnailOverlay {
     visibility: visible;
 }
 
-.thumbnail {
-    position: relative;
+.content-item:hover .thumbnailOverlay .comment { display: flex; }
+
+.thumbnail { position: relative; }
+.thumbnail > a > img { width: 100%; }
+
+.thumbnailOverlay {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 2px;
+    visibility: hidden;
 }
 
-.thumbnail > a > img {
-    width: 100%;
+.thumbnailOverlay > button {
+    border: none;
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.9);
+    position: relative;
+    border-radius: 2px;
+    width: 28px;
+    height: 28px;
+    margin: 2px;
+    cursor: pointer;
 }
+
+.thumbnailOverlay > button > i { color: #fff; }
+
+.comment {
+    display: none;
+    position: absolute;
+    background-color: transparent;
+    top: 0;
+    right: 28px;
+    height: 28px;
+    width: auto;
+    overflow: hidden;
+    white-space: nowrap;
+    visibility: hidden;
+}
+
+.comment span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 3px 0 8px;
+    height: 100%;
+    font-size: 13px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 2px 0 0 2px;
+    transform: translateX(100%);
+    transition: all .2s cubic-bezier(0.05, 0, 0, 1);
+}
+
+.thumbnailOverlay > button:hover > .comment { visibility: visible; }
+.thumbnailOverlay > button:hover > .comment span { transition-delay:.3s; transform: translateX(0); }
 
 .timebox {
     position: absolute;
@@ -673,6 +704,13 @@ i { font-size: 17px; }
 /* ----------------------------- 반응형 ----------------------------- */
 
 @media screen and (min-width: 510px) {
+    :root{
+        --media-type: 1;
+        --grid-item-per-row: 2;
+    }
+}
+
+@media screen and (min-width: 640px) {
     :root{
         --media-type: 1;
         --grid-item-per-row: 2;
