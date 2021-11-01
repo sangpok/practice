@@ -672,7 +672,7 @@ i { font-size: 17px; }
     height: 100%;
     background-color: #fff;
     visibility: hidden;
-    z-index: 9999;
+    z-index: 9995;
 }
 
 #sideMenuMini > ul {

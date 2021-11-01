@@ -170,6 +170,7 @@ window.addEventListener("resize", e => {
 window.addEventListener("load", e => {
     root.style.setProperty('--thumbnail-cur-height', document.querySelector(".thumbnail").clientHeight + "px");
     root.style.setProperty('--content-item-height', document.querySelector(".content-item").clientHeight + "px");
+    controlcateBtn();
 });
 
 // 마음에 안 들지만,,, 일단 이렇게
