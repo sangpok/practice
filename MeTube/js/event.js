@@ -1,7 +1,7 @@
 let root = document.documentElement;
 
 let contentList;
-let contentMax = 8;
+let contentMax = 0;
 let contentLoadedNum = 0;
 
 const getContentList = function() {
@@ -35,35 +35,48 @@ const loadContentList = function() {
         let times3 = Math.floor((viewData - (times8 * (10 ** 8) + times4 * (10 ** 4))) / (10 ** 3));
         let lastView = viewData - (times8 * (10 ** 8)) - (times4 * (10 ** 4)) - (times3 * (10 ** 3));
 
+        viewData = lastView;
+
         if (times8 > 0) {
-            if (times8 > 9) {
-                viewData = times8.toString() + "억";
-            } else {
-                if (times4 > 0) {
-                    viewData = times8.toString() + "." + times4.toString()+ "억";
-                } else {
-                    viewData = times8.toString() + "억";
-                }
-            }
+            viewData = `${times8}억`;
+            if (times8 <= 9 && times4 > 0) viewData = `${times8}.${times4}억`;
         } else if (times4 > 0) {
-            if (times4 > 9) {
-                viewData = times4.toString() + "만"
-            } else {
-                if (times3 > 0) {
-                    viewData = times4.toString() + "." + times3.toString() + "만"
-                } else {
-                    viewData = times4.toString() + "만"
-                }
-            }
+            viewData = `${times4}만`;
+            if (times4 <= 9 && times3 > 0) viewData = `${times4}.${times3}만`;
         } else if (times3 > 0) {
-            if (lastView > 99) {
-                viewData = times3.toString() + "." + (Math.floor(lastView / 100)).toString() + "천"
-            } else {
-                viewData = times3.toString() + "천"
-            }
-        } else {
-            viewData = lastView;
+            viewData = `${times3}천`;
+            if (lastView > 99) viewData = `${times3}.${Math.floor(lastView / 100)}천`;
         }
+
+        // if (times8 > 0) {
+        //     if (times8 > 9) {
+        //         viewData = times8.toString() + "억";
+        //     } else {
+        //         if (times4 > 0) {
+        //             viewData = times8.toString() + "." + times4.toString()+ "억";
+        //         } else {
+        //             viewData = times8.toString() + "억";
+        //         }
+        //     }
+        // } else if (times4 > 0) {
+        //     if (times4 > 9) {
+        //         viewData = times4.toString() + "만"
+        //     } else {
+        //         if (times3 > 0) {
+        //             viewData = times4.toString() + "." + times3.toString() + "만"
+        //         } else {
+        //             viewData = times4.toString() + "만"
+        //         }
+        //     }
+        // } else if (times3 > 0) {
+        //     if (lastView > 99) {
+        //         viewData = times3.toString() + "." + (Math.floor(lastView / 100)).toString() + "천"
+        //     } else {
+        //         viewData = times3.toString() + "천"
+        //     }
+        // } else {
+        //     viewData = lastView;
+        // }
 
         // console.log(`${times8}억 / ${times4}만 / ${times3}천 / ${lastView}회 ===== ${viewData}`);
 
@@ -92,40 +105,40 @@ const loadContentList = function() {
         // console.log(`${diffY}년-${diffMonth}개월-${diffW}주-${diffD}일-${diffH}시간-${diffM}분-${diffS}초 ==== ${between_date}`)
 
         let defaultItemCode = `
-        <div class="content-item">
-            <div class="overlayholder">
-                <div class="thumbnail">
-                    <a href="#" onclick="return false;">
-                        <img src="images/contents/${contentList.content_list[i].info.img_src}">
-                        <div class="timebox"><span>${timeData}</span></div>
-                    </a>
-    
-                    <div class="thumbnailOverlay">
-                        <button id="wantlater">
-                            <i class="far fa-clock"></i>
-                            <div class="comment"><span>나중에 볼 동영상</span></div>
-                        </button>
-                        <button id="addplaylist">
-                            <i class="fas fa-list-ul"></i>
-                            <div class="comment"><span>목록에 추가</span></div>
-                        </button>
-                    </div>
-                </div> 
-                <div class="detail">
-                    <a href="#" onclick="return false;">
-                        <img src="images/profile/${contentList.content_list[i].channel.profile_img_src}">
-                    </a>
-                    <div class="text-detail">
-                        <p class="video-title">${contentList.content_list[i].title}</p>
-                        <a href="#" onclick="return false;"><p class="channel-name" data-tooltip-channel-text="${contentList.content_list[i].channel.name}">${contentList.content_list[i].channel.name}</p></a>
-                        <span>조회수 </span><span class="view-unit">${viewData}</span><span>회 · </span><span class="period-unit">${between_date}</span><span> 전</span>
+            <div class="content-item">
+                <div class="overlayholder">
+                    <div class="thumbnail">
+                        <a href="#" onclick="return false;">
+                            <img src="images/contents/${contentList.content_list[i].info.img_src}">
+                            <div class="timebox"><span>${timeData}</span></div>
+                        </a>
+        
+                        <div class="thumbnailOverlay">
+                            <button id="wantlater">
+                                <i class="far fa-clock"></i>
+                                <div class="comment"><span>나중에 볼 동영상</span></div>
+                            </button>
+                            <button id="addplaylist">
+                                <i class="fas fa-list-ul"></i>
+                                <div class="comment"><span>목록에 추가</span></div>
+                            </button>
+                        </div>
+                    </div> 
+                    <div class="detail">
+                        <a href="#" onclick="return false;">
+                            <img src="images/profile/${contentList.content_list[i].channel.profile_img_src}">
+                        </a>
+                        <div class="text-detail">
+                            <p class="video-title">${contentList.content_list[i].title}</p>
+                            <a href="#" onclick="return false;"><p class="channel-name" data-tooltip-channel-text="${contentList.content_list[i].channel.name}">${contentList.content_list[i].channel.name}</p></a>
+                            <span>조회수 </span><span class="view-unit">${viewData}</span><span>회 · </span><span class="period-unit">${between_date}</span><span> 전</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <button class="btn-base btncircle">
-                <i class="fas fa-ellipsis-v"></i>
-            </button>
-        </div>`;
+                <button class="btn-base btncircle">
+                    <i class="fas fa-ellipsis-v"></i>
+                </button>
+            </div>`;
 
         let content_section = document.querySelector(".content-section")
         content_section.innerHTML += defaultItemCode;
