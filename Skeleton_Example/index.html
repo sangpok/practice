@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skeleton Example</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/event.js" defer></script>
+</head>
+<body>
+    <div id="contents"></div>
+
+    <template id="content-template">
+        <div class="content-container">
+            <div class="image-container skeleton">
+                <img class="content-image" data-image>
+            </div>
+
+            <div class="detail-container">
+                <h1 class="title" data-title>
+                    <div class="skeleton skeleton-text skeleton-text-title"></div>
+                </h1>
+                <h2 class="author" data-author>
+                    <div class="skeleton skeleton-text skeleton-text-author"></div>
+                </h2>
+                <h3 data-content>
+                    <div class="skeleton skeleton-text"></div>
+                    <div class="skeleton skeleton-text"></div>
+                    <div class="skeleton skeleton-text"></div>
+                    <div class="skeleton skeleton-text"></div>
+                    <div class="skeleton skeleton-text"></div>
+                    <div class="skeleton skeleton-text"></div>
+                    <div class="skeleton skeleton-text"></div>
+                    <div class="skeleton skeleton-text"></div>
+                </h3>
+            </div>
+        </div>
+    </template>
+</body>
+</html>
