@@ -1,0 +1,14 @@
+:root {
+    --scroll_bar_width: 0px;
+    --gnb_search_bar_width: 860px;
+    --content-width: calc(100vw - var(--scroll_bar_width) - 112px);
+}
+
+// 기본 설정
+$background_color: black;
+$primary_color: #fff;
+$secondary_color: darken($primary_color, 50%);
+
+// GNB 설정
+$gnb_bar_height: 64px;
+// $gnb_search_bar_width: 860px; // --> CSS 전역변수

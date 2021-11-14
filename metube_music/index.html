@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeTube Music</title>
+
+    <script src="https://kit.fontawesome.com/4fb093fd56.js" crossorigin="anonymous"></script>
+    <script src="js/events.js" defer></script>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <header id="gnb">
+        <div class="elegroup">
+            <a href="#!" id="logo">
+                <img src="images/logo.svg" alt="Logo">
+            </a>
+        </div>
+
+        <div class="elegroup">
+            <button class="btn_base btn_text" id="btnHome">
+                <div class="btn_content active">
+                    <i class="fas fa-home"></i><span>홈</span>
+                </div>
+            </button>
+
+            <button class="btn_base btn_text" id="btnExplore">
+                <div class="btn_content">
+                    <i class="far fa-compass"></i><span>둘러보기</span>
+                </div>
+            </button>
+
+            <button class="btn_base btn_text" id="btnPlaylist">
+                <div class="btn_content">
+                    <i class="fas fa-list"></i><span>보관함</span>
+                </div>
+            </button>
+
+            <button class="btn_base btn_text" id="btnSearch">
+                <div class="btn_content">
+                    <i class="fas fa-search"></i><span>검색</span>
+                </div>
+            </button>
+
+            <div id="gnbSearch">
+                <button class="btn_base" id="btnSearchBack">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+
+                <input type="text" autocomplete="off" role="combobox" placeholder="검색">
+                
+                <ul id="searchList">
+                    <li class="list_item">
+                        <i class="fas fa-history"></i>
+                        <span>정아로</span>
+                        <button class="btn_base btn_text">
+                            <div class="btn_content"><span>삭제</span></div>
+                        </button>
+                    </li>
+                    <li class="list_item">
+                        <i class="fas fa-history"></i>
+                        <span>장범준</span>
+                        <button class="btn_base btn_text">
+                            <div class="btn_content"><span>삭제</span></div>
+                        </button>
+                    </li>
+                    <li class="list_item">
+                        <i class="fas fa-history"></i>
+                        <span>적재</span>
+                        <button class="btn_base btn_text">
+                            <div class="btn_content"><span>삭제</span></div>
+                        </button>
+                    </li>
+                    <li class="list_item">
+                        <i class="fas fa-history"></i>
+                        <span>can't stop the stars</span>
+                        <button class="btn_base btn_text">
+                            <div class="btn_content"><span>삭제</span></div>
+                        </button>
+                    </li>
+                    <li class="list_item">
+                        <i class="fas fa-history"></i>
+                        <span>아이유 strawberry moon</span>
+                        <button class="btn_base btn_text">
+                            <div class="btn_content"><span>삭제</span></div>
+                        </button>
+                    </li>
+                    <li class="list_item">
+                        <i class="fas fa-history"></i>
+                        <span>savage 에스파</span>
+                        <button class="btn_base btn_text">
+                            <div class="btn_content"><span>삭제</span></div>
+                        </button>
+                    </li>
+                    <li class="list_item">
+                        <i class="fas fa-history"></i>
+                        <span>leisure</span>
+                        <button class="btn_base btn_text">
+                            <div class="btn_content"><span>삭제</span></div>
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- <datalist id="test" role="listbox">
+                    <option value="정아로"></option>
+                    <option value="적재"></option>
+                    <option value="아이유"></option>
+                    <option value="김수영"></option>
+                    <option value="최유리"></option>
+                </datalist> -->
+                
+                <button class="btn_base">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="elegroup">
+            <a href="#!">
+                <img src="images/profile_user.jpg" id="profile_user" alt="User Profile">
+            </a>
+        </div>
+    </header>
+
+    <main id="contents">
+        <section id="contentList">
+            <div class="content">
+                <h1>즐겨 듣는 음악</h1>
+                <div class="itemContainer">
+                    <div class="item">
+                        <div class="thumbnailContainer">
+                            <div class="thumbnail album">
+                                <img src="images/sing/1.jpg" alt="">
+                            </div>
+                            <div class="overlays">
+                                <button class="btn_base btn_circle" id="btnThumbnailOption">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+
+                                <button class="btn_base btn_circle_v2" id="btnThumbnailPlay">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="detail">
+                            <span class="title">KNOCK (Width 박문치)</span>
+                            <span class="info">싱글 · 권진아</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="player">
+        <section id="floatingPlayer"></section>
+        <section id="playerMain"></section>
+    </footer>
+</body>
+</html>
+
+<!-- 형태_의미_상태 -->

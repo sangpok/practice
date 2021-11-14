@@ -1,0 +1,99 @@
+// xs      sm      md       lg       xl
+// 603px / 924px / 1138px / 1352px / 1566px
+
+// 603px
+@include media-xs {
+    :root {
+        --gnb_search_bar_width: calc(100vw - 12px - 32px);
+    }
+
+    #gnb {
+        .elegroup:nth-child(1) {
+            #logo {
+                display: block;
+                overflow: hidden;
+                width: 24px;
+            }
+        }
+
+        .elegroup:nth-child(2) {
+            button {
+                .btn_content {
+                    i { display: block; }
+                    span { display: none; }
+                }
+            }
+        }
+    }
+}
+
+// 924px
+@include media-sm {
+    :root {
+        --gnb_search_bar_width: 560px;
+    }
+
+    #gnb {
+        .elegroup:nth-child(2) {
+            button {
+                .btn_content {
+                    i { display: block; }
+                    span { display: none; }
+                }
+            }
+        }
+    }
+}
+
+// 1138px
+@include media-md {
+    :root {
+        --gnb_search_bar_width: 720px;
+    }
+
+    #gnb {
+        .elegroup:nth-child(2) {
+            button {
+                .btn_content {
+                    i { display: none; }
+                    span { display: block; }
+                }
+            }
+
+            button[id="btnSearch"] {
+                .btn_content {
+                    i { display: block; }
+                    span { display: none; }
+                }
+            }
+        }
+    }
+}
+
+// 1352px
+@include media-lg {
+    #gnb {
+        .elegroup:nth-child(2) {
+            button[id="btnSearch"] {
+                .btn_content {
+                    i { display: inline-block; margin-right: 10px; }
+                    span { display: inline-block; margin-left: 10px;}
+                }
+            }
+        }
+    }
+}
+
+// 1566px
+@include media-xl {
+    #gnb {
+        .elegroup:nth-child(2) {
+            button[id="btnSearch"] {
+                .btn_content {
+                    i { display: inline-block; margin-right: 10px; }
+                    span { display: inline-block; margin-left: 10px;}
+                }
+            }
+        }
+    }
+}
