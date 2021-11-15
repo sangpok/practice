@@ -2,15 +2,16 @@
 @import 'commons';
 @import 'functions';
 
-* {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    box-sizing: border-box;
-    margin: 0%;
-    padding: 0;
-}
-
 body {
     background-color: $background_color;
+    overflow-x: hidden;
+}
+
+body::-webkit-scrollbar { width: 12px; } 
+body::-webkit-scrollbar-track { background-color: transparent; }
+body::-webkit-scrollbar-thumb {
+    background: darken($secondary_color, 20%);
+    &:hover { background: lighten(darken($secondary_color, 20%), 5%); }
 }
 
 #gnb {
@@ -165,7 +166,6 @@ body {
     position: relative;
     padding-top: $gnb_bar_height;
     color: $primary_color;
-    width: fit-content;
     margin: 0 auto;
 
     #contentList {
@@ -174,104 +174,203 @@ body {
         
         .content {
             display: block;
-            width: var(--content-width);
+            position: relative;
+            margin: 0 auto 24px;
 
-            .itemContainer {
+            .contentInfo {
+                padding: 16px 0;
+                width: var(--content-width);
+                margin: 0 auto;
+                
+                h4 {
+                    color: $secondary_color;
+                    font-size: 14px;
+                }
+
+                img.artist {
+                    float: left;
+                    border-radius: 50%;
+                    margin-right: 16px;
+                    width: 48px;
+                    height: 48px;
+                }
+            }
+
+            .itemsContainer {
                 display: block;
-                position: absolute;
-                overflow: hidden;
-                width: fit-content;
+                position: relative;
+                width: 100vw;
 
-                .item {
-                    .thumbnailContainer {
-                        div.thumbnail {
-                            width: 180px;
-                            height: 180px;
+                .itemsWraper {
+                    position: relative;
+                    width: var(--content-width);
+                    margin: 0 auto;
+                    overflow: hidden;
 
-                            img {
-                                border-radius: 5px;
-                                width: 180px;
-                                height: 180px;
-                                object-fit: cover;
-                                object-position: center;
-                            }
-                        }
-                        div.thumbnail.album {
-                            img {
-                            }
-                        }
-                        div.thumbnail.sing {
-                            img {
-                            }
-                        }
-                        div.thumbnail.artist {
-                            img {
-                                border-radius: 50%;
-                            }
-                        }
-                        div.thumbnail.playlist {
-                            img {
-                            }
-                        }
+                    .items {
+                        display: flex;
+                        position: relative;
+                        margin: 16px 0;
+                        width: var(-content-width);
+                        white-space: nowrap;
+                        transform: translateX(0);
+                        transition: transform .5s ease-in-out;
 
-                        .overlays {
-                            display: block;
-                            position: absolute;
-                            width: 100%;
-                            height: 180px;
-                            top: 0;
-                            left: 0;
-                            background: linear-gradient(
-                                rgba(0, 0, 0, .5),
-                                rgba(0, 0, 0, 0) 50%,
-                                transparent
-                            );
-                            opacity: 0;
-                            transition: opacity 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+                        .item {
+                            margin-right: 16px;
 
-                            #btnThumbnailOption {
-                                position: absolute;
-                                top: 8px;
-                                right: 4px;
-                                width: 40px;
-                                height: 40px;
-                                padding: 8px;
+                            .thumbnailContainer {
+                                position: relative;
+                                margin-bottom: 16px;
 
-                                i { 
-                                    color: $primary_color;
-                                    font-size: 15px;
+                                div.thumbnail {
+                                    width: 100%;
+                                    height: 180px;
+
+                                    img {
+                                        border-radius: 5px;
+                                        width: 180px;
+                                        height: 180px;
+                                        object-fit: cover;
+                                        object-position: center;
+                                    }
+            
+                                    &.artist {
+                                        img {
+                                            border-radius: 50%;
+                                            cursor: pointer;
+                                        }
+                                    }
+            
+                                    &.movie {
+                                        img {
+                                            width: 320px;
+                                        }
+                                    }
+                                }
+
+                                .overlays.album {
+                                    @include defaultOverlay(linear-gradient(
+                                        rgba(0, 0, 0, .5),
+                                        rgba(0, 0, 0, 0) 50%,
+                                        transparent
+                                    ));
+                                    opacity: 0;
+
+                                    #btnThumbnailOption {
+                                        position: absolute;
+                                        top: 8px;
+                                        right: 4px;
+                                        width: 40px;
+                                        height: 40px;
+                                        padding: 8px;
+                                        cursor: pointer;
+
+                                        i { 
+                                            color: $primary_color;
+                                            font-size: 15px;
+                                        }
+                                    }
+
+                                    #btnThumbnailPlay {
+                                        @include flexCenter();
+                                        position: absolute;
+                                        right: 20px;
+                                        bottom: 20px;
+                                        cursor: pointer;
+
+                                        i { color: $primary_color; font-size: 13px; }
+                                    }
+                                    
+                                    &:hover  {
+                                        opacity: 1;
+                                    }
+                                }
+
+                                .overlays.sing {
+                                    @include defaultOverlay(transparent);
+
+                                    #btnThumbnailOption {
+                                        position: absolute;
+                                        top: 8px;
+                                        right: 4px;
+                                        width: 40px;
+                                        height: 40px;
+                                        padding: 8px;
+                                        opacity: 0;
+                                        cursor: pointer;
+
+                                        i { 
+                                            color: $primary_color;
+                                            font-size: 15px;
+                                        }
+                                    }
+
+                                    #btnThumbnailPlay {
+                                        @include flexCenter();
+                                        position: absolute;
+                                        right: calc(50% - 15px);
+                                        bottom: calc(50% - 15px);
+                                        cursor: pointer;
+
+                                        i { color: $primary_color; font-size: 30px; }
+                                    }
+
+                                    &:hover {
+                                        background: rgba(0, 0, 0, .5);
+                                        #btnThumbnailOption { opacity: 1; }
+                                    }
+                                }
+
+                                .overlays.movie {
+                                    @extend .overlays.sing;
                                 }
                             }
 
-                            #btnThumbnailPlay {
-                                @include flexCenter();
-                                position: absolute;
-                                right: 20px;
-                                bottom: 20px;
+                            .detail {
+                                span { display: block; white-space: normal;}
 
-                                i { color: $primary_color; font-size: 13px; }
+                                span.title {
+                                    color: $primary_color;
+                                    font-size: 14px;
+                                    font-weight: 500;
+                                }
+
+                                span.info {
+                                    color: $secondary_color;
+                                    font-size: 14px;
+                                    font-weight: 400;
+                                }
+
+                                &.artist {
+                                    width: 180px;
+
+                                    span.info,
+                                    span.title { text-align: center; }
+                                }
+
+                                &.sing {
+                                    width: 180px;
+                                }
+
+                                &.movie {
+                                    width: 320px;
+                                }
                             }
                         }
-
-                        .overlays:hover {
-                            opacity: 1;
-                        }
                     }
+                }
 
-                    .detail {
-                        span.title {
-                            display: block;
-                            color: $primary_color;
-                            font-size: 14px;
-                            font-weight: 500;
-                        }
+                button.btn_prv {
+                    position: absolute;
+                    top: calc((180px - 20px) / 2);
+                    left: 36px;
+                }
 
-                        span.info {
-                            font-size: 14px;
-                            font-weight: 400;
-                            color: $secondary_color;
-                        }
-                    }
+                button.btn_nxt {
+                    position: absolute;
+                    top: calc((180px - 20px) / 2);
+                    right: 36px;
                 }
             }
         }

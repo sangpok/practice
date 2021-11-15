@@ -126,28 +126,546 @@
     <main id="contents">
         <section id="contentList">
             <div class="content">
-                <h1>즐겨 듣는 음악</h1>
-                <div class="itemContainer">
-                    <div class="item">
-                        <div class="thumbnailContainer">
-                            <div class="thumbnail album">
-                                <img src="images/sing/1.jpg" alt="">
-                            </div>
-                            <div class="overlays">
-                                <button class="btn_base btn_circle" id="btnThumbnailOption">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                </button>
+                <div class="contentInfo">
+                    <!-- <img src="images/profile_user.jpg" alt="" class="artist"> -->
+                    <h4>다시 듣기</h4>
+                    <h1>즐겨 듣는 음악</h1>
+                </div>
 
-                                <button class="btn_base btn_circle_v2" id="btnThumbnailPlay">
-                                    <i class="fas fa-play"></i>
-                                </button>
+                <div class="itemsContainer">
+                    <div class="itemsWraper">
+                        <div class="items">
+                            <div class="item">
+                                <div class="thumbnailContainer">
+                                    <div class="thumbnail album">
+                                        <img src="images/sing/1.jpg" alt="">
+                                    </div>
+                                    <div class="overlays album">
+                                        <button class="btn_base btn_circle" id="btnThumbnailOption">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+
+                                        <button class="btn_base btn_circle_v2" id="btnThumbnailPlay">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="detail">
+                                    <span class="title">KNOCK (With 박문치)</span>
+                                    <span class="info">싱글 · 권진아</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="detail">
-                            <span class="title">KNOCK (Width 박문치)</span>
-                            <span class="info">싱글 · 권진아</span>
+                            <div class="item">
+                                <div class="thumbnailContainer">
+                                    <div class="thumbnail sing">
+                                        <img src="images/sing/2.jpg" alt="">
+                                    </div>
+                                    <div class="overlays sing">
+                                        <button class="btn_base btn_circle" id="btnThumbnailOption">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+
+                                        <button class="btn_base btn_sing_play" id="btnThumbnailPlay">
+                                            <i class="fas fa-play"></i>
+                                            <div class="spinner"></div>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="detail sing">
+                                    <span class="title">좋아해.. (바른연애 길잡이 X 죠지)</span>
+                                    <span class="info">노래 · 죠지(GERORGE)</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="thumbnailContainer">
+                                    <div class="thumbnail artist">
+                                        <img src="images/sing/3.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="detail artist">
+                                    <span class="title">김수영</span>
+                                    <span class="info">구독자 3.65만명</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="thumbnailContainer">
+                                    <div class="thumbnail movie">
+                                        <img src="images/sing/4.jpg" alt="">
+                                    </div>
+                                    <div class="overlays movie">
+                                        <button class="btn_base btn_circle" id="btnThumbnailOption">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+
+                                        <button class="btn_base btn_sing_play" id="btnThumbnailPlay">
+                                            <i class="fas fa-play"></i>
+                                            <div class="spinner"></div>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="detail movie">
+                                    <span class="title">[Playlist] 우린 같은 곳을 보면서 서로 같은 답을 못했어 : 정아로 플레이리스트</span>
+                                    <span class="info">정아로 / ARO • 조회수 2.2만회</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="thumbnailContainer">
+                                    <div class="thumbnail sing">
+                                        <img src="images/sing/5.jpg" alt="">
+                                    </div>
+                                    <div class="overlays sing">
+                                        <button class="btn_base btn_circle" id="btnThumbnailOption">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+
+                                        <button class="btn_base btn_sing_play" id="btnThumbnailPlay">
+                                            <i class="fas fa-play"></i>
+                                            <div class="spinner"></div>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="detail sing">
+                                    <span class="title">비밀의 화원</span>
+                                    <span class="info">노래 · 아이유(IU)</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="thumbnailContainer">
+                                    <div class="thumbnail artist">
+                                        <img src="images/sing/6.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="detail artist">
+                                    <span class="title">정아로</span>
+                                    <span class="info">구독자 1.05천명</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="thumbnailContainer">
+                                    <div class="thumbnail artist">
+                                        <img src="images/sing/7.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="detail artist">
+                                    <span class="title">장범준</span>
+                                    <span class="info">구독자 94.5만명</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="thumbnailContainer">
+                                    <div class="thumbnail sing">
+                                        <img src="images/sing/8.jpg" alt="">
+                                    </div>
+                                    <div class="overlays sing">
+                                        <button class="btn_base btn_circle" id="btnThumbnailOption">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+
+                                        <button class="btn_base btn_sing_play" id="btnThumbnailPlay">
+                                            <i class="fas fa-play"></i>
+                                            <div class="spinner"></div>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="detail sing">
+                                    <span class="title">strawberry moon</span>
+                                    <span class="info">노래 · IU</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="thumbnailContainer">
+                                    <div class="thumbnail artist">
+                                        <img src="images/sing/9.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="detail artist">
+                                    <span class="title">dosii(도시)</span>
+                                    <span class="info">구독자 1.41만명</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="thumbnailContainer">
+                                    <div class="thumbnail artist">
+                                        <img src="images/sing/10.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="detail artist">
+                                    <span class="title">LEISURE</span>
+                                    <span class="info">구독자 1.95만명</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+                    <button class="btn_base btn_prv">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+    
+                    <button class="btn_base btn_nxt">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="content">
+                <div class="contentInfo">
+                    <!-- <img src="images/profile_user.jpg" alt="" class="artist"> -->
+                    <h4>다시 듣기</h4>
+                    <h1>즐겨 듣는 음악</h1>
+                </div>
+
+                <div class="itemsContainer">
+                    <div class="itemsWraper">
+                        <div class="items">
+                            <div class="item">
+                                <div class="thumbnailContainer">
+                                    <div class="thumbnail album">
+                                        <img src="images/sing/1.jpg" alt="">
+                                    </div>
+                                    <div class="overlays album">
+                                        <button class="btn_base btn_circle" id="btnThumbnailOption">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+
+                                        <button class="btn_base btn_circle_v2" id="btnThumbnailPlay">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="detail">
+                                    <span class="title">KNOCK (With 박문치)</span>
+                                    <span class="info">싱글 · 권진아</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="thumbnailContainer">
+                                    <div class="thumbnail sing">
+                                        <img src="images/sing/2.jpg" alt="">
+                                    </div>
+                                    <div class="overlays sing">
+                                        <button class="btn_base btn_circle" id="btnThumbnailOption">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+
+                                        <button class="btn_base btn_sing_play" id="btnThumbnailPlay">
+                                            <i class="fas fa-play"></i>
+                                            <div class="spinner"></div>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="detail sing">
+                                    <span class="title">좋아해.. (바른연애 길잡이 X 죠지)</span>
+                                    <span class="info">노래 · 죠지(GERORGE)</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="thumbnailContainer">
+                                    <div class="thumbnail artist">
+                                        <img src="images/sing/3.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="detail artist">
+                                    <span class="title">김수영</span>
+                                    <span class="info">구독자 3.65만명</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="thumbnailContainer">
+                                    <div class="thumbnail movie">
+                                        <img src="images/sing/4.jpg" alt="">
+                                    </div>
+                                    <div class="overlays movie">
+                                        <button class="btn_base btn_circle" id="btnThumbnailOption">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+
+                                        <button class="btn_base btn_sing_play" id="btnThumbnailPlay">
+                                            <i class="fas fa-play"></i>
+                                            <div class="spinner"></div>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="detail movie">
+                                    <span class="title">[Playlist] 우린 같은 곳을 보면서 서로 같은 답을 못했어 : 정아로 플레이리스트</span>
+                                    <span class="info">정아로 / ARO • 조회수 2.2만회</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="thumbnailContainer">
+                                    <div class="thumbnail sing">
+                                        <img src="images/sing/5.jpg" alt="">
+                                    </div>
+                                    <div class="overlays sing">
+                                        <button class="btn_base btn_circle" id="btnThumbnailOption">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+
+                                        <button class="btn_base btn_sing_play" id="btnThumbnailPlay">
+                                            <i class="fas fa-play"></i>
+                                            <div class="spinner"></div>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="detail sing">
+                                    <span class="title">비밀의 화원</span>
+                                    <span class="info">노래 · 아이유(IU)</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="thumbnailContainer">
+                                    <div class="thumbnail artist">
+                                        <img src="images/sing/6.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="detail artist">
+                                    <span class="title">정아로</span>
+                                    <span class="info">구독자 1.05천명</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="thumbnailContainer">
+                                    <div class="thumbnail artist">
+                                        <img src="images/sing/7.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="detail artist">
+                                    <span class="title">장범준</span>
+                                    <span class="info">구독자 94.5만명</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="thumbnailContainer">
+                                    <div class="thumbnail sing">
+                                        <img src="images/sing/8.jpg" alt="">
+                                    </div>
+                                    <div class="overlays sing">
+                                        <button class="btn_base btn_circle" id="btnThumbnailOption">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+
+                                        <button class="btn_base btn_sing_play" id="btnThumbnailPlay">
+                                            <i class="fas fa-play"></i>
+                                            <div class="spinner"></div>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="detail sing">
+                                    <span class="title">strawberry moon</span>
+                                    <span class="info">노래 · IU</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="thumbnailContainer">
+                                    <div class="thumbnail artist">
+                                        <img src="images/sing/9.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="detail artist">
+                                    <span class="title">dosii(도시)</span>
+                                    <span class="info">구독자 1.41만명</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="thumbnailContainer">
+                                    <div class="thumbnail artist">
+                                        <img src="images/sing/10.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="detail artist">
+                                    <span class="title">LEISURE</span>
+                                    <span class="info">구독자 1.95만명</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn_base btn_prv">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+    
+                    <button class="btn_base btn_nxt">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="content">
+                <div class="contentInfo">
+                    <!-- <img src="images/profile_user.jpg" alt="" class="artist"> -->
+                    <h4>다시 듣기</h4>
+                    <h1>즐겨 듣는 음악</h1>
+                </div>
+
+                <div class="itemsContainer">
+                    <div class="itemsWraper">
+                        <div class="items">
+                            <div class="item">
+                                <div class="thumbnailContainer">
+                                    <div class="thumbnail album">
+                                        <img src="images/sing/1.jpg" alt="">
+                                    </div>
+                                    <div class="overlays album">
+                                        <button class="btn_base btn_circle" id="btnThumbnailOption">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+
+                                        <button class="btn_base btn_circle_v2" id="btnThumbnailPlay">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="detail">
+                                    <span class="title">KNOCK (With 박문치)</span>
+                                    <span class="info">싱글 · 권진아</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="thumbnailContainer">
+                                    <div class="thumbnail sing">
+                                        <img src="images/sing/2.jpg" alt="">
+                                    </div>
+                                    <div class="overlays sing">
+                                        <button class="btn_base btn_circle" id="btnThumbnailOption">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+
+                                        <button class="btn_base btn_sing_play" id="btnThumbnailPlay">
+                                            <i class="fas fa-play"></i>
+                                            <div class="spinner"></div>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="detail sing">
+                                    <span class="title">좋아해.. (바른연애 길잡이 X 죠지)</span>
+                                    <span class="info">노래 · 죠지(GERORGE)</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="thumbnailContainer">
+                                    <div class="thumbnail artist">
+                                        <img src="images/sing/3.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="detail artist">
+                                    <span class="title">김수영</span>
+                                    <span class="info">구독자 3.65만명</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="thumbnailContainer">
+                                    <div class="thumbnail movie">
+                                        <img src="images/sing/4.jpg" alt="">
+                                    </div>
+                                    <div class="overlays movie">
+                                        <button class="btn_base btn_circle" id="btnThumbnailOption">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+
+                                        <button class="btn_base btn_sing_play" id="btnThumbnailPlay">
+                                            <i class="fas fa-play"></i>
+                                            <div class="spinner"></div>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="detail movie">
+                                    <span class="title">[Playlist] 우린 같은 곳을 보면서 서로 같은 답을 못했어 : 정아로 플레이리스트</span>
+                                    <span class="info">정아로 / ARO • 조회수 2.2만회</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="thumbnailContainer">
+                                    <div class="thumbnail sing">
+                                        <img src="images/sing/5.jpg" alt="">
+                                    </div>
+                                    <div class="overlays sing">
+                                        <button class="btn_base btn_circle" id="btnThumbnailOption">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+
+                                        <button class="btn_base btn_sing_play" id="btnThumbnailPlay">
+                                            <i class="fas fa-play"></i>
+                                            <div class="spinner"></div>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="detail sing">
+                                    <span class="title">비밀의 화원</span>
+                                    <span class="info">노래 · 아이유(IU)</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="thumbnailContainer">
+                                    <div class="thumbnail artist">
+                                        <img src="images/sing/6.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="detail artist">
+                                    <span class="title">정아로</span>
+                                    <span class="info">구독자 1.05천명</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="thumbnailContainer">
+                                    <div class="thumbnail artist">
+                                        <img src="images/sing/7.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="detail artist">
+                                    <span class="title">장범준</span>
+                                    <span class="info">구독자 94.5만명</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="thumbnailContainer">
+                                    <div class="thumbnail sing">
+                                        <img src="images/sing/8.jpg" alt="">
+                                    </div>
+                                    <div class="overlays sing">
+                                        <button class="btn_base btn_circle" id="btnThumbnailOption">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+
+                                        <button class="btn_base btn_sing_play" id="btnThumbnailPlay">
+                                            <i class="fas fa-play"></i>
+                                            <div class="spinner"></div>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="detail sing">
+                                    <span class="title">strawberry moon</span>
+                                    <span class="info">노래 · IU</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="thumbnailContainer">
+                                    <div class="thumbnail artist">
+                                        <img src="images/sing/9.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="detail artist">
+                                    <span class="title">dosii(도시)</span>
+                                    <span class="info">구독자 1.41만명</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="thumbnailContainer">
+                                    <div class="thumbnail artist">
+                                        <img src="images/sing/10.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="detail artist">
+                                    <span class="title">LEISURE</span>
+                                    <span class="info">구독자 1.95만명</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn_base btn_prv">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+    
+                    <button class="btn_base btn_nxt">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
         </section>

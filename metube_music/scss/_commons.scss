@@ -1,3 +1,10 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 0;
+}
+
 .btn_base {
     border: none;
     width: fit-content;
@@ -40,6 +47,41 @@
     &.btn_circle_v2:hover {
         transform: scale(1.2);
     }
+
+    &.btn_sing_play {
+        background: transparent;
+    }
+
+    &.btn_prv,
+    &.btn_nxt {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: 0 0 5px 1px rgba(0, 0, 0, .2);
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+    }
+}
+
+.spinner {
+    display: none;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+	background-color: transparent;
+	background-image: url('data:image/svg+xml,\
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -20 40 40">\
+<style> circle { animation: 4s a infinite linear, 3s o infinite linear; }\
+@keyframes a {from{stroke-dasharray:100 0}50%25{stroke-dasharray:0 100}to{stroke-dasharray:100 0}}\
+@keyframes o {from{stroke-dashoffset:75}to{stroke-dashoffset:375}}\
+<%2Fstyle><circle r="15.9154943092" stroke-width="5" fill="none" stroke="snow" />\
+</svg>');
+	background-position: center center;
+    width: 50px;
+    height: 50px;
 }
 
 @mixin flexCenter($direction: row) {
@@ -47,6 +89,18 @@
     flex-direction: $direction;
     justify-content: center;
     align-items: center;
+}
+
+@mixin defaultOverlay($background:rgba(0, 0, 0, .5)) {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 180px;
+    top: 0;
+    left: 0;
+    background: $background;
+    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    cursor: pointer;
 }
 
 // xs sm md lg xl
