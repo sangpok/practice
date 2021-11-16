@@ -27,6 +27,10 @@ const ControlItemWrapper = function() {
     
 }
 
+const getVariable = function(property) {
+    return getComputedStyle(document.documentElement).getPropertyValue(property);
+}
+
 const SlideTo = function(e) {
     let $items = e.srcElement;
     if ($items.tagName == "I") $items = e.srcElement.parentElement;
@@ -36,23 +40,48 @@ const SlideTo = function(e) {
     
     $items = $items.parentElement.firstElementChild.firstElementChild;
 
-    const itemsStyle = window.getComputedStyle($items);
-    let matrix = new WebKitCSSMatrix(itemsStyle.transform);
-    let curPos = matrix.m41;
+    let nextElementPos = null;
+    let isFirstEle = true;
 
-    let addAmount = $items.parentElement.getBoundingClientRect().width;
-    // let tmpEle = document.elementFromPoint(addAmount, 180);
-    // console.log(tmpEle);
+    const itemsWrapper = $items.parentElement;
+    const io = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (entry.intersectionRatio < 1 && entry.intersectionRatio > 0) { // 걸침
+                    if (isFirstEle && isNext && entry.target.getBoundingClientRect().left > 0) {
+                        let itemsWidth = $items.scrollWidth;
 
-    curPos = isNext ? curPos - addAmount : curPos + addAmount;
-    // if (isNext) {
-    //     if (curPos - addAmount)
-    // } else {
+                        const itemsStyle = window.getComputedStyle($items);
+                        console.log(itemsStyle);
+                        let matrix = new WebKitCSSMatrix(itemsStyle.transform);
+                        let curPos = matrix.m41;
 
-    // }
+                        // entry.target.style.border = "2px solid red";
+                        nextElementPos = entry.target.getBoundingClientRect().left;
 
-    $items.style.transform = `translateX(${curPos}px)`;
-    ControlItemWrapper();
+                        let moveAmount = curPos - nextElementPos;
+
+                        if (itemsWidth + (curPos - nextElementPos) < itemsWrapper.clientWidth) {
+                            moveAmount = curPos - (itemsWidth + (curPos - itemsWrapper.clientWidth));
+                        }
+
+                        $items.style.transform = `translateX(${moveAmount}px)`;
+                        io.unobserve(entry.target);
+                        isFirstEle = false;
+    
+                        ControlItemWrapper();
+                    }
+                    
+                }
+            }
+        });
+    }, {"root": itemsWrapper});
+
+    const $itemsAll = itemsWrapper.querySelectorAll(".item");
+    $itemsAll.forEach(e => {
+        e.style.border = "";
+        io.observe(e);
+    });
 }
 
 const $btnPrvs = document.querySelectorAll("button.btn_prv");
@@ -65,21 +94,18 @@ $btnNxts.forEach(element => {
     element.addEventListener("click", SlideTo);
 });
 
-let curIntersectionElements = [];
+// const itemsWrappers = document.querySelectorAll(".itemsWraper");
+// itemsWrappers.forEach(itemsWrapper => {
+//     const io = new IntersectionObserver(entries => {
+//         entries.forEach(entry => {
+//             if (entry.isIntersecting) {
+//                 if (entry.intersectionRatio < 1) { // 걸침
+//                     entry.target.style.border = "2px solid red";
+//                 }
+//             }
+//         });
+//     }, {"root": itemsWrapper});
 
-const itemsWrappers = document.querySelectorAll(".itemsWraper");
-itemsWrappers.forEach(itemsWrapper => {
-    curIntersectionElements.push(itemsWrapper);
-    const io = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                if (entry.intersectionRatio < 1) { // 걸침
-                    entry.target.style.border = "2px solid red";
-                }
-            }
-        });
-    }, {"root": itemsWrapper});
-
-    const $itemsAll = itemsWrapper.querySelectorAll(".item");
-    $itemsAll.forEach(e => io.observe(e));
-})
+//     const $itemsAll = itemsWrapper.querySelectorAll(".item");
+//     $itemsAll.forEach(e => io.observe(e));
+// })

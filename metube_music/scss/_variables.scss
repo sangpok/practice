@@ -1,7 +1,12 @@
 :root {
     --scroll_bar_width: 0px;
     --gnb_search_bar_width: 860px;
-    --content-width: calc(100vw - var(--scroll_bar_width) - 112px);
+    --content-width: calc(100vw - var(--scroll_bar_width) - 32px);
+    --content-margin: 24px;
+    --contentInfo-padding: 16px;
+    --contentInfo-margin: 24px;
+    --item-height: 180px;
+    --items-margin: 0 auto 24px;
 }
 
 // 기본 설정

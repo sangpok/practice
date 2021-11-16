@@ -1,10 +1,14 @@
 // xs      sm      md       lg       xl
 // 603px / 924px / 1138px / 1352px / 1566px
 
-// 603px
+// max-width: 603px
 @include media-xs {
     :root {
+        --content-width: calc(100vw - var(--scroll_bar_width) - 32px);
         --gnb_search_bar_width: calc(100vw - 12px - 32px);
+        --content-margin: 32px;
+        --item-height: 160px;
+        --items-margin: 16px;
     }
 
     #gnb {
@@ -25,12 +29,22 @@
             }
         }
     }
+
+    .content {
+        .itemsWraper { overflow: visible !important; }
+        button.btn_prv { left: 16px !important; }
+        button.btn_nxt { right: 32px !important; }
+    }
 }
 
-// 924px
+// (min-width: 604px) and (max-width: 924px)
 @include media-sm {
     :root {
+        --content-width: calc(100vw - var(--scroll_bar_width) - 112px);
         --gnb_search_bar_width: 560px;
+        --item-height: 180px;
+        --content-margin: 40px;
+        --items-margin: 56px;
     }
 
     #gnb {
@@ -43,14 +57,30 @@
             }
         }
     }
-}
 
-// 1138px
-@include media-md {
-    :root {
-        --gnb_search_bar_width: 720px;
+    .itemsWraper {
+        overflow: visible !important;
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
     }
 
+    .content {
+        .itemsWraper { overflow: visible !important; }
+        button.btn_prv { left: 32px !important; }
+        button.btn_nxt { right: 32px !important; }
+    }
+}
+
+// (min-width: 925px) and (max-width: 1138px)
+@include media-md {
+    :root {
+        --content-width: calc(100vw - var(--scroll_bar_width) - 112px);
+        --gnb_search_bar_width: 720px;
+        --item-height: 180px;
+        --content-margin: 40px;
+        --contentInfo-margin: 32px;
+        --items-margin: 56px;
+    }
     #gnb {
         .elegroup:nth-child(2) {
             button {
@@ -70,8 +100,17 @@
     }
 }
 
-// 1352px
+// (min-width: 1139px) and (max-width: 1352px)
 @include media-lg {
+    :root {
+        --content-width: 1050px;
+        --gnb_search_bar_width: 860px;
+        --item-height: 190px;
+        --content-margin: 40px;
+        --contentInfo-padding: 32px;
+        --contentInfo-margin: 24px;
+        --items-margin: 56px;
+    }
     #gnb {
         .elegroup:nth-child(2) {
             button[id="btnSearch"] {
@@ -82,10 +121,29 @@
             }
         }
     }
+
+    .content {
+        .contentInfo {
+            h1 { font-size: 28px; }
+        }
+    }
+
+    .itemsWraper {
+        // .items { margin: 24px 0 !important; }
+    }
 }
 
-// 1566px
+// (min-width: 1353px) and (max-width: 1565px)
 @include media-xl {
+    :root {
+        --content-width: 1264px;
+        --gnb_search_bar_width: 860px;
+        --item-height: 190px;
+        --content-margin: 80px;
+        --contentInfo-padding: 32px;
+        --contentInfo-margin: 32px;
+        --items-margin: 56px;
+    }
     #gnb {
         .elegroup:nth-child(2) {
             button[id="btnSearch"] {
@@ -93,6 +151,54 @@
                     i { display: inline-block; margin-right: 10px; }
                     span { display: inline-block; margin-left: 10px;}
                 }
+            }
+        }
+    }
+
+    .content {
+        .contentInfo {
+            h1 { font-size: 34px; }
+        }
+
+        .item {
+            .detail {
+                span { font-size: 16px !important;}
+            }
+        }
+    }
+}
+
+// (min-width: 1566px)
+@include media-xxl {
+    :root {
+        --content-width: 1478px;
+        --gnb_search_bar_width: 860px;
+        --item-height: 226px;
+        --content-margin: 96px;
+        --contentInfo-padding: 32px;
+        --contentInfo-margin: 36px;
+        --items-margin: 56px;
+    }
+
+    #gnb {
+        .elegroup:nth-child(2) {
+            button[id="btnSearch"] {
+                .btn_content {
+                    i { display: inline-block; margin-right: 10px; }
+                    span { display: inline-block; margin-left: 10px;}
+                }
+            }
+        }
+    }
+
+    .content {
+        .contentInfo {
+            h1 { font-size: 45px; }
+        }
+        
+        .item {
+            .detail {
+                span { font-size: 16px !important;}
             }
         }
     }
