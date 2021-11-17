@@ -1,5 +1,5 @@
 :root {
-  --scroll_bar_width: 0px;
+  --scroll_bar_width: 12px;
   --gnb_search_bar_width: 860px;
   --content-width: calc(100vw - var(--scroll_bar_width) - 32px);
   --content-margin: 24px;
@@ -7,6 +7,7 @@
   --contentInfo-margin: 24px;
   --item-height: 180px;
   --items-margin: 0 auto 24px;
+  --is-items-overflow: true;
 }
 
 * {
@@ -15,6 +16,17 @@
           box-sizing: border-box;
   margin: 0%;
   padding: 0;
+}
+
+span.dot {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  border-radius: 50%;
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+  margin: 3px 5px;
 }
 
 .btn_base {
@@ -114,7 +126,7 @@ body {
 }
 
 body::-webkit-scrollbar {
-  width: 12px;
+  width: var(--scroll_bar_width);
 }
 
 body::-webkit-scrollbar-track {
@@ -352,7 +364,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 #contents #contentList .content .contentInfo {
   padding: var(--contentInfo-padding) 0 0;
-  width: var(--content-width);
+  width: calc(var(--content-width) + 12px);
   margin: 0 auto var(--contentInfo-margin);
 }
 
@@ -378,7 +390,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 #contents #contentList .content .itemsContainer .itemsWraper {
   position: relative;
-  width: var(--content-width);
+  width: calc(var(--content-width) + 12px);
   margin: 0 auto;
   overflow: hidden;
 }
@@ -392,10 +404,10 @@ body::-webkit-scrollbar-thumb:hover {
   white-space: nowrap;
   -webkit-transform: translateX(0);
           transform: translateX(0);
-  -webkit-transition: -webkit-transform .5s ease-in-out;
-  transition: -webkit-transform .5s ease-in-out;
-  transition: transform .5s ease-in-out;
-  transition: transform .5s ease-in-out, -webkit-transform .5s ease-in-out;
+  -webkit-transition: -webkit-transform .3s ease-in-out;
+  transition: -webkit-transform .3s ease-in-out;
+  transition: transform .3s ease-in-out;
+  transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
 }
 
 #contents #contentList .content .itemsContainer .itemsWraper .items .item {
@@ -590,13 +602,197 @@ body::-webkit-scrollbar-thumb:hover {
 #contents #contentList .content .itemsContainer button.btn_prv {
   position: absolute;
   top: calc((var(--item-height) - 40px) / 2);
-  left: calc((100% - var(--content-width)) / 2 - 20px);
+  left: calc((100% - var(--content-width) - var(--scroll_bar_width)) / 2 - 20px);
 }
 
 #contents #contentList .content .itemsContainer button.btn_nxt {
   position: absolute;
   top: calc((var(--item-height) - 40px) / 2);
-  right: calc((100% - var(--content-width)) / 2 - 20px);
+  right: calc((100% - var(--content-width) - var(--scroll_bar_width)) / 2 - 20px);
+}
+
+#floatingPlayer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: #1a1a1a;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 64px;
+}
+
+#floatingPlayer .controlWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#floatingPlayer .controlWrapper .controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 150px;
+}
+
+#floatingPlayer .controlWrapper .controls button {
+  height: 40px;
+  width: 40px;
+}
+
+#floatingPlayer .controlWrapper .controls button i {
+  color: #fff;
+}
+
+#floatingPlayer .controlWrapper .controls button#btnPlay i {
+  font-size: 25px;
+}
+
+#floatingPlayer .controlWrapper .durationWrapper span {
+  font-size: 12px;
+  color: gray;
+}
+
+#floatingPlayer .infoWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#floatingPlayer .infoWrapper #jacket {
+  border-radius: 2px;
+  height: 40px;
+}
+
+#floatingPlayer .infoWrapper .infoText {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin-left: 8px;
+  width: 210px;
+  overflow: hidden;
+}
+
+#floatingPlayer .infoWrapper .infoText span#singTitle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  letter-spacing: -.5px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+#floatingPlayer .infoWrapper .infoText span.singDetail {
+  color: #b3b3b3;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+#floatingPlayer .infoWrapper .recommandWrapper {
+  margin-left: 8px;
+}
+
+#floatingPlayer .infoWrapper .recommandWrapper button {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+#floatingPlayer .infoWrapper .recommandWrapper button i {
+  color: gray;
+  font-size: 20px;
+}
+
+#floatingPlayer .infoWrapper .recommandWrapper button:hover {
+  background: #333333;
+}
+
+#floatingPlayer .progressWrapper {
+  display: block;
+  background: #333333;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 2px;
+}
+
+#floatingPlayer .progressWrapper .progress {
+  display: block;
+  background: #4d4d4d;
+  position: relative;
+  width: 70vw;
+}
+
+#floatingPlayer .progressWrapper .progress::after {
+  content: '';
+  background-color: red;
+  border-radius: 2px;
+  display: block;
+  width: 50vw;
+  height: 2px;
 }
 
 @media screen and (max-width: 603px) {
@@ -606,6 +802,7 @@ body::-webkit-scrollbar-thumb:hover {
     --content-margin: 32px;
     --item-height: 160px;
     --items-margin: 16px;
+    --is-items-overflow: true;
   }
   #gnb .elegroup:nth-child(1) #logo {
     display: block;
@@ -636,6 +833,7 @@ body::-webkit-scrollbar-thumb:hover {
     --item-height: 180px;
     --content-margin: 40px;
     --items-margin: 56px;
+    --is-items-overflow: true;
   }
   #gnb .elegroup:nth-child(2) button .btn_content i {
     display: block;
@@ -654,7 +852,7 @@ body::-webkit-scrollbar-thumb:hover {
     overflow: visible !important;
   }
   .content button.btn_prv {
-    left: 32px !important;
+    left: 36px !important;
   }
   .content button.btn_nxt {
     right: 32px !important;
@@ -669,6 +867,7 @@ body::-webkit-scrollbar-thumb:hover {
     --content-margin: 40px;
     --contentInfo-margin: 32px;
     --items-margin: 56px;
+    --is-items-overflow: false;
   }
   #gnb .elegroup:nth-child(2) button .btn_content i {
     display: none;
@@ -693,6 +892,7 @@ body::-webkit-scrollbar-thumb:hover {
     --contentInfo-padding: 32px;
     --contentInfo-margin: 24px;
     --items-margin: 56px;
+    --is-items-overflow: false;
   }
   #gnb .elegroup:nth-child(2) button[id="btnSearch"] .btn_content i {
     display: inline-block;
@@ -716,6 +916,7 @@ body::-webkit-scrollbar-thumb:hover {
     --contentInfo-padding: 32px;
     --contentInfo-margin: 32px;
     --items-margin: 56px;
+    --is-items-overflow: false;
   }
   #gnb .elegroup:nth-child(2) button[id="btnSearch"] .btn_content i {
     display: inline-block;
@@ -742,6 +943,7 @@ body::-webkit-scrollbar-thumb:hover {
     --contentInfo-padding: 32px;
     --contentInfo-margin: 36px;
     --items-margin: 56px;
+    --is-items-overflow: false;
   }
   #gnb .elegroup:nth-child(2) button[id="btnSearch"] .btn_content i {
     display: inline-block;

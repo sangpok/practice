@@ -9,6 +9,7 @@
         --content-margin: 32px;
         --item-height: 160px;
         --items-margin: 16px;
+        --is-items-overflow: true;
     }
 
     #gnb {
@@ -45,6 +46,7 @@
         --item-height: 180px;
         --content-margin: 40px;
         --items-margin: 56px;
+        --is-items-overflow: true;
     }
 
     #gnb {
@@ -66,7 +68,7 @@
 
     .content {
         .itemsWraper { overflow: visible !important; }
-        button.btn_prv { left: 32px !important; }
+        button.btn_prv { left: 36px !important; }
         button.btn_nxt { right: 32px !important; }
     }
 }
@@ -80,6 +82,7 @@
         --content-margin: 40px;
         --contentInfo-margin: 32px;
         --items-margin: 56px;
+        --is-items-overflow: false;
     }
     #gnb {
         .elegroup:nth-child(2) {
@@ -110,6 +113,7 @@
         --contentInfo-padding: 32px;
         --contentInfo-margin: 24px;
         --items-margin: 56px;
+        --is-items-overflow: false;
     }
     #gnb {
         .elegroup:nth-child(2) {
@@ -127,10 +131,6 @@
             h1 { font-size: 28px; }
         }
     }
-
-    .itemsWraper {
-        // .items { margin: 24px 0 !important; }
-    }
 }
 
 // (min-width: 1353px) and (max-width: 1565px)
@@ -143,6 +143,7 @@
         --contentInfo-padding: 32px;
         --contentInfo-margin: 32px;
         --items-margin: 56px;
+        --is-items-overflow: false;
     }
     #gnb {
         .elegroup:nth-child(2) {
@@ -178,6 +179,7 @@
         --contentInfo-padding: 32px;
         --contentInfo-margin: 36px;
         --items-margin: 56px;
+        --is-items-overflow: false;
     }
 
     #gnb {

@@ -5,6 +5,16 @@
     padding: 0;
 }
 
+span.dot {
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    background: $primary_color;
+    border-radius: 50%;
+    transform: scale(.8);
+    margin: 3px 5px;
+}
+
 .btn_base {
     border: none;
     width: fit-content;
@@ -101,6 +111,14 @@
     background: $background;
     transition: background 1s cubic-bezier(0.075, 0.82, 0.165, 1), opacity 1s cubic-bezier(0.075, 0.82, 0.165, 1);
     cursor: pointer;
+}
+
+@mixin ellipseText($lines: 1) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
 }
 
 // xs sm md lg xl

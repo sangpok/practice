@@ -6,7 +6,7 @@ const $btnSearchBack = document.querySelector("#btnSearchBack");
 let $search_opend = false;
 
 const btnSearch_Click = function(e) {
-    $gnbSearch = document.querySelector("#gnbSearch");
+    let $gnbSearch = document.querySelector("#gnbSearch");
     console.log("asdf");
     
     if ($search_opend) {
@@ -23,12 +23,18 @@ $btnSearchBack.addEventListener("click", btnSearch_Click);
 
 // -------------------------------------------------------- nav 관련
 
-const ControlItemWrapper = function() {
-    
+// ControlItemWrapper($items, itemsWrapper);
+const ControlItemWrapper = function($items, itemsWrapper) {
+    //console.log($items)
+    // TODO Set the visible of the prv, next btns
 }
 
 const getVariable = function(property) {
-    return getComputedStyle(document.documentElement).getPropertyValue(property);
+    return getComputedStyle(document.documentElement).getPropertyValue(property).trim();
+}
+
+const roundToTwo = function(num) {
+    return +(Math.round(num + "e+2")  + "e-2");
 }
 
 const SlideTo = function(e) {
@@ -40,48 +46,71 @@ const SlideTo = function(e) {
     
     $items = $items.parentElement.firstElementChild.firstElementChild;
 
-    let nextElementPos = null;
+    // when btn is clicked, the entries come together
+    // this variable is for the first caclcuation
     let isFirstEle = true;
 
     const itemsWrapper = $items.parentElement;
     const io = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                if (entry.intersectionRatio < 1 && entry.intersectionRatio > 0) { // 걸침
-                    if (isFirstEle && isNext && entry.target.getBoundingClientRect().left > 0) {
-                        let itemsWidth = $items.scrollWidth;
+            if (entry.isIntersecting && entry.intersectionRatio < 1 && entry.intersectionRatio > 0) { // 걸침
+                if (isFirstEle) {
+                    let itemsWidth = $items.scrollWidth;
 
-                        const itemsStyle = window.getComputedStyle($items);
-                        console.log(itemsStyle);
-                        let matrix = new WebKitCSSMatrix(itemsStyle.transform);
-                        let curPos = matrix.m41;
+                    const itemsStyle = window.getComputedStyle($items);
+                    let matrix = new WebKitCSSMatrix(itemsStyle.transform);
+                    let curPos = matrix.m41;
+                    let moveAmount = 0;
 
-                        // entry.target.style.border = "2px solid red";
-                        nextElementPos = entry.target.getBoundingClientRect().left;
+                    let targetRect = entry.target.getBoundingClientRect();
+                    let wrapperRect = itemsWrapper.getBoundingClientRect();
 
-                        let moveAmount = curPos - nextElementPos;
+                    console.log(entry.target + " / " + roundToTwo(targetRect.left));
 
-                        if (itemsWidth + (curPos - nextElementPos) < itemsWrapper.clientWidth) {
-                            moveAmount = curPos - (itemsWidth + (curPos - itemsWrapper.clientWidth));
+                    if (isNext && roundToTwo(targetRect.left) > 0) {
+                        // NEXT
+                        moveAmount = curPos - targetRect.left;
+
+                        if (Boolean(getVariable("--is-items-overflow") == "false")) moveAmount += wrapperRect.left;
+
+                        if (itemsWidth + moveAmount < itemsWrapper.clientWidth) {
+                            // Check last element
+                            // let marginAmount = (document.documentElement.clientWidth - itemsWrapper.clientWidth) / 2; // - getVariable("--scroll_bar_width"); //(wrapperRect.left * 1) - getVariable("--scroll_bar_width");
+                            let lastpartAmount = itemsWidth + (curPos - itemsWrapper.clientWidth);
+
+                            moveAmount = curPos - lastpartAmount; //- marginAmount;
                         }
 
                         $items.style.transform = `translateX(${moveAmount}px)`;
-                        io.unobserve(entry.target);
-                        isFirstEle = false;
+                        // io.unobserve(entry.target);
     
-                        ControlItemWrapper();
-                    }
-                    
+                        isFirstEle = false;
+                        ControlItemWrapper($items, itemsWrapper);
+
+                    } else if (!isNext && roundToTwo(targetRect.left - wrapperRect.left) <= 0) {
+                        // PREV 걸침
+                        let marginAmount = (wrapperRect.left * 2) - parseInt(getVariable("--scroll_bar_width"));
+                        let basePos = curPos + -targetRect.left;
+                        let torightPart = itemsWrapper.clientWidth - targetRect.width;
+
+                        moveAmount = basePos + torightPart + marginAmount;
+
+                        if (-curPos < itemsWrapper.clientWidth) moveAmount = 0;
+
+                        $items.style.transform = `translateX(${moveAmount}px)`;
+                        // io.unobserve(entry.target);
+    
+                        isFirstEle = false;
+                        ControlItemWrapper($items, itemsWrapper);
+                    } 
                 }
             }
         });
-    }, {"root": itemsWrapper});
+    }, {"root": itemsWrapper, "rootMargin": "0px 10px 0px 10px"});
+    // TODO Set the rootMargin each media type
 
     const $itemsAll = itemsWrapper.querySelectorAll(".item");
-    $itemsAll.forEach(e => {
-        e.style.border = "";
-        io.observe(e);
-    });
+    $itemsAll.forEach(e => io.observe(e));
 }
 
 const $btnPrvs = document.querySelectorAll("button.btn_prv");
@@ -93,19 +122,3 @@ const $btnNxts = document.querySelectorAll("button.btn_nxt");
 $btnNxts.forEach(element => {
     element.addEventListener("click", SlideTo);
 });
-
-// const itemsWrappers = document.querySelectorAll(".itemsWraper");
-// itemsWrappers.forEach(itemsWrapper => {
-//     const io = new IntersectionObserver(entries => {
-//         entries.forEach(entry => {
-//             if (entry.isIntersecting) {
-//                 if (entry.intersectionRatio < 1) { // 걸침
-//                     entry.target.style.border = "2px solid red";
-//                 }
-//             }
-//         });
-//     }, {"root": itemsWrapper});
-
-//     const $itemsAll = itemsWrapper.querySelectorAll(".item");
-//     $itemsAll.forEach(e => io.observe(e));
-// })

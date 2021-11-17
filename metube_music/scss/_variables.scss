@@ -1,5 +1,5 @@
 :root {
-    --scroll_bar_width: 0px;
+    --scroll_bar_width: 12px;
     --gnb_search_bar_width: 860px;
     --content-width: calc(100vw - var(--scroll_bar_width) - 32px);
     --content-margin: 24px;
@@ -7,6 +7,7 @@
     --contentInfo-margin: 24px;
     --item-height: 180px;
     --items-margin: 0 auto 24px;
+    --is-items-overflow: true;
 }
 
 // 기본 설정

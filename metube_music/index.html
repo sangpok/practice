@@ -672,7 +672,39 @@
     </main>
 
     <footer id="player">
-        <section id="floatingPlayer"></section>
+        <section id="floatingPlayer">
+            <div class="controlWrapper">
+                <div class="controls">
+                    <button id="btnPrv" class="btn_base"><i class="fas fa-step-backward"></i></button>
+                    <button id="btnPlay" class="btn_base"><i class="fas fa-play"></i></button>
+                    <button id="btnNext" class="btn_base"><i class="fas fa-step-forward"></i></button>
+                </div>
+                <div class="durationWrapper">
+                    <span id="curPlaytime">0:00</span><span> / </span><span id="duration">3:39</span>
+                </div>
+            </div>
+
+            <div class="infoWrapper">
+                <img src="images/sing/1.jpg" alt="" id="jacket">
+                <div class="infoText">
+                    <span id="singTitle">how deep is your love | cover (ENG SUB)</span>
+                    <span class="singDetail"><span id="singer">정아로 / ARO</span><span class="dot"></span><span id="view">조회수 369만회</span><span class="dot"></span><span id="view">좋아요 14만개</span></span>
+                </div>
+                <div class="recommandWrapper">
+                    <button id="btnLike" class="btn_base btn_circle"><i class="far fa-thumbs-up"></i></button>
+                    <button id="btnBad" class="btn_base btn_circle"><i class="far fa-thumbs-down"></i></button>
+                    <button id="recommandOpt" class="btn_base btn_circle"><i class="fas fa-ellipsis-v"></i></button>
+                </div>
+            </div>
+
+            <div class="toolWrapper">
+
+            </div>
+
+            <div class="progressWrapper">
+                <div class="progress" value="50"></div>
+            </div>
+        </section>
         <section id="playerMain"></section>
     </footer>
 </body>
