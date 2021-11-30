@@ -467,7 +467,8 @@ body::-webkit-scrollbar-thumb {
     }
 
     .toolWrapper {
-
+        @include flexCenter();
+        
     }
 
     .progressWrapper {

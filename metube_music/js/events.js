@@ -122,3 +122,7 @@ const $btnNxts = document.querySelectorAll("button.btn_nxt");
 $btnNxts.forEach(element => {
     element.addEventListener("click", SlideTo);
 });
+
+const $floatingPlayer = document.querySelector("#floatingPlayer").addEventListener("click", e => {
+    // window.history.pushState("object or string", "Title", "metube_music/new-url");
+})
