@@ -2,12 +2,33 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue';
 import DataBinding from '../views/DataBinding.vue';
 import NestedComponent from '../views/NestedComponent.vue';
+import Calculator from '../views/Calculator.vue';
+import ProvideInject from '../views/ProvideInject.vue';
+import Mixins from '../views/Mixins.vue';
+import KakaoLogin from '../views/KakaoLogin.vue';
 
 const routes = [
     {
         path: '/',
         name: 'Home',
         component: Home,
+    },
+    {
+        path: '/login',
+        name: 'KakaoLogin',
+        component: KakaoLogin,
+    },
+    {
+        path: '/naverlogin',
+        name: 'NaverLogin',
+        component: () =>
+            import(/* webpackChunkName: "parent" */ '../views/NaverLogin.vue'),
+    },
+    {
+        path: '/googlelogin',
+        name: 'GoogleLogin',
+        component: () =>
+            import(/* webpackChunkName: "parent" */ '../views/GoogleLogin.vue'),
     },
     {
         path: '/about',
@@ -27,6 +48,21 @@ const routes = [
         path: '/nest',
         name: 'Nest',
         component: NestedComponent,
+    },
+    {
+        path: '/calc',
+        name: 'Calc',
+        component: Calculator,
+    },
+    {
+        path: '/provide',
+        name: 'provide',
+        component: ProvideInject,
+    },
+    {
+        path: '/mixin',
+        name: 'mixins',
+        component: Mixins,
     },
 ];
 
