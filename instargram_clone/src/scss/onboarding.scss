@@ -1,0 +1,166 @@
+#login-page {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 100px;
+
+    .splash-image {
+        .image-box {
+            display: block;
+            width: 460px;
+            height: 580px;
+            background-color: #fff;
+            border: 1px solid var(--gray40);
+        }
+
+        margin-right: 25px;
+    }
+
+    .field-wrap {
+        .login-field {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 12px 48px;
+            background-color: var(--white);
+            border: 1px solid var(--gray25);
+
+            #logo {
+                font-size: 32px;
+                font-weight: 800;
+                text-align: center;
+                margin: 24px;
+            }
+
+            input[type] {
+                outline: none;
+                appearance: none;
+
+                width: 268px;
+                height: 38px;
+                margin: 5px 0;
+                font-size: 12px;
+                text-indent: 8px;
+
+                background-color: var(--gray5);
+                border: 1px solid var(--gray25);
+                border-radius: 3px;
+
+                &:focus {
+                    border: 1px solid var(--gray40);
+                }
+
+                // &::placeholder {
+                //     position: relative;
+                //     top: -10px;
+                //     font-size: 9px;
+                // }
+            }
+
+            #login-btn {
+                border: none;
+                outline: none;
+                appearance: none;
+                height: 30px;
+                margin: 8px 0;
+                border-radius: 5px;
+                background-color: rgba(0, 149, 246, 0.3);
+                cursor: auto;
+
+                color: #fff;
+                font-size: 14px;
+                font-weight: 700;
+
+                &.active {
+                    background-color: #0095f6;
+                    cursor: pointer;
+                }
+            }
+
+            .delimiter-field {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                div {
+                    width: 100%;
+                    height: 1px;
+                    background-color: var(--gray25);
+                }
+
+                span.description {
+                    width: 210px;
+                    font-size: 12px;
+                    text-align: center;
+                    font-weight: 700;
+                    color: var(--gray40);
+                    margin: 12px 0;
+                }
+            }
+
+            #facebook-login {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                margin: 12px 0;
+                width: 100%;
+                text-decoration: none;
+                color: #385185;
+
+                span.description {
+                    font-size: 14px;
+                    font-weight: 700;
+                }
+            }
+
+            #pwsearch-field {
+                text-align: center;
+                text-decoration: none;
+                color: #385185;
+                width: 100%;
+                margin: 12px 0;
+                font-size: 12px;
+            }
+        }
+
+        .signin-field {
+            background-color: var(--white);
+            border: 1px solid var(--gray25);
+            text-align: center;
+            margin-top: 12px;
+            padding: 24px 0;
+            font-size: 14px;
+
+            a {
+                text-decoration: none;
+                color: #0095f6;
+                font-weight: 700;
+            }
+        }
+
+        .download-field {
+            text-align: center;
+
+            span {
+                display: block;
+                margin: 24px;
+                font-size: 14px;
+            }
+
+            .button-field {
+                width: 100%;
+
+                button {
+                    width: 136px;
+                    height: 40px;
+                    margin-right: 12px;
+
+                    &:last-of-type {
+                        margin-right: 0px;
+                    }
+                }
+            }
+        }
+    }
+}
