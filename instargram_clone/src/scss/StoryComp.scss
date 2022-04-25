@@ -1,0 +1,48 @@
+.story-content {
+    margin-right: 14px;
+    width: fit-content;
+    cursor: pointer;
+
+    .story-thumbnail-wrapper {
+        display: block;
+        position: relative;
+        margin-bottom: 6px;
+
+        .story-thumbnail {
+            display: block;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 62px;
+            height: 62px;
+            border: 2px solid white;
+            border-radius: 55px;
+            background-image: url('https://mblogthumb-phinf.pstatic.net/MjAxOTEwMTdfNDcg/MDAxNTcxMjQwMzM5ODk0.RJncMKyf94amjwZdZmF0Lc0yR62gKWF1UPNkj3UQqBQg.QKJeYH2cz8YMWagAgG0QZGGSATiWbZTrQ1vzmEsnJ-gg.JPEG.pikachusl/itsuyoung_29094963_535815533480315_923688431320563712_n.jpg?type=w800');
+            background-size: cover;
+        }
+
+        .story-thumbnail-border {
+            display: block;
+            position: relative;
+            background-color: var(--gray55);
+            border-radius: 50px;
+            border: 2px solid transparent;
+            background-image: linear-gradient(#fff, #fff), linear-gradient(to right, red 0%, orange 100%);
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            width: 66px;
+            height: 66px;
+
+            &.read {
+                // background-color: red;
+                background-image: none;
+            }
+        }
+    }
+
+    .story-user {
+        width: 100%;
+        text-align: center;
+        font-size: 12px;
+    }
+}
