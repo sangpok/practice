@@ -9,68 +9,36 @@
         border-radius: 3px;
         border: 1px solid var(--gray10);
         background-color: white;
+        overflow: hidden;
 
         #story-list {
             display: flex;
             flex-direction: row;
-            overflow: hidden;
             margin: 16px 0;
             padding: 0 16px;
-
-            .story-content {
-                margin-right: 14px;
-                cursor: pointer;
-
-                .story-thumbnail-wrapper {
-                    display: block;
-                    position: relative;
-                    margin-bottom: 6px;
-
-                    .story-thumbnail {
-                        display: block;
-                        position: absolute;
-                        top: 2px;
-                        left: 2px;
-                        width: 62px;
-                        height: 62px;
-                        border: 2px solid white;
-                        border-radius: 55px;
-                        background-image: url('https://mblogthumb-phinf.pstatic.net/MjAxOTEwMTdfNDcg/MDAxNTcxMjQwMzM5ODk0.RJncMKyf94amjwZdZmF0Lc0yR62gKWF1UPNkj3UQqBQg.QKJeYH2cz8YMWagAgG0QZGGSATiWbZTrQ1vzmEsnJ-gg.JPEG.pikachusl/itsuyoung_29094963_535815533480315_923688431320563712_n.jpg?type=w800');
-                        background-size: cover;
-                    }
-
-                    .story-thumbnail-border {
-                        display: block;
-                        position: relative;
-                        background-color: var(--gray55);
-                        border-radius: 50px;
-                        border: 2px solid transparent;
-                        background-image: linear-gradient(#fff, #fff), linear-gradient(to right, red 0%, orange 100%);
-                        background-origin: border-box;
-                        background-clip: content-box, border-box;
-                        width: 66px;
-                        height: 66px;
-                    }
-                }
-
-                .story-user {
-                    width: 100%;
-                    text-align: center;
-                    font-size: 12px;
-                }
-            }
+            transition: 0.7s all cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         button {
+            background: white;
             position: absolute;
-            right: 12px;
-            top: calc((100% - 45px) / 2);
+            top: calc((100% - 24px) / 2);
             border-radius: 50px;
             outline: none;
             appearance: none;
             border: none;
-            width: 45px;
-            height: 45px;
+            width: 24px;
+            height: 24px;
+            box-shadow: 0 0 16px var(--gray40);
+            cursor: pointer;
+
+            &#prev {
+                left: 12px;
+            }
+
+            &#next {
+                right: 12px;
+            }
         }
     }
 

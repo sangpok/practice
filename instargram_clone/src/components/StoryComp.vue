@@ -1,11 +1,13 @@
 <template>
     <div class="story-content">
         <div class="story-thumbnail-wrapper">
-            <div v-if="storyRead" class="story-thumbnail-border read"></div>
-            <div v-else class="story-thumbnail-border"></div>
-            <div class="story-thumbnail"></div>
+            <div v-if="this.itemData.state === 'read'" class="story-thumbnail-border read"></div>
+            <div v-else-if="this.itemData.state === 'new'" class="story-thumbnail-border new"></div>
+            <div v-else-if="this.itemData.state === 'friend'" class="story-thumbnail-border friend"></div>
+            <div class="story-thumbnail"><img :src="require(`@/assets/1.jpg`)" loading="lazy" /></div>
+            {{ this.itemData.profileImg }}
         </div>
-        <div class="story-user">{{ this.userName }}</div>
+        <div class="story-user">{{ this.itemData.userName }}</div>
     </div>
 </template>
 
@@ -14,8 +16,10 @@
         name: 'StoryComp',
         components: {},
         props: {
-            userName: String,
-            storyRead: Boolean,
+            itemData: Object,
+            // userName: String,
+            // thumbnailU: String,
+            // stateType: String,
         },
         data() {
             return {
