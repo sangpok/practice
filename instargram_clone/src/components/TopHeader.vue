@@ -19,7 +19,9 @@
                 <router-link to="/dm"><span :class="outlinedStyle(1)">chat</span></router-link>
             </button>
             <button @click="navbtnsClick(2)"><span :class="outlinedStyle(2)">add_box</span></button>
-            <button @click="navbtnClick(3)"><span :class="outlinedStyle(3)">explore</span></button>
+            <button @click="navbtnClick(3)">
+                <router-link to="/explore"><span :class="outlinedStyle(3)">explore</span></router-link>
+            </button>
             <button @click="navbtnClick(4)"><span :class="outlinedStyle(4)">favorite_border</span></button>
             <button @click="navbtnClick(5)"><span :class="outlinedStyle(5)">account_circle</span></button>
         </section>
@@ -64,6 +66,7 @@
                         break;
                     case 4:
                         console.log('heart');
+                        this.$emit('notification-click');
                         break;
                     case 5:
                         console.log('myprofile');

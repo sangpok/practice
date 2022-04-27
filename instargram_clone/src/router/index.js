@@ -19,6 +19,7 @@ const routes = [
         children: [
             { path: '/main', component: () => import('@/views/FeedPage') },
             { path: '/dm', component: () => import('@/views/DirectMsg') },
+            { path: '/explore', component: () => import('@/views/ExplorePage') },
         ],
         meta: {
             requiresAuth: true,

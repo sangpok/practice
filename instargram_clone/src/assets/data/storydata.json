@@ -2,41 +2,41 @@
     {
         "userName": "내 스토리",
         "state": "read",
-        "profileImg": "@/assets/1.jpg"
+        "profileImg": "1.jpg"
     },
     {
         "userName": "omen.mov",
         "state": "new",
-        "profileImg": "@/assets/2.jpg"
+        "profileImg": "2.jpg"
     },
     {
         "userName": "omen.mov",
         "state": "new",
-        "profileImg": "@/assets/3.jpg"
+        "profileImg": "3.jpg"
     },
     {
         "userName": "omen.mov",
         "state": "friend",
-        "profileImg": "@/assets/4.jpg"
+        "profileImg": "4.jpg"
     },
     {
         "userName": "omen.mov",
         "state": "read",
-        "profileImg": "@/assets/5.jpg"
+        "profileImg": "5.jpg"
     },
     {
         "userName": "omen.mov",
         "state": "read",
-        "profileImg": "@/assets/6.jpg"
+        "profileImg": "6.jpg"
     },
     {
         "userName": "omen.mov",
         "state": "read",
-        "profileImg": "@/assets/7.jpg"
+        "profileImg": "7.jpg"
     },
     {
         "userName": "omen.mov",
         "state": "read",
-        "profileImg": "@/assets/8.jpg"
+        "profileImg": "8.jpg"
     }
 ]
